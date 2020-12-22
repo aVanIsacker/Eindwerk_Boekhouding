@@ -17,9 +17,10 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<Leverancier> _leveranciers;
         private Leverancier _selectedLeverancier;
-        private int _id;
+        //private int _id;
 
-        public int Id { get { return _id; } set { OnPropertyChanged(ref _id, value); } }
+        //public int Id { get { return _id; } set { OnPropertyChanged(ref _id, value); } }
+
         public LeveranciersViewModel(IBoekhoudingDataService dataService)
         {
             _dataService = dataService;

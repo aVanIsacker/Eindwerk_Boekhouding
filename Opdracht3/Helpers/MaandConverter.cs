@@ -8,6 +8,8 @@ using System.Windows.Data;
 
 namespace Opdracht3.Helpers
 {
+    //[ValueConversion(typeof(DateTime), typeof(String))]
+
     public class MaandConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

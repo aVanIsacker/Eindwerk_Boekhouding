@@ -29,7 +29,10 @@ namespace Opdracht3.ViewModels
         public string Omschrijving { get; set; }
         public DateTime BetaalDatum { get; set; }
         public double BTWBedrag { get { return BedragExclBTW * BTWTarief / 100.0; }  }
-        public DateTime VervalDatum { get; set; }
+
+        public DateTime VervalDatum { get; }
+        //public DateTime VervalDatum { get { return _factuurDatum.AddMonths(1); } }
+
         public Contact Contact { get; set; }
 
 

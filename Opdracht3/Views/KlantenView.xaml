@@ -21,32 +21,38 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <!--CONTACTNR-->
             <Label Grid.Row="0" Content="Contactnummer:" HorizontalAlignment="Left"/>
             <TextBox Grid.Row="0" Text="{Binding SelectedKlant.ContactNr}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left" />
 
+            <!--VOORNAAM-->
+            <Label Grid.Row="1" Content="Voornaam:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="1" Text="{Binding SelectedKlant.Voornaam}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+            
             <!--NAAM-->
-            <Label Grid.Row="1" Content="Familienaam:" HorizontalAlignment="Left"/>
-            <TextBox Grid.Row="1" Text="{Binding SelectedKlant.Familienaam}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+            <Label Grid.Row="2" Content="Familienaam:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="2" Text="{Binding SelectedKlant.Familienaam}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
 
             <!--ADRES-->
-            <Label Grid.Row="2" Content="Straat:" HorizontalAlignment="Left"/>
-            <TextBox Grid.Row="2" Text="{Binding SelectedKlant.Straat}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+            <Label Grid.Row="3" Content="Straat:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Text="{Binding SelectedKlant.Straat}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
 
-            <Label Grid.Row="3" Content="Gemeente:" HorizontalAlignment="Left"/>
-            <TextBox Grid.Row="3" Text="{Binding SelectedKlant.Gemeente}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+            <Label Grid.Row="4" Content="Gemeente:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="4" Text="{Binding SelectedKlant.Gemeente}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
 
-            <Label Grid.Row="4" Content="Postcode:" HorizontalAlignment="Left"/>
-            <TextBox Grid.Row="4" Text="{Binding SelectedKlant.Postcode}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+            <Label Grid.Row="5" Content="Postcode:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="5" Text="{Binding SelectedKlant.Postcode}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
 
             <!--BTWNUMMER-->
-            <!--<Label Grid.Row="5" Content="BTW nummer:" HorizontalAlignment="Left"/>
-            <TextBox Grid.Row="5" Text="{Binding SelectedLeverancier.BTWNr}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>-->
+            <Label Grid.Row="6" Content="BTW nummer:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="6" Text="{Binding SelectedKlant.BTWNr}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
 
             <!--BUTTONS; ADD, DELETE, EDIT -->
-            <StackPanel  Orientation="Horizontal" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Right" Margin="10">
+            <StackPanel  Orientation="Horizontal" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Right" Margin="10">
                 <Button Background="Transparent" BorderThickness="0" Margin="5"  Command="{Binding AddKlantCommand}">
                     <Image Source="/Opdracht3;component/Resources/toevoegen.png" Height="25" Width="30"/>
                 </Button>

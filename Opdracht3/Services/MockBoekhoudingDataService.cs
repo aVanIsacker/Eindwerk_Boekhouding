@@ -75,10 +75,10 @@ namespace Opdracht3.Services
         {
             _verkoopDagBoek = new List<VerkoopFactuur>()
             {
-                new VerkoopFactuur(){UniekNr="25002", Maand = "JUL", FactuurDatum = new DateTime(2020,7,25), Omschrijving = "Product", BedragExclBTW = 60.0, BTWTarief = 21, Status = "onbetaald", Contact = _klanten[1]},
-                new VerkoopFactuur(){UniekNr="25003", Maand = "JUN", FactuurDatum = new DateTime(2020,6,2), Omschrijving = "Dienst", BedragExclBTW = 60.0, BTWTarief = 21, Status = "onbetaald", Contact = _klanten[3]},
-                new VerkoopFactuur(){UniekNr="25004", Maand = "MEI", FactuurDatum = new DateTime(2020,5,14), Omschrijving = "Dienst", BedragExclBTW = 60.0, BTWTarief = 21, Status = "betaald", BetaalDatum= new DateTime(2020,6,3),  Contact = _klanten[0]},
-                new VerkoopFactuur(){UniekNr="25005", Maand = "JUL", FactuurDatum = new DateTime(2020,7,10), Omschrijving = "Product", BedragExclBTW = 60.0, BTWTarief = 21, Status = "betaald", BetaalDatum = new DateTime(2020,8,6), Contact = _klanten[2]},
+                new VerkoopFactuur(){UniekNr="25002", Maand = "JUL", FactuurDatum = new DateTime(2020,7,25), Type = "Product", Omschrijving = "Tafel", BedragExclBTW = 260.0, BTWTarief = 21, Status = "Open", Contact = _klanten[1]},
+                new VerkoopFactuur(){UniekNr="25003", Maand = "JUN", FactuurDatum = new DateTime(2020,6,2), Type = "Dienst", Omschrijving = "Herstelling werkblad", BedragExclBTW = 340.0, BTWTarief = 6, Status = "Open", Contact = _klanten[3]},
+                new VerkoopFactuur(){UniekNr="25004", Maand = "MEI", FactuurDatum = new DateTime(2020,5,14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, Status = "Betaald", BetaalDatum= new DateTime(2020,6,3),  Contact = _klanten[0]},
+                new VerkoopFactuur(){UniekNr="25005", Maand = "JUL", FactuurDatum = new DateTime(2020,7,10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, Status = "Betaald", BetaalDatum = new DateTime(2020,8,6), Contact = _klanten[2]},
             };
         }
         public IList<VerkoopFactuur> GeefVerkoopDagBoek()

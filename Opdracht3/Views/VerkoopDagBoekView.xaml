@@ -36,19 +36,20 @@
 
             <!--FACTUURDATUM-->
             <Label Grid.Row="1" Content="Factuurdatum:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
-            <DatePicker x:Name="FactuurDatumVK" Grid.Row="1"  Grid.Column="3" SelectedDate="{Binding SelectedVerkoopFactuur.FactuurDatum}" Margin="4,4,0,4" Width="130"  HorizontalAlignment="Left"  />
+            <DatePicker x:Name="FactuurDatum" Grid.Row="1"  Grid.Column="3" SelectedDate="{Binding SelectedVerkoopFactuur.FactuurDatum}" Margin="4,4,0,4" Width="130"  HorizontalAlignment="Left"  />
 
             <!--MAAND-->
             <Label Grid.Row="2" Content="Maand:"  FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
-            <TextBox Grid.Row="2" Text="{Binding SelectedVerkoopFactuur.Maand}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="2" Text="{Binding SelectedVerkoopFactuur.FactuurDatum, Converter={StaticResource MaandConvertor}}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
 
             <!--DEBITEUR-->
             <Label Grid.Row="3" Content="Debiteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <TextBox Grid.Row="3" Text="{Binding SelectedVerkoopFactuur.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Text="{Binding SelectedVerkoopFactuur.Contact }" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <!--VerkoopDagBoekViewModel.VerkoopFacturen-->
 
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <ComboBox x:Name="TypeComboVK" Grid.Row="4" Text="{Binding SelectedVerkoopFactuur.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+            <ComboBox x:Name="TypeCombo" Grid.Row="4" Text="{Binding SelectedVerkoopFactuur.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
                 <ComboBoxItem>Type?</ComboBoxItem>
                 <ComboBoxItem>Product</ComboBoxItem>
                 <ComboBoxItem>Dienst</ComboBoxItem>
@@ -60,7 +61,7 @@
 
             <!--EX BTW 6%/21%-->
             <Label Grid.Row="6" Content="BTW %:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
-            <ComboBox x:Name="BTWTariefComboVK" Grid.Row="6" Text="{Binding SelectedVerkoopFactuur.BTWTarief}" Grid.Column="3" Margin="4,-25,0,4" Width="130" HorizontalAlignment="Left" Height="20">
+            <ComboBox x:Name="BTWTariefCombo" Grid.Row="6" Text="{Binding SelectedVerkoopFactuur.BTWTarief}" Grid.Column="3" Margin="4,-25,0,4" Width="130" HorizontalAlignment="Left" Height="20">
                 <ComboBoxItem>-</ComboBoxItem>
                 <ComboBoxItem>6</ComboBoxItem>
                 <ComboBoxItem>21</ComboBoxItem>
@@ -69,7 +70,7 @@
 
             <!--TOTAAL ZONDER BTW-->
             <Label Grid.Row="0" Content="Tot ex BTW:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="5"/>
-            <TextBox x:Name="BedragVK" Grid.Row="0" Text="{Binding SelectedVerkoopFactuur.BedragExclBTW}" Grid.Column="8" Margin="4,4,0,4" Width="130" Height="23" HorizontalAlignment="Left"/>
+            <TextBox x:Name="Bedrag" Grid.Row="0" Text="{Binding SelectedVerkoopFactuur.BedragExclBTW}" Grid.Column="8" Margin="4,4,0,4" Width="130" Height="23" HorizontalAlignment="Left"/>
 
 
             <!--TOTAAL BEDRAG BTW-->
@@ -78,7 +79,7 @@
 
             <!--BETAALD JA/NEE? (STATUS)-->
             <Label Grid.Row="2" Grid.Column="5" Content="Status:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
-            <ComboBox x:Name="StatusComboVK" Grid.Row="2" Grid.Column="8" Text="{Binding SelectedVerkoopFactuur.Status}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+            <ComboBox x:Name="StatusCombo" Grid.Row="2" Grid.Column="8" Text="{Binding SelectedVerkoopFactuur.Status}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
                 <!--KLEUR VERANDERING VAN STATUS -->
                 <ComboBoxItem>Status?</ComboBoxItem>
                 <ComboBoxItem Background="#56bb84">
@@ -91,7 +92,7 @@
 
             <!--VERVALDATUM-->
             <Label Grid.Row="3" Grid.Column="5" Content="Vervaldatum:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
-            <DatePicker x:Name="FactuurDatumtxtVK" BorderThickness="0" />
+            <DatePicker x:Name="FactuurDatumtxt" BorderThickness="0" />
             <TextBox  IsReadOnly="True" Grid.Row="3" Grid.Column="8" Text="{Binding ElementName=FactuurDatum, Path=SelectedDate, Mode=TwoWay,Converter={StaticResource DateTimeToFutureExpireDateStringConverter}}" 
                                          Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" />
 
