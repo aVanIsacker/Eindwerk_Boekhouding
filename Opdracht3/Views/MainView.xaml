@@ -97,7 +97,9 @@
                                            
                                         </DataGridTemplateColumn>
 
-                                        <DataGridTextColumn Binding="{Binding FactuurDatum, StringFormat={}{0:MMM}}" Header="Maand" />
+                                        <!--<DataGridTextColumn Binding="{Binding FactuurDatum, StringFormat={}{0:MMM}}" Header="Maand" />-->
+                                        <DataGridTextColumn Binding="{Binding FactuurDatum, Converter={StaticResource MaandConvertor} }" Header="Maand" />
+                                        
                                         <DataGridTextColumn Binding="{Binding Contact}" Header="Debiteur" />
 
                                         <DataGridTextColumn Binding="{Binding Type}" Header="Type" />
