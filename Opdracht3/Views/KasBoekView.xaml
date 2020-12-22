@@ -6,7 +6,97 @@
              xmlns:local="clr-namespace:Opdracht3.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        
-    </Grid>
+    <GroupBox>
+        <Grid Margin="4,4,4,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="6"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="6"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="6"/>
+                <ColumnDefinition Width="160"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--KASBOEKNUMMER-->
+            <Label Grid.Row="0" Content="Kasboeknummer" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox Grid.Row="0" Text="{Binding SelectedKasVerrichting.UniekNr}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" />
+
+            <!--DATUM-->
+            <Label Grid.Row="1" Content="Datum:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
+            <DatePicker x:Name="FactuurDatum" Grid.Row="1"  Grid.Column="3" SelectedDate="{Binding SelectedKasVerrichting.FactuurDatum}" Margin="4,4,0,4" Width="130"  HorizontalAlignment="Left"  />
+
+            <!--MAAND-->
+            <Label Grid.Row="2" Content="Maand:"  FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox Grid.Row="2" Text="{Binding SelectedKasVerrichting.Maand}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+
+            <!--CREDITEUR-->
+            <Label Grid.Row="3" Content="Crediteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
+            <TextBox Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+
+            <!--TYPE-->
+            <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
+            <ComboBox x:Name="TypeCombo" Grid.Row="4" Text="{Binding SelectedKasVerrichting.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+                <ComboBoxItem>Type?</ComboBoxItem>
+                <ComboBoxItem>Bedrijfskosten</ComboBoxItem>
+                <ComboBoxItem>Inkoop</ComboBoxItem>
+                <ComboBoxItem>Verkoop</ComboBoxItem>
+            </ComboBox>
+
+            <!--OMSCHRIJVING-->
+            <Label Grid.Row="5" Content="Omschrijving:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox Grid.Row="5" Text="{Binding SelectedKasVerrichting.Omschrijving}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" />
+
+            <!--EX BTW 6%/21%-->
+            <Label Grid.Row="6" Content="BTW %:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
+            <ComboBox x:Name="BTWTariefCombo" Grid.Row="6" Text="{Binding SelectedKasVerrichting.BTWTarief}" Grid.Column="3" Margin="4,-25,0,4" Width="130" HorizontalAlignment="Left" Height="20">
+                <ComboBoxItem>-</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>21</ComboBoxItem>
+            </ComboBox>
+
+
+            <!--TOTAAL ZONDER BTW-->
+            <Label Grid.Row="0" Content="Tot ex BTW:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="5"/>
+            <TextBox x:Name="Bedrag" Grid.Row="0" Text="{Binding SelectedKasVerrichting.BedragExclBTW}" Grid.Column="8" Margin="4,4,0,4" Width="130" Height="23" HorizontalAlignment="Left"/>
+
+
+            <!--TOTAAL BEDRAG BTW-->
+            <Label Grid.Row="1" Grid.Column="5" Content="Totaal:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
+            <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Text="{Binding ElementName=Bedrag, Path=Text, Mode=TwoWay}" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+
+            <!--BETAALWIJZE-->
+            <Label Grid.Row="2" Grid.Column="5" Content="Betaalwijze:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="StatusCombo" Grid.Row="2" Grid.Column="8" Text="{Binding SelectedKasVerrichting.Status}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+                <ComboBoxItem>Cash</ComboBoxItem>
+                <ComboBoxItem>Bancontact</ComboBoxItem>
+            </ComboBox>
+
+            <!--BUTTONS; ADD, DELETE, EDIT -->
+            <StackPanel  Orientation="Horizontal" Grid.Row="6" Grid.Column="7" HorizontalAlignment="Right" Margin="0,26,27,6"  Height="30" Grid.RowSpan="2">
+                <Button Background="Transparent" BorderThickness="0" Margin="1" MinWidth="30" Command="{Binding AddKasVerrichtingCommand}">
+                    <Image Source="/Opdracht3;component/Resources/toevoegen.png" Height="25" Width="30"/>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0" Margin="1" MinWidth="30" Command="{Binding DeleteKasVerrichtingCommand}">
+                    <Image Source="/Opdracht3;component/Resources/verwijder.png" Height="25" Width="30"/>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0" Margin="1" MinWidth="30" Command="{Binding EditKasVerrichtingCommand}">
+                    <Image Source="/Opdracht3;component/Resources/wijzig.png" Height="25" Width="30"/>
+                </Button>
+            </StackPanel>
+
+        </Grid>
+    </GroupBox>
 </UserControl>

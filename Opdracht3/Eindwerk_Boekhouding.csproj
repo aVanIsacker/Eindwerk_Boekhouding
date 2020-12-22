@@ -92,6 +92,9 @@
     <Compile Include="Views\AankoopExpView.xaml.cs">
       <DependentUpon>AankoopExpView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\KasBoekExpView.xaml.cs">
+      <DependentUpon>KasBoekExpView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\KasBoekView.xaml.cs">
       <DependentUpon>KasBoekView.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AankoopExpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KasBoekExpView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
