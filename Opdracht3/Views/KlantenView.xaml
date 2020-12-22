@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Opdracht3.Views.KlantenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Opdracht3.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <GroupBox >
+        <Grid Margin="4,4,-2,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="6"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--CONTACTNR-->
+            <Label Grid.Row="0" Content="Contactnummer:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="0" Text="{Binding SelectedKlant.ContactNr}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left" />
+
+            <!--NAAMBEDRIJF-->
+            <Label Grid.Row="1" Content="Bedrijfsnaam:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="1" Text="{Binding SelectedKlant.Familienaam}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+
+            <!--ADRESBEDRIJF-->
+            <Label Grid.Row="2" Content="Straat:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="2" Text="{Binding SelectedKlant.Straat}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+
+            <Label Grid.Row="3" Content="Gemeente:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Text="{Binding SelectedKlant.Gemeente}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+
+            <Label Grid.Row="4" Content="Postcode:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="4" Text="{Binding SelectedKlant.Postcode}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
+
+            <!--BTWNUMMER-->
+            <!--<Label Grid.Row="5" Content="BTW nummer:" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="5" Text="{Binding SelectedLeverancier.BTWNr}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>-->
+
+            <!--BUTTONS; ADD, DELETE, EDIT -->
+            <StackPanel  Orientation="Horizontal" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Right" Margin="10">
+                <Button Background="Transparent" BorderThickness="0" Margin="5"  Command="{Binding AddKlantCommand}">
+                    <Image Source="/Opdracht3;component/Resources/toevoegen.png" Height="25" Width="30"/>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0" Margin="3"  Command="{Binding DeleteKlantCommand}">
+                    <Image Source="/Opdracht3;component/Resources/verwijder.png" Height="25" Width="30"/>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0" Margin="5" Command="{Binding EditKlantCommand}">
+                    <Image Source="/Opdracht3;component/Resources/wijzig.png" Height="25" Width="30"/>
+                </Button>
+            </StackPanel>
+
+
+        </Grid>
+        </GroupBox>
+
+</UserControl>
