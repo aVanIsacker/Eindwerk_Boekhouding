@@ -11,15 +11,12 @@ namespace Opdracht3.ViewModels
     public class MainViewModel : ObservableObject
     {
         private IBoekhoudingDataService _dataService;
-        //private KlantenVM _klantenVM;
-        //private KasboekVM _kasBoekVM;
-
+        private KlantenViewModel _klantenViewModel;
         private LeveranciersViewModel _leveranciersViewModel;
         private AankoopDagBoekViewModel _aankoopDagBoekViewModel;
-
-        //private VerkoopdagboekVM _verkoopDagboekVM;
-        //private OverzichtVM _overzichtVM;
-
+        private VerkoopDagBoekViewModel _verkoopDagBoekViewModel;
+        private KasBoekViewModel _kasBoekViewModel;
+        private OverzichtViewModel _overzichtViewModel;
         private LoginViewModel _loginViewModel;
 
         public MainViewModel()
@@ -29,15 +26,16 @@ namespace Opdracht3.ViewModels
 
 
             _dataService = new MockBoekhoudingDataService();
-            LeveranciersViewModel = new LeveranciersViewModel(_dataService);
-            AankoopViewModel = new AankoopDagBoekViewModel(_dataService);
 
+            KlantenViewModel = new KlantenViewModel(_dataService);
+            LeveranciersViewModel = new LeveranciersViewModel(_dataService);
+            AankoopDagBoekViewModel = new AankoopDagBoekViewModel(_dataService);
+            VerkoopDagBoekViewModel = new VerkoopDagBoekViewModel(_dataService);
+            KasBoekViewModel = new KasBoekViewModel(_dataService);
+            //OverzichtViewModel = new OverzichtViewModel(_dataService);
             
 
-            //KlantVM = new KlantenVM(_dataService);
-            //KasBoekVM = new KasboekVM(_dataService);
-            //VerkoopVM = new VerkoopdagboekVM(_dataService);
-            //TotOverzichtVM = new OverzichtVM(_dataService);
+           
         }
 
         public LeveranciersViewModel LeveranciersViewModel
@@ -45,34 +43,38 @@ namespace Opdracht3.ViewModels
             get { return _leveranciersViewModel; }
             set { OnPropertyChanged(ref _leveranciersViewModel, value); }
         }
-        public AankoopDagBoekViewModel AankoopViewModel
+        public AankoopDagBoekViewModel AankoopDagBoekViewModel
         {
             get { return _aankoopDagBoekViewModel; }
             set { OnPropertyChanged(ref _aankoopDagBoekViewModel, value); }
         }
 
-        /*
-        public KlantenVM KlantVM
+        public KlantenViewModel KlantenViewModel
         {
-            get { return _klantenVM; }
-            set { OnPropertyChanged(ref _klantenVM, value); }
+            get { return _klantenViewModel; }
+            set { OnPropertyChanged(ref _klantenViewModel, value); }
         }
-        public KasboekVM KasBoekVM
+
+        public VerkoopDagBoekViewModel VerkoopDagBoekViewModel
         {
-            get { return _kasBoekVM; }
-            set { OnPropertyChanged(ref _kasBoekVM, value); }
+            get { return _verkoopDagBoekViewModel; }
+            set { OnPropertyChanged(ref _verkoopDagBoekViewModel, value); }
         }
-        public VerkoopdagboekVM VerkoopVM
+
+
+
+        public KasBoekViewModel KasBoekViewModel
         {
-            get { return _verkoopDagboekVM; }
-            set { OnPropertyChanged(ref _verkoopDagboekVM, value); }
+            get { return _kasBoekViewModel; }
+            set { OnPropertyChanged(ref _kasBoekViewModel, value); }
         }
-        public OverzichtVM TotOverzichtVM
+
+        public OverzichtViewModel OverzichtVieModel
         {
-            get { return _overzichtVM; }
-            set { OnPropertyChanged(ref _overzichtVM, value); }
+            get { return _overzichtViewModel; }
+            set { OnPropertyChanged(ref _overzichtViewModel, value); }
         }
-        */
+
     }
 }
 

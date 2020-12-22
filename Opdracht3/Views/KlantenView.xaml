@@ -27,11 +27,11 @@
             <Label Grid.Row="0" Content="Contactnummer:" HorizontalAlignment="Left"/>
             <TextBox Grid.Row="0" Text="{Binding SelectedKlant.ContactNr}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left" />
 
-            <!--NAAMBEDRIJF-->
-            <Label Grid.Row="1" Content="Bedrijfsnaam:" HorizontalAlignment="Left"/>
+            <!--NAAM-->
+            <Label Grid.Row="1" Content="Familienaam:" HorizontalAlignment="Left"/>
             <TextBox Grid.Row="1" Text="{Binding SelectedKlant.Familienaam}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
 
-            <!--ADRESBEDRIJF-->
+            <!--ADRES-->
             <Label Grid.Row="2" Content="Straat:" HorizontalAlignment="Left"/>
             <TextBox Grid.Row="2" Text="{Binding SelectedKlant.Straat}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
 

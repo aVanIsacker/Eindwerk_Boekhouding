@@ -20,10 +20,12 @@ namespace Opdracht3.ViewModels
         private int _id;
 
         public int Id { get { return _id; } set { OnPropertyChanged(ref _id, value); } }
+
         public KlantenViewModel(IBoekhoudingDataService dataService)
         {
             _dataService = dataService;
             Klanten = new ObservableCollection<Klant>(_dataService.GeefAlleKlanten());
+
             AddKlantCommand = new RelayCommand(VoegKlantToe);
             EditKlantCommand = new RelayCommand(WijzigKlant);
             DeleteKlantCommand = new RelayCommand(VerwijderKlant);
