@@ -44,8 +44,8 @@
 
             <!--DEBITEUR-->
             <Label Grid.Row="3" Content="Debiteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <TextBox Grid.Row="3" Text="{Binding SelectedVerkoopFactuur.Contact }" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
-            <!--VerkoopDagBoekViewModel.VerkoopFacturen-->
+            <TextBox Grid.Row="3" Text="{Binding SelectedVerkoopFactuur.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <!--Hoe bind ik op zowel klant als selected verkoopfactuur?-->
 
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
@@ -92,9 +92,13 @@
 
             <!--VERVALDATUM-->
             <Label Grid.Row="3" Grid.Column="5" Content="Vervaldatum:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
-            <DatePicker x:Name="FactuurDatumtxt" BorderThickness="0" />
+            <!--<DatePicker x:Name="Vervaldatum" BorderThickness="0" />-->
             <TextBox  IsReadOnly="True" Grid.Row="3" Grid.Column="8" Text="{Binding ElementName=FactuurDatum, Path=SelectedDate, Mode=TwoWay,Converter={StaticResource DateTimeToFutureExpireDateStringConverter}}" 
                                          Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" />
+
+            <!--BETAALDATUM-->
+            <Label Grid.Row="4" Grid.Column="5" Content="Betaaldatum:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
+            <DatePicker x:Name="BetaalDatum" Grid.Row="4"  Grid.Column="8" SelectedDate="{Binding SelectedVerkoopFactuur.BetaalDatum}" Margin="4,4,0,4" Width="130"  HorizontalAlignment="Left"  />
 
             <!--BUTTONS; ADD, DELETE, EDIT -->
             <StackPanel  Orientation="Horizontal" Grid.Row="6" Grid.Column="7" HorizontalAlignment="Right" Margin="0,26,27,6"  Height="30" Grid.RowSpan="2">

@@ -15,6 +15,9 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<VerkoopFactuur> _verkoopFactuur;
         private VerkoopFactuur _selectedVerkoopFactuur;
+        
+       
+
         //private int _id;
 
         //public int Id { get { return _id; } set { OnPropertyChanged(ref _id, value); } }
@@ -62,5 +65,8 @@ namespace Opdracht3.ViewModels
             get { return _selectedVerkoopFactuur; }
             set { OnPropertyChanged(ref _selectedVerkoopFactuur, value); }
         }
+
+       
+
     }
 }
