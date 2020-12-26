@@ -32,10 +32,11 @@ namespace Opdracht3.ViewModels
             AankoopDagBoekViewModel = new AankoopDagBoekViewModel(_dataService);
             VerkoopDagBoekViewModel = new VerkoopDagBoekViewModel(_dataService);
             KasBoekViewModel = new KasBoekViewModel(_dataService);
-            //OverzichtViewModel = new OverzichtViewModel(_dataService);
-            
+            OverzichtViewModel = new OverzichtViewModel(_dataService);
+         
 
-           
+
+
         }
 
         public LeveranciersViewModel LeveranciersViewModel
@@ -75,6 +76,11 @@ namespace Opdracht3.ViewModels
             set { OnPropertyChanged(ref _overzichtViewModel, value); }
         }
 
+        public OverzichtViewModel OverzichtViewModel
+        {
+            get { return _overzichtViewModel; }
+            set { OnPropertyChanged(ref _overzichtViewModel, value); }
+        }
     }
 }
 

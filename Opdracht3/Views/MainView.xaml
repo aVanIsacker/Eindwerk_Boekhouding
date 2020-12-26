@@ -182,14 +182,14 @@
                             <GroupBox Header="Details"  Height="280" Grid.Row="1">
                                 <views:KasBoekView DataContext="{Binding KasBoekViewModel}"/>
                             </GroupBox>
-                            <!--LIJST KASBOEK-->
-                            <GroupBox Header="Lijst" Grid.Row="2">
-                                <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek }" SelectedItem="KasBoekViewModel.KasBoek"  CanUserSortColumns="True" Margin="0,0,-2,0">
+                            <!--LIJST KASVERRICHTINGEN-->
+                            <GroupBox Header="Overzicht Kasverrichtingen" Grid.Row="2">
+                                <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="KasBoekViewModel.KasVerrichtingen"  CanUserSortColumns="True" Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged">
 
                                 </DataGrid>
                             </GroupBox>
                             <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,0,10" Width="178" HorizontalAlignment="Right">
-                                <Expander Margin="10,10,39,10" Header="Facturen" IsExpanded="False">
+                                <Expander Margin="10,10,39,10" Header="Kasboeknummer" IsExpanded="False">
                                     <views:KasBoekExpView DataContext="{Binding KasBoekViewModel}"/>
                                 </Expander>
                             </StackPanel>
@@ -255,9 +255,7 @@
 
                 <TabItem Name="Overzicht"  Header="Overzicht" BorderBrush="{x:Null}" Margin="0,12,0,-12">
                     <TabItem.Content>
-                        <TextBlock TextWrapping="WrapWithOverflow">
-                            Student 3
-                        </TextBlock>
+                        <views:OverzichtView DataContext="{Binding OverzichtViewModel}"/>
                     </TabItem.Content>
                 </TabItem>
             </TabControl>

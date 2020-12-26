@@ -21,5 +21,6 @@ namespace Opdracht3.ViewModels
         public double BedrijfsKostsen { get; }
         public double ResultaatVoorAfschrijvingEnBelastingen { get; }
 
+        
     }
 }

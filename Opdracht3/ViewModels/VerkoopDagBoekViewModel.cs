@@ -15,8 +15,8 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<VerkoopFactuur> _verkoopFactuur;
         private VerkoopFactuur _selectedVerkoopFactuur;
+
         
-       
 
         //private int _id;
 
@@ -30,6 +30,8 @@ namespace Opdracht3.ViewModels
             AddVerkoopCommand = new RelayCommand(VoegVerkoopToe);
             EditVerkoopCommand = new RelayCommand(WijzigVerkoop);
             DeleteVerkoopCommand = new RelayCommand(VerwijderVerkoop);
+
+           
 
         }
 

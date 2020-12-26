@@ -42,9 +42,13 @@
             <Label Grid.Row="2" Content="Maand:"  FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
             <TextBox Grid.Row="2" Text="{Binding SelectedKasVerrichting.Maand}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
 
-            <!--CREDITEUR-->
-            <Label Grid.Row="3" Content="Crediteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
+            <!--BEBDRIJF/KLANT-->
+            <Label Grid.Row="3" Content="Bedrijf/klant:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
             <TextBox Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <!--<ComboBox x:Name="Soort" Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+                <ComboBoxItem>Crediteur</ComboBoxItem>
+                <ComboBoxItem>Debiteur</ComboBoxItem>
+            </ComboBox>-->
 
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
@@ -96,7 +100,6 @@
                     <Image Source="/Opdracht3;component/Resources/wijzig.png" Height="25" Width="30"/>
                 </Button>
             </StackPanel>
-
         </Grid>
     </GroupBox>
 </UserControl>
