@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\BTWConverter.cs" />
     <Compile Include="Helpers\DateConverter.cs" />
+    <Compile Include="Helpers\IntToVisibilityConverter.cs" />
     <Compile Include="Helpers\MaandConverter.cs" />
     <Compile Include="Helpers\StatusConvertor.cs" />
     <Compile Include="Models\AankoopFactuur.cs" />

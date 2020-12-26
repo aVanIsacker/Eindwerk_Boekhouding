@@ -9,5 +9,6 @@
         <helpers:StatusConvertor x:Key="StatusConvertor"/>
         <helpers:MaandConverter x:Key="MaandConvertor"/>
         <helpers:BTWConverter x:Key="BTWConverter"/>
+        <helpers:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
     </Application.Resources>
 </Application>
