@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\BTWConverter.cs" />
     <Compile Include="Helpers\DateConverter.cs" />
     <Compile Include="Helpers\MaandConverter.cs" />
     <Compile Include="Helpers\StatusConvertor.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Models\Leverancier.cs" />
     <Compile Include="Models\TotaalOverzicht.cs" />
     <Compile Include="Models\VerkoopFactuur.cs" />
+    <Compile Include="Services\BoolToVisibilityConverter.cs" />
     <Compile Include="Services\IBoekhoudingDataService.cs" />
     <Compile Include="Services\MockBoekhoudingDataService.cs" />
     <Compile Include="Utilities\ObservableObject.cs" />

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Opdracht3.Services
 {
     public class MockBoekhoudingDataService : IBoekhoudingDataService
@@ -17,7 +18,7 @@ namespace Opdracht3.Services
         private IList<KasVerrichting> _kasBoek;
         #endregion
 
-        private List<TotaalOverzicht> _totaalOverzicht;
+       
 
         //constructor:
         public MockBoekhoudingDataService()
@@ -62,9 +63,9 @@ namespace Opdracht3.Services
         {
             _kasBoek = new List<KasVerrichting>(){
                 new KasVerrichting() {  UniekNr = "14001", FactuurDatum = new DateTime(2020,1,13), Type="Bedrijfskosten", Omschrijving="Benzine",Contact=_klanten[0], BedragExclBTW=60.0,  BTWTarief=21},
-                new KasVerrichting() {  UniekNr = "14002", FactuurDatum = new DateTime(2020,1,30), Contact=_klanten[0]}, //Verder aan te vullen
-                new KasVerrichting() {  UniekNr = "14003", FactuurDatum = new DateTime(2020,2,1), Contact=_klanten[1]},//Verder aan te vullen
-                new KasVerrichting() {  UniekNr = "14004", FactuurDatum = new DateTime(2020,2,25), Contact=_klanten[1]}//Verder aan te vullen
+                new KasVerrichting() {  UniekNr = "14002", Maand = "MEI", FactuurDatum = new DateTime(2020,5,14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, BetaalDatum= new DateTime(2020,6,3),  Contact = _klanten[0]},
+                new KasVerrichting() {  UniekNr = "14003", Maand = "JUL", FactuurDatum = new DateTime(2020,7,10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, BetaalDatum = new DateTime(2020,8,6), Contact = _klanten[2]},
+                new KasVerrichting() {  UniekNr = "14004",  Maand = "JUL", FactuurDatum= new DateTime(2020,12,7), Type = "Bedrijfskosten", Omschrijving="Wasmachine Siemens", BedragExclBTW= 120.10, BTWTarief=21, BetaalDatum=new DateTime(2020,12,8), Contact = _leveranciers[0]},
             };
         }
         public IList<KasVerrichting> GeefKasBoek()
@@ -233,10 +234,45 @@ namespace Opdracht3.Services
 
 
         //totaaloverzicht
-        public List<TotaalOverzicht> GeefTotaalOverzicht()
+        private List<TotaalOverzicht> _totaalOverzicht;
+        public IList<TotaalOverzicht> GeefTotaalOverzicht()
         {
             _totaalOverzicht = new List<TotaalOverzicht>();
+
+            //totaal te betalen BTW per maand 
+            foreach (var verkoop in _verkoopDagBoek)
+            {
+                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.Maand)).FirstOrDefault();
+
+                if (exists == null)
+                {
+                    exists = new TotaalOverzicht()
+                    {
+                        Maand = verkoop.Maand
+                    };
+                    _totaalOverzicht.Add(exists);
+                }
+                exists.TeBetalenBTW += verkoop.BTWBedrag;
+            }
+
+            //totaal te ontvangen BTW per maand
+            foreach (var aankoop in _aankoopDagBoek)
+            {
+                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(aankoop.Maand)).FirstOrDefault();
+
+                if (exists == null)
+                {
+                    exists = new TotaalOverzicht()
+                    {
+                        Maand = aankoop.Maand
+                    };
+                    _totaalOverzicht.Add(exists);
+                }
+                exists.TeOntvangenBTW += aankoop.BTWBedrag;
+            }
+
             return _totaalOverzicht;
         }
+
     }
 }

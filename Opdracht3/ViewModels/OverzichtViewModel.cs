@@ -19,7 +19,7 @@ namespace Opdracht3.ViewModels
         public OverzichtViewModel(IBoekhoudingDataService dataService)
         {
             this.dataService = dataService;
-            _totaalOverzicht = new ObservableCollection<TotaalOverzicht>(dataService.GeefTotaalOverzicht());
+            TotaalOverzicht = new ObservableCollection<TotaalOverzicht>(dataService.GeefTotaalOverzicht());
         }
 
         public ObservableCollection<TotaalOverzicht> TotaalOverzicht

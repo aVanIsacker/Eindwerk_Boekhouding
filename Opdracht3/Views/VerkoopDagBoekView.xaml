@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <GroupBox>
+     
+
         <Grid Margin="4,4,4,3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6"/>
@@ -45,7 +47,7 @@
             <!--DEBITEUR-->
             <Label Grid.Row="3" Content="Debiteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
             <TextBox Grid.Row="3" Text="{Binding VerkoopDagBoekViewModel.SelectedVerkoopFactuur.Contact }" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
-            <!--Hoe bind ik op zowel klant als selected verkoopfactuur?-->
+            <!--Hoe bind ik op zowel klant als selected verkoopfactuur, hiervoor converter nodig?-->
 
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
@@ -75,7 +77,16 @@
 
             <!--TOTAAL BEDRAG BTW-->
             <Label Grid.Row="1" Grid.Column="5" Content="Totaal:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
-            <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Text="{Binding ElementName=Bedrag, Path=Text, Mode=TwoWay}" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+
+            <!--<TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Text="{Binding ElementName=Bedrag, Path=Text, Mode=TwoWay, Converter={StaticResource BTWConverter}}" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
+            <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+                <TextBox.Text>
+                    <MultiBinding Converter="{StaticResource BTWConverter}">
+                        <Binding Source ="Bedrag" Path="Text" Mode="TwoWay"/>
+                        <Binding Source="BTWTariefCombo" Path="Text" Mode="TwoWay"/>
+                    </MultiBinding>
+                </TextBox.Text>
+            </TextBox>
 
             <!--BETAALD JA/NEE? (STATUS)-->
             <Label Grid.Row="2" Grid.Column="5" Content="Status:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>

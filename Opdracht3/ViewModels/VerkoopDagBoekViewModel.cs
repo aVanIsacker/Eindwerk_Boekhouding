@@ -16,7 +16,8 @@ namespace Opdracht3.ViewModels
         private ObservableCollection<VerkoopFactuur> _verkoopFactuur;
         private VerkoopFactuur _selectedVerkoopFactuur;
 
-        
+
+       
 
         //private int _id;
 
@@ -31,7 +32,7 @@ namespace Opdracht3.ViewModels
             EditVerkoopCommand = new RelayCommand(WijzigVerkoop);
             DeleteVerkoopCommand = new RelayCommand(VerwijderVerkoop);
 
-           
+          
 
         }
 
@@ -68,7 +69,7 @@ namespace Opdracht3.ViewModels
             set { OnPropertyChanged(ref _selectedVerkoopFactuur, value); }
         }
 
-       
+      
 
     }
 }

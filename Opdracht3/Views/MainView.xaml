@@ -68,6 +68,7 @@
 
                 <TabItem Name="Verkoopdagboek" Header="Verkoopdagboek" BorderBrush="{x:Null}" VerticalAlignment="Top" >
                     <TabItem.Content>
+                        
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -253,11 +254,80 @@
                     </TabItem.Content>
                 </TabItem>
 
+                
+                <!--OVERZICHT TAB-->
                 <TabItem Name="Overzicht"  Header="Overzicht" BorderBrush="{x:Null}" Margin="0,12,0,-12">
                     <TabItem.Content>
-                        <views:OverzichtView DataContext="{Binding OverzichtViewModel}"/>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="Auto" /> 
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                           
+                            <!--LIJST -->
+                            <GroupBox Header="Overzicht 1" Grid.Row="1" Margin="10,10,0,10">
+                                <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
+                                          AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+                                            AutoGenerateColumns="False" >
+
+
+                                    <DataGrid.Columns>
+
+                                        <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
+                                        <DataGridTextColumn Binding="{Binding Omzet}" Header="Omzet" />
+
+                                        <DataGridTextColumn Binding="{Binding BedrijfsKostsen}" Header="Kosten" />
+                                        <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+
+                            <GroupBox Header="Overzicht 2" Grid.Row="3" Margin="10,10,0,10">
+                                <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
+                                          AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+                                            AutoGenerateColumns="False" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
+                                        <DataGridTextColumn Binding="{Binding TeBetalenBTW }" Header="Te betalen BTW" />
+                                        <DataGridTextColumn Binding="{Binding TeOntvangenBTW}" Header="Te ontvangen BTW" />
+                                        <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" /> 
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                             </GroupBox>
+                                
+                                  <GroupBox Header="Overzicht 3" Grid.Row="5" Margin="10,10,0,10">
+                                <DataGrid ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
+                                          AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+                                            AutoGenerateColumns="False" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Maand }" Header="Maand" />
+                                        <DataGridTextColumn Binding="{Binding OpenstaandeDebiteuren}" Header="Debiteur" />
+                                        <DataGridTextColumn Binding="{Binding OpenstaandeCrediteuren}" Header="Crediteur" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+
+
+                        </Grid>
+
+
+
+
+
+
+
+
+
+                        <!--<views:OverzichtView DataContext="{Binding OverzichtViewModel}"/>-->
                     </TabItem.Content>
                 </TabItem>
+           
             </TabControl>
             <Image Source="/Opdracht3;component/Resources/Logo.png" Width="150" Height="180" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
         </Grid>

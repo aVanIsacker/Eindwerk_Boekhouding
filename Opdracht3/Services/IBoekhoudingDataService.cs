@@ -16,7 +16,7 @@ namespace Opdracht3.Services
         IList<Klant> GeefAlleKlanten();
         IList<Leverancier> GeefAlleLeveranciers();
 
-        List<TotaalOverzicht> GeefTotaalOverzicht();
+        IList<TotaalOverzicht> GeefTotaalOverzicht();
 
 
         //Lijst verwijderen, toevoegen en wijzigen van Aankoopfactuur

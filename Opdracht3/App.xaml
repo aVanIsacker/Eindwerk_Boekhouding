@@ -8,5 +8,6 @@
         <helpers:DateTimeToFutureExpireDateStringConverter x:Key="DateTimeToFutureExpireDateStringConverter"/>
         <helpers:StatusConvertor x:Key="StatusConvertor"/>
         <helpers:MaandConverter x:Key="MaandConvertor"/>
+        <helpers:BTWConverter x:Key="BTWConverter"/>
     </Application.Resources>
 </Application>
