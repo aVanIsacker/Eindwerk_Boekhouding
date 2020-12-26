@@ -12,23 +12,17 @@ namespace Opdracht3.Helpers
     public class IntToVisibilityConverter : IValueConverter
     {
        
-        //public object Convert(object value, Type targetType, object parameter, string language)
-        //{
-        //    int index = (int)value;
-        //    return index == 0 ? Visibility.Hidden : Visibility.Visible;
-        //}
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int index = (int)value;
-            return index == 2 ? Visibility.Hidden : Visibility.Visible;
+
+           
+
+            return index == 2 || index ==0 ? Visibility.Hidden : Visibility.Visible;
+            
         }
 
-
-        //public object ConvertBack(object value, Type targetType, object parameter, string language)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
