@@ -78,15 +78,13 @@
             <!--TOTAAL BEDRAG BTW-->
             <Label Grid.Row="1" Grid.Column="5" Content="Totaal:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
 
-            <!--<TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Text="{Binding ElementName=Bedrag, Path=Text, Mode=TwoWay, Converter={StaticResource BTWConverter}}" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
-            <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
-                <TextBox.Text>
-                    <MultiBinding Converter="{StaticResource BTWConverter}">
-                        <Binding Source ="Bedrag" Path="Text" Mode="TwoWay"/>
-                        <Binding Source="BTWTariefCombo" Path="Text" Mode="TwoWay"/>
-                    </MultiBinding>
-                </TextBox.Text>
+            <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+                <MultiBinding Converter="{StaticResource BTWConverter}">
+                    <Binding ElementName="Bedrag" Path="Text"/>
+                    <Binding ElementName="BTWTariefCombo" Path="Text"/>
+                </MultiBinding>
             </TextBox>
+
 
             <!--BETAALD JA/NEE? (STATUS)-->
             <Label Grid.Row="2" Grid.Column="5" Content="Status:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>

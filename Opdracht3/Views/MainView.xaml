@@ -15,321 +15,315 @@
 
     </Window.Resources>
 
-    <DockPanel>
-        <!--MENU LOGIN -->
-        <Menu DockPanel.Dock="Top" Background="#7e8f9f">
+    <ScrollViewer>
+        <DockPanel>
+            <!--MENU LOGIN -->
+            <Menu DockPanel.Dock="Top" Background="#7e8f9f">
 
-            <MenuItem Header="_Account" FontWeight="Bold" FontSize="15" FontFamily="Leelawadee UI Semilight">
-                <views:LoginView DataContext="{Binding LoginViewModel}" Width="565" Height="400"/>
-            </MenuItem>
-        </Menu>
-        <Grid DataContext="{StaticResource MainViewModel}" Background="#dde3e7" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="9*"/>
-                <ColumnDefinition Width="239*"/>
-            </Grid.ColumnDefinitions>
+                <MenuItem Header="_Account" FontWeight="Bold" FontSize="15" FontFamily="Leelawadee UI Semilight">
+                    <views:LoginView DataContext="{Binding LoginViewModel}" Width="565" Height="400"/>
+                </MenuItem>
+            </Menu>
+            <Grid DataContext="{StaticResource MainViewModel}" Background="#dde3e7" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="239*"/>
+                </Grid.ColumnDefinitions>
 
 
 
 
-            <TabControl TabStripPlacement="Left" BorderBrush="{x:Null}" Margin="5" Padding="2"  SelectionChanged="TabControl_SelectionChanged" Grid.ColumnSpan="2">
-                <TabControl.Resources>
-                    <Style TargetType="TabItem" >
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="TabItem">
+                <TabControl TabStripPlacement="Left" BorderBrush="{x:Null}" Margin="5" Padding="2"  SelectionChanged="TabControl_SelectionChanged" Grid.ColumnSpan="2">
+                    <TabControl.Resources>
+                        <Style TargetType="TabItem" >
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TabItem">
 
-                                    <Border
+                                        <Border
                                                     Name="Border"
                                                     Margin="4,2"
                                                     BorderBrush="{x:Null}"
                                                     BorderThickness="1,1,1,0"
                                                     CornerRadius="7">
-                                        <ContentPresenter
+                                            <ContentPresenter
                                                         x:Name="ContentSite"
                                                         Margin="10,2"
                                                         HorizontalAlignment="Center"
                                                         VerticalAlignment="Center"
                                                         ContentSource="Header" />
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="#70b1b4" />
-                                        </Trigger>
-                                        <Trigger Property="IsSelected" Value="False">
-                                            <Setter TargetName="Border" Property="Background" Value="#7797b7" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </TabControl.Resources>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="#70b1b4" />
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter TargetName="Border" Property="Background" Value="#7797b7" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TabControl.Resources>
 
-                <TabItem Name="Verkoopdagboek" Header="Verkoopdagboek" BorderBrush="{x:Null}" VerticalAlignment="Top" >
-                    <TabItem.Content>
-                        
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <!--INFO VERKOOP-->
-                            <GroupBox Header="Details"  Height="280" Grid.Row="1">
-                                <views:VerkoopDagBoekView DataContext="{Binding VerkoopDagBoekViewModel}"/>
-                            </GroupBox>
-                            <!--LIJST VERKOOP-->
-                            <GroupBox Header="Lijst Verkoop" Grid.Row="2">
-                                <DataGrid ItemsSource="{Binding VerkoopDagBoekViewModel.VerkoopFacturen}" SelectedItem="VerkoopDagBoekViewModel.VerkoopFacturen"  CanUserSortColumns="True" Margin="0,0,-2,0"
+                    <TabItem Name="Verkoopdagboek" Header="Verkoopdagboek" BorderBrush="{x:Null}" VerticalAlignment="Top" >
+                        <TabItem.Content>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <!--INFO VERKOOP-->
+                                <GroupBox Header="Details"  Height="280" Grid.Row="1">
+                                    <views:VerkoopDagBoekView DataContext="{Binding VerkoopDagBoekViewModel}"/>
+                                </GroupBox>
+                                <!--LIJST VERKOOP-->
+                                <GroupBox Header="Lijst Verkoop" Grid.Row="2">
+                                    <DataGrid ItemsSource="{Binding VerkoopDagBoekViewModel.VerkoopFacturen}" SelectedItem="VerkoopDagBoekViewModel.VerkoopFacturen"  CanUserSortColumns="True" Margin="0,0,-2,0"
+                                          AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f" IsReadOnly="True"
+                                            AutoGenerateColumns="False" >
+
+
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{Binding UniekNr}" Header="Nummer" />
+
+                                            <DataGridTemplateColumn Header="FactuurDatum">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding FactuurDatum,StringFormat=d}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+
+                                            </DataGridTemplateColumn>
+
+                                            <!--<DataGridTextColumn Binding="{Binding FactuurDatum, StringFormat={}{0:MMM}}" Header="Maand" />-->
+                                            <DataGridTextColumn Binding="{Binding FactuurDatum, Converter={StaticResource MaandConvertor} }" Header="Maand" />
+
+                                            <DataGridTextColumn Binding="{Binding Contact}" Header="Debiteur" />
+
+                                            <DataGridTextColumn Binding="{Binding Type}" Header="Type" />
+                                            <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving" />
+
+
+                                            <DataGridTextColumn Binding="{Binding BedragExclBTW}" Header="Bedrag Ex BTW" />
+                                            <DataGridTextColumn Binding="{Binding BTWTarief}" Header="BTW Tarief" />
+
+                                            <DataGridTextColumn Binding="{Binding BTWBedrag}" Header="BTW bedrag" />
+                                            <DataGridTextColumn Binding="{Binding BedragInclBTW}" Header="Bedrag Incl BTW" />
+                                            <DataGridTextColumn x:Name="StatusColumn" Binding="{Binding Status}" Header="Status" />
+
+                                            <DataGridTemplateColumn Header="VervalDatum">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding FactuurDatum, Converter={StaticResource DateTimeToFutureExpireDateStringConverter}}" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+
+                                            </DataGridTemplateColumn>
+
+                                            <DataGridTemplateColumn Header="BetaalDatum">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding BetaalDatum,StringFormat=d}" Visibility="{Binding ElementName=StatusColumn, Path=DataGridTextColumn,Converter={StaticResource IntToVisibilityConverter}}"  />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+
+                                            </DataGridTemplateColumn>
+
+                                        </DataGrid.Columns>
+
+                                    </DataGrid>
+                                </GroupBox>
+                                <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,0,10" Width="178" HorizontalAlignment="Right">
+                                    <Expander Margin="10,10,39,10" Header="Facturen" IsExpanded="False">
+                                        <views:VerkoopExpView DataContext="{Binding VerkoopDagBoekViewModel}"/>
+                                    </Expander>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem.Content>
+                    </TabItem>
+
+                    <TabItem Name="Aankoopdagboek"  Header="Aankoopdagboek" BorderBrush="{x:Null}"  Margin="0,2,0,-4" >
+                        <TabItem.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <!--INFO AANKOOP-->
+                                <GroupBox Header="Details"  Height="280" Grid.Row="1">
+                                    <views:AankoopDagBoekView DataContext="{Binding AankoopDagBoekViewModel}"/>
+                                </GroupBox>
+                                <!--LIJST AANKOOP-->
+                                <GroupBox Header="Lijst Aankoop" Grid.Row="2">
+                                    <DataGrid ItemsSource="{Binding AankoopDagBoekViewModel.AankoopFacturen}" SelectedItem="AankoopDagBoekViewModel.AankoopFacturen"  CanUserSortColumns="True" Margin="0,0,-2,0" IsReadOnly="True" >
+
+                                    </DataGrid>
+                                </GroupBox>
+                                <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,0,10" Width="178" HorizontalAlignment="Right">
+                                    <Expander Margin="10,10,39,10" Header="Facturen" IsExpanded="False">
+                                        <views:AankoopExpView DataContext="{Binding AankoopDagBoekViewModel}"/>
+                                    </Expander>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem.Content>
+                    </TabItem>
+                    <TabItem Name="Kasboek"  Header="Kasboek" BorderBrush="{x:Null}" Margin="0,6,0,-6" >
+                        <TabItem.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <!--INFO KASBOEK-->
+                                <GroupBox Header="Details"  Height="280" Grid.Row="1">
+                                    <views:KasBoekView DataContext="{Binding KasBoekViewModel}"/>
+                                </GroupBox>
+                                <!--LIJST KASVERRICHTINGEN-->
+                                <GroupBox Header="Overzicht Kasverrichtingen" Grid.Row="2">
+                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="KasBoekViewModel.KasVerrichtingen"  CanUserSortColumns="True" Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" >
+
+                                    </DataGrid>
+                                </GroupBox>
+                                <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,0,10" Width="178" HorizontalAlignment="Right">
+                                    <Expander Margin="10,10,39,10" Header="Kasboeknummer" IsExpanded="False">
+                                        <views:KasBoekExpView DataContext="{Binding KasBoekViewModel}"/>
+                                    </Expander>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem.Content>
+                    </TabItem>
+
+                    <TabItem Name="Leveranciers"  Header="Leveranciers" BorderBrush="{x:Null}" Margin="0,8,0,-8" Height="27" VerticalAlignment="Top" >
+                        <TabItem.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <GroupBox Header="Details" MinHeight="240" Grid.Row="0">
+                                    <views:LeveranciersView DataContext="{Binding LeveranciersViewModel}" />
+                                </GroupBox>
+
+                                <GroupBox Header="Lijst Leveranciers" Grid.Row="1" Margin="10,10,0,10">
+                                    <DataGrid ItemsSource="{Binding LeveranciersViewModel.Leveranciers}" SelectedItem="LeveranciersViewModel.SelectedLeverancier"  CanUserSortColumns="True" Margin="0,0,-2,0">
+                                    </DataGrid>
+                                </GroupBox>
+                                <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">
+                                    <Expander Margin="10,10,39,10" Header="Leveranciers" IsExpanded="False">
+                                        <views:LeveranciersExpView DataContext="{Binding LeveranciersViewModel}"/>
+                                    </Expander>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem.Content>
+                    </TabItem>
+
+                    <TabItem Name="Klanten"  Header="Klanten" BorderBrush="{x:Null}" Margin="0,10,0,-10">
+                        <TabItem.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <GroupBox Header="Details" MinHeight="240" Grid.Row="0">
+                                    <views:KlantenView DataContext="{Binding KlantenViewModel}" />
+                                </GroupBox>
+
+                                <GroupBox Header="Lijst Klanten" Grid.Row="1" Margin="10,10,0,10">
+                                    <DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"  CanUserSortColumns="True" Margin="0,0,-2,0">
+                                    </DataGrid>
+                                </GroupBox>
+                                <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">
+                                    <Expander Margin="10,10,39,10" Header="Klanten" IsExpanded="False">
+                                        <views:KlantenExpView DataContext="{Binding KlantenViewModel}"/>
+                                    </Expander>
+                                </StackPanel>
+                            </Grid>
+                        </TabItem.Content>
+                    </TabItem>
+
+
+                    <!--OVERZICHT TAB-->
+                    <TabItem Name="Overzicht"  Header="Overzicht" BorderBrush="{x:Null}" Margin="0,12,0,-12">
+                        <TabItem.Content>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="60" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="60" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <!--LIJST -->
+                                <GroupBox Header="Overzicht 1" Grid.Row="1" Margin="10,10,0,10">
+                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
                                           AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
                                             AutoGenerateColumns="False" >
 
 
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Binding="{Binding UniekNr}" Header="Nummer" />
+                                        <DataGrid.Columns>
 
-                                        <DataGridTemplateColumn Header="FactuurDatum">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding FactuurDatum,StringFormat=d}" />
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
+                                            <DataGridTextColumn Binding="{Binding Omzet}" Header="Omzet" />
 
-                                        </DataGridTemplateColumn>
+                                            <DataGridTextColumn Binding="{Binding BedrijfsKostsen}" Header="Kosten" />
+                                            <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
 
-                                        <!--<DataGridTextColumn Binding="{Binding FactuurDatum, StringFormat={}{0:MMM}}" Header="Maand" />-->
-                                        <DataGridTextColumn Binding="{Binding FactuurDatum, Converter={StaticResource MaandConvertor} }" Header="Maand" />
-
-                                        <DataGridTextColumn Binding="{Binding Contact}" Header="Debiteur" />
-
-                                        <DataGridTextColumn Binding="{Binding Type}" Header="Type" />
-                                        <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving" />
-
-
-                                        <DataGridTextColumn Binding="{Binding BedragExclBTW}" Header="Bedrag Ex BTW" />
-                                        <DataGridTextColumn Binding="{Binding BTWTarief}" Header="BTW Tarief" />
-
-                                        <DataGridTextColumn Binding="{Binding BTWBedrag}" Header="BTW bedrag" />
-                                        <DataGridTextColumn Binding="{Binding BedragInclBTW}" Header="Bedrag Incl BTW" />
-                                        <DataGridTextColumn Binding="{Binding Status}" Header="Status" />
-
-                                        <DataGridTemplateColumn Header="VervalDatum">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding FactuurDatum, Converter={StaticResource DateTimeToFutureExpireDateStringConverter}}" />
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-
-                                        </DataGridTemplateColumn>
-
-                                        <DataGridTemplateColumn Header="BetaalDatum">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding BetaalDatum,StringFormat=d}" />
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-
-                                        </DataGridTemplateColumn>
-
-                                    </DataGrid.Columns>
-
-                                </DataGrid>
-                            </GroupBox>
-                            <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,0,10" Width="178" HorizontalAlignment="Right">
-                                <Expander Margin="10,10,39,10" Header="Facturen" IsExpanded="False">
-                                    <views:VerkoopExpView DataContext="{Binding VerkoopDagBoekViewModel}"/>
-                                </Expander>
-                            </StackPanel>
-                        </Grid>
-                    </TabItem.Content>
-                </TabItem>
-
-                <TabItem Name="Aankoopdagboek"  Header="Aankoopdagboek" BorderBrush="{x:Null}"  Margin="0,2,0,-4" >
-                    <TabItem.Content>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <!--INFO AANKOOP-->
-                            <GroupBox Header="Details"  Height="280" Grid.Row="1">
-                                <views:AankoopDagBoekView DataContext="{Binding AankoopDagBoekViewModel}"/>
-                            </GroupBox>
-                            <!--LIJST AANKOOP-->
-                            <GroupBox Header="Lijst Aankoop" Grid.Row="2">
-                                <DataGrid ItemsSource="{Binding AankoopDagBoekViewModel.AankoopFacturen}" SelectedItem="AankoopDagBoekViewModel.AankoopFacturen"  CanUserSortColumns="True" Margin="0,0,-2,0">
-
-                                </DataGrid>
-                            </GroupBox>
-                            <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,0,10" Width="178" HorizontalAlignment="Right">
-                                <Expander Margin="10,10,39,10" Header="Facturen" IsExpanded="False">
-                                    <views:AankoopExpView DataContext="{Binding AankoopDagBoekViewModel}"/>
-                                </Expander>
-                            </StackPanel>
-                        </Grid>
-                    </TabItem.Content>
-                </TabItem>
-                <TabItem Name="Kasboek"  Header="Kasboek" BorderBrush="{x:Null}" Margin="0,6,0,-6" >
-                    <TabItem.Content>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <!--INFO KASBOEK-->
-                            <GroupBox Header="Details"  Height="280" Grid.Row="1">
-                                <views:KasBoekView DataContext="{Binding KasBoekViewModel}"/>
-                            </GroupBox>
-                            <!--LIJST KASVERRICHTINGEN-->
-                            <GroupBox Header="Overzicht Kasverrichtingen" Grid.Row="2">
-                                <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="KasBoekViewModel.KasVerrichtingen"  CanUserSortColumns="True" Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged">
-
-                                </DataGrid>
-                            </GroupBox>
-                            <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,0,10" Width="178" HorizontalAlignment="Right">
-                                <Expander Margin="10,10,39,10" Header="Kasboeknummer" IsExpanded="False">
-                                    <views:KasBoekExpView DataContext="{Binding KasBoekViewModel}"/>
-                                </Expander>
-                            </StackPanel>
-                        </Grid>
-                    </TabItem.Content>
-                </TabItem>
-
-                <TabItem Name="Leveranciers"  Header="Leveranciers" BorderBrush="{x:Null}" Margin="0,8,0,-8" Height="27" VerticalAlignment="Top" >
-                    <TabItem.Content>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <GroupBox Header="Details" MinHeight="240" Grid.Row="0">
-                                <views:LeveranciersView DataContext="{Binding LeveranciersViewModel}" />
-                            </GroupBox>
-
-                            <GroupBox Header="Lijst Leveranciers" Grid.Row="1" Margin="10,10,0,10">
-                                <DataGrid ItemsSource="{Binding LeveranciersViewModel.Leveranciers}" SelectedItem="LeveranciersViewModel.SelectedLeverancier"  CanUserSortColumns="True" Margin="0,0,-2,0">
-                                </DataGrid>
-                            </GroupBox>
-                            <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">
-                                <Expander Margin="10,10,39,10" Header="Leveranciers" IsExpanded="False">
-                                    <views:LeveranciersExpView DataContext="{Binding LeveranciersViewModel}"/>
-                                </Expander>
-                            </StackPanel>
-                        </Grid>
-                    </TabItem.Content>
-                </TabItem>
-
-                <TabItem Name="Klanten"  Header="Klanten" BorderBrush="{x:Null}" Margin="0,10,0,-10">
-                    <TabItem.Content>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <GroupBox Header="Details" MinHeight="240" Grid.Row="0">
-                                <views:KlantenView DataContext="{Binding KlantenViewModel}" />
-                            </GroupBox>
-
-                            <GroupBox Header="Lijst Klanten" Grid.Row="1" Margin="10,10,0,10">
-                                <DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"  CanUserSortColumns="True" Margin="0,0,-2,0">
-                                </DataGrid>
-                            </GroupBox>
-                            <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">
-                                <Expander Margin="10,10,39,10" Header="Klanten" IsExpanded="False">
-                                    <views:KlantenExpView DataContext="{Binding KlantenViewModel}"/>
-                                </Expander>
-                            </StackPanel>
-                        </Grid>
-                    </TabItem.Content>
-                </TabItem>
-
-                
-                <!--OVERZICHT TAB-->
-                <TabItem Name="Overzicht"  Header="Overzicht" BorderBrush="{x:Null}" Margin="0,12,0,-12">
-                    <TabItem.Content>
-
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="Auto" /> 
-                                <RowDefinition Height="60" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="60" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                           
-                            <!--LIJST -->
-                            <GroupBox Header="Overzicht 1" Grid.Row="1" Margin="10,10,0,10">
-                                <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
+                                <GroupBox Header="Overzicht 2" Grid.Row="3" Margin="10,10,0,10">
+                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
                                           AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
                                             AutoGenerateColumns="False" >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
+                                            <DataGridTextColumn Binding="{Binding TeBetalenBTW }" Header="Te betalen BTW" />
+                                            <DataGridTextColumn Binding="{Binding TeOntvangenBTW}" Header="Te ontvangen BTW" />
+                                            <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
 
-
-                                    <DataGrid.Columns>
-
-                                        <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
-                                        <DataGridTextColumn Binding="{Binding Omzet}" Header="Omzet" />
-
-                                        <DataGridTextColumn Binding="{Binding BedrijfsKostsen}" Header="Kosten" />
-                                        <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" />
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </GroupBox>
-
-                            <GroupBox Header="Overzicht 2" Grid.Row="3" Margin="10,10,0,10">
-                                <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
+                                <GroupBox Header="Overzicht 3" Grid.Row="5" Margin="10,10,0,10">
+                                    <DataGrid ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
                                           AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
                                             AutoGenerateColumns="False" >
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
-                                        <DataGridTextColumn Binding="{Binding TeBetalenBTW }" Header="Te betalen BTW" />
-                                        <DataGridTextColumn Binding="{Binding TeOntvangenBTW}" Header="Te ontvangen BTW" />
-                                        <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" /> 
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                             </GroupBox>
-                                
-                                  <GroupBox Header="Overzicht 3" Grid.Row="5" Margin="10,10,0,10">
-                                <DataGrid ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
-                                          AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
-                                            AutoGenerateColumns="False" >
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Binding="{Binding Maand }" Header="Maand" />
-                                        <DataGridTextColumn Binding="{Binding OpenstaandeDebiteuren}" Header="Debiteur" />
-                                        <DataGridTextColumn Binding="{Binding OpenstaandeCrediteuren}" Header="Crediteur" />
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </GroupBox>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{Binding Maand }" Header="Maand" />
+                                            <DataGridTextColumn Binding="{Binding OpenstaandeDebiteuren}" Header="Debiteur" />
+                                            <DataGridTextColumn Binding="{Binding OpenstaandeCrediteuren}" Header="Crediteur" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
 
 
-                        </Grid>
+                            </Grid>
 
+                            <!--<views:OverzichtView DataContext="{Binding OverzichtViewModel}"/>-->
+                        </TabItem.Content>
+                    </TabItem>
 
-
-
-
-
-
-
-
-                        <!--<views:OverzichtView DataContext="{Binding OverzichtViewModel}"/>-->
-                    </TabItem.Content>
-                </TabItem>
-           
-            </TabControl>
-            <Image Source="/Opdracht3;component/Resources/Logo.png" Width="150" Height="180" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
-        </Grid>
-    </DockPanel>
+                </TabControl>
+                <Image Source="/Opdracht3;component/Resources/Logo.png" Width="150" Height="180" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
 </Window>

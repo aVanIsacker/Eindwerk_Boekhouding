@@ -20,12 +20,13 @@ namespace Opdracht3.ViewModels
         public double TeBetalenBTW { get; set; }
         public double TeOntvangenBTW { get; set; }
         public double BTWSaldo { get { return TeBetalenBTW - TeOntvangenBTW; } }
-        public double OpenstaandeDebiteuren { get; }
-        public double OpenstaandeCrediteuren { get; }
-        public double Omzet { get; }
-        public double BedrijfsKostsen { get; }
+        public double OpenstaandeDebiteuren { get; internal set; }
+        public double OpenstaandeCrediteuren { get; internal set; }
+        public double Omzet { get; internal set; }
+        public double BedrijfsKosten { get; internal set; }
+        public double Totaal { get { return Omzet - BedrijfsKosten;  } }
         public double ResultaatVoorAfschrijvingEnBelastingen { get; }
-
+        public string Jaar { get; set; }
     }
 
 }

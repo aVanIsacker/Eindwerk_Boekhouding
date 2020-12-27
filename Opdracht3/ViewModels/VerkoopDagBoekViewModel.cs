@@ -49,7 +49,7 @@ namespace Opdracht3.ViewModels
 
         private void VoegVerkoopToe()
         {
-            VerkoopFactuur verkoopDagBoek = new VerkoopFactuur() { UniekNr = "NA", BetaalDatum = new DateTime(2020, 12, 22), BedragExclBTW = 0, BTWTarief = 0, FactuurDatum = new DateTime(2020,12,22), Type = "NA", Omschrijving = "NA" };
+            VerkoopFactuur verkoopDagBoek = new VerkoopFactuur() { UniekNr = "NA", BetaalDatum = new DateTime(2020, 12, 22), BedragExclBTW = 0, BTWTarief = 0, FactuurDatum = DateTime.Now, Type = "NA", Omschrijving = "NA" };
             VerkoopFacturen = new ObservableCollection<VerkoopFactuur>(_dataService.VoegVerkoopFactuurToe(verkoopDagBoek));
             SelectedVerkoopFactuur = _verkoopFactuur[_verkoopFactuur.Count - 1];
         }
