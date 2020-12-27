@@ -8,6 +8,10 @@ namespace Opdracht3.ViewModels
 {
     public class Factuur:ObservableObject
     {
+        public Factuur()
+        {
+            FactuurDatum = DateTime.Now;
+        }
         public string UniekNr { get; set; }
 
         private DateTime _factuurDatum;
@@ -24,14 +28,6 @@ namespace Opdracht3.ViewModels
             }
         }
         public string Maand { get; set; }
-
-        public string MaandVanFactuurDatum
-        {
-            get
-            {
-                return CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(FactuurDatum.Month);
-            }
-        }
 
         private double _bedragExclBtw;
         public double BedragExclBTW

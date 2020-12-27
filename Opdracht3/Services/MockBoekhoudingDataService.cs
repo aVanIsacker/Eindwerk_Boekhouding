@@ -381,7 +381,7 @@ namespace Opdracht3.Services
                 }
             }
 
-            return facturen.OrderByDescending(x => x.FullMaand).ToList();
+            return facturen.OrderBy(x => x.Maand).ToList();
         }
     }
 }
