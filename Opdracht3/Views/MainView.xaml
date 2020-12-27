@@ -68,6 +68,7 @@
                         </Style>
                     </TabControl.Resources>
 
+                    <!--VERKOOPDAGBOEK-->
                     <TabItem Name="Verkoopdagboek" Header="Verkoopdagboek" BorderBrush="{x:Null}" VerticalAlignment="Top" >
                         <TabItem.Content>
 
@@ -114,7 +115,13 @@
 
                                             <DataGridTextColumn Binding="{Binding BTWBedrag}" Header="BTW bedrag" />
                                             <DataGridTextColumn Binding="{Binding BedragInclBTW}" Header="Bedrag Incl BTW" />
-                                            <DataGridTextColumn x:Name="StatusColumn" Binding="{Binding Status}" Header="Status" />
+                                            <DataGridTextColumn x:Name="StatusColumn" Binding="{Binding Status}" Header="Status" >
+                                                <DataGridTextColumn.ElementStyle>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="Background" Value="{Binding Status, Converter={StaticResource KleurConverter}}"/>
+                                                    </Style>
+                                                </DataGridTextColumn.ElementStyle>
+                                            </DataGridTextColumn>
 
                                             <DataGridTemplateColumn Header="VervalDatum">
                                                 <DataGridTemplateColumn.CellTemplate>
@@ -147,6 +154,7 @@
                         </TabItem.Content>
                     </TabItem>
 
+                    <!--AANKOOPDAGBOEK-->
                     <TabItem Name="Aankoopdagboek"  Header="Aankoopdagboek" BorderBrush="{x:Null}"  Margin="0,2,0,-4" >
                         <TabItem.Content>
                             <Grid>
@@ -230,6 +238,8 @@
                             </Grid>
                         </TabItem.Content>
                     </TabItem>
+                    
+                    <!--KASBOEK-->
                     <TabItem Name="Kasboek"  Header="Kasboek" BorderBrush="{x:Null}" Margin="0,6,0,-6" >
                         <TabItem.Content>
                             <Grid>
@@ -264,6 +274,7 @@
                         </TabItem.Content>
                     </TabItem>
 
+                    <!-- LEVERANCIER-->
                     <TabItem Name="Leveranciers"  Header="Leveranciers" BorderBrush="{x:Null}" Margin="0,8,0,-8" Height="27" VerticalAlignment="Top" >
                         <TabItem.Content>
                             <Grid>
@@ -274,10 +285,32 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-
+                                <!--INFO LEVERANCIERS-->
                                 <GroupBox Header="Details" MinHeight="240" Grid.Row="0">
                                     <views:LeveranciersView DataContext="{Binding LeveranciersViewModel}" />
                                 </GroupBox>
+                                <!--LIJST LEVERANCIERS-->
+                                <GroupBox Header="Lijst Leveranciers" Grid.Row="2">
+                                    <DataGrid ItemsSource="{Binding LeveranciersViewModel.Leveranciers}" SelectedItem="LeveranciersViewModel.SelectedLeverancier"  CanUserSortColumns="True" Margin="0,0,-2,0"
+											  AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+												AutoGenerateColumns="False" IsReadOnly="True" >
+
+
+                                        <DataGrid.Columns >
+                                            <DataGridTextColumn Binding="{Binding ContactNr}" Header="Nummer" />
+
+
+                                            <DataGridTextColumn Binding="{Binding NaamBedrijf}" Header="Bedrijf" />
+
+                                            <DataGridTextColumn Binding="{Binding BTWNr}" Header="BTWnummer" />
+
+                                            <DataGridTextColumn Binding="{Binding Straat}" Header="Straat" />
+                                            <DataGridTextColumn Binding="{Binding Postcode}" Header="Postcode" />
+
+
+                                            <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente" />
+
+                                        </DataGrid.Columns>
 
                                 <!--LIJST LEVERNCIERS-->
                                 <GroupBox Header="Lijst Leveranciers" Grid.Row="2">
@@ -304,6 +337,7 @@
 
                                     </DataGrid>
                                 </GroupBox>
+                                <!--EXPANDER LEVERANCIER-->
                                 <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">
                                     <Expander Margin="10,10,39,10" Header="Leveranciers" IsExpanded="False">
                                         <views:LeveranciersExpView DataContext="{Binding LeveranciersViewModel}"/>
@@ -313,6 +347,7 @@
                         </TabItem.Content>
                     </TabItem>
 
+                    <!--KLANTEN-->
                     <TabItem Name="Klanten"  Header="Klanten" BorderBrush="{x:Null}" Margin="0,10,0,-10">
                         <TabItem.Content>
                             <Grid>
@@ -323,15 +358,17 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-
+                                
+                                <!--INFO KLANTEN-->
                                 <GroupBox Header="Details" MinHeight="240" Grid.Row="0">
                                     <views:KlantenView DataContext="{Binding KlantenViewModel}" />
                                 </GroupBox>
-
+                                <!--LIJST KLANTEN-->
                                 <GroupBox Header="Lijst Klanten" Grid.Row="1" Margin="10,10,0,10">
                                     <DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"  CanUserSortColumns="True" Margin="0,0,-2,0">
                                     </DataGrid>
                                 </GroupBox>
+                                <!--EXPANDER KLANTEN-->
                                 <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">
                                     <Expander Margin="10,10,39,10" Header="Klanten" IsExpanded="False">
                                         <views:KlantenExpView DataContext="{Binding KlantenViewModel}"/>
@@ -340,6 +377,7 @@
                             </Grid>
                         </TabItem.Content>
                     </TabItem>
+
 
 
                     <!--OVERZICHT TAB-->
