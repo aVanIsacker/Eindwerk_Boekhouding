@@ -32,6 +32,7 @@ namespace Opdracht3.ViewModels
         }
 
         public ICommand RefreshDataSourceCommand { get; private set; }
+
         public void RefreshData()
         {
             TotaalOverzicht.Clear();

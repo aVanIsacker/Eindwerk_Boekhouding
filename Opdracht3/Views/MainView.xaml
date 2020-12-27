@@ -190,11 +190,16 @@
                                     <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="{Binding KasBoekViewModel.SelectedKasVerrichting}"  CanUserSortColumns="True"
                                               Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding UniekNr}"></DataGridTextColumn>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BetaalDatum}"></DataGridTextColumn>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BTWTarief}"></DataGridTextColumn>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BedragInclBTW}"></DataGridTextColumn>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding Omschrijving}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Nummer" Binding="{Binding UniekNr}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Betaaldatum" Binding="{Binding BetaalDatum}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Bedrijf/Klant" Binding="{Binding Contact}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Type" Binding="{Binding Type}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Omschrijving" Binding="{Binding Omschrijving}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Bedrag Excl BTW" Binding="{Binding BedragExclBTW}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="BTW Tarief" Binding="{Binding BTWTarief}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="BTW Bedrag" Binding="{Binding BTWBedrag}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Bedrag Incl BTW" Binding="{Binding BedragInclBTW}"></DataGridTextColumn>
+                                            
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
@@ -282,7 +287,7 @@
                                 <GroupBox Header="Winst/Verlies" Grid.Row="1" Margin="10,10,0,10">
                                     <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
                                                Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
-                                               AutoGenerateColumns="False" IsReadOnly="True">
+                                               AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged_1">
 
 
                                         <DataGrid.Columns>

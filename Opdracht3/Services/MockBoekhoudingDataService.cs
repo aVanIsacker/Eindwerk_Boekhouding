@@ -328,35 +328,7 @@ namespace Opdracht3.Services
                 exists.BedrijfsKosten += aankoop.BedragExclBTW;
             }
 
-            //openstaande crediteuren (verkoopfacturen)
-
-            var openstaandeVerkoopFacturen = _verkoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).ToList();
-
-            foreach (var openstaande in openstaandeVerkoopFacturen)
-            {
-                _totaalOverzicht.Add(new TotaalOverzicht()
-                {
-                    OpenstaandeCrediteuren = openstaande.BedragInclBTW
-                });
-            }
-
-
-            //openstaande debiteuren (aankoopfacturen)
-            var openstaandeAankoopFacturen = _aankoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).ToList();
-
-            foreach (var openstaande in openstaandeVerkoopFacturen)
-            {
-                _totaalOverzicht.Add(new TotaalOverzicht()
-                {
-                    OpenstaandeDebiteuren = openstaande.BedragExclBTW
-                });
-            }
-
             return _totaalOverzicht;
-
-
-
-
         }
 
         //openstaande inkomende facturen
