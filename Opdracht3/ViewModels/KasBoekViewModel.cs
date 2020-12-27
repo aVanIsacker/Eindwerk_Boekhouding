@@ -19,12 +19,16 @@ namespace Opdracht3.ViewModels
         {
             _dataService = dataService;
             _kasBoek = new ObservableCollection<KasVerrichting>(dataService.GeefKasBoek());
-
+            ClearKasVerichtingCommand = new RelayCommand(ClearKasVerrichting);
             AddKasVerrichtingCommand = new RelayCommand(VoegKasVerrichtingToe);
             EditKasVerrichtingCommand = new RelayCommand(WijzigKasVerrichting);
             DeleteKasVerrichtingCommand = new RelayCommand(VerwijderKasVerrichting);
+            SelectedKasVerrichting = new KasVerrichting();
+        }
 
-
+        private void ClearKasVerrichting()
+        {
+            SelectedKasVerrichting = new KasVerrichting();
         }
 
         private void VerwijderKasVerrichting()
@@ -40,15 +44,14 @@ namespace Opdracht3.ViewModels
 
         private void VoegKasVerrichtingToe()
         {
-            KasVerrichting kasBoek = new KasVerrichting(); //{ UniekNr = "NA", FactuurDatum = new DateTime(2020, 1, 13), Type = "Bedrijfskosten", Omschrijving = "NA", BedragExclBTW = 60.0, BTWTarief = 21 };
-            KasBoek = new ObservableCollection<KasVerrichting>(_dataService.VoegKasVerrichtingToe(kasBoek));
-            SelectedKasVerrichting = _kasBoek[_kasBoek.Count - 1];
+            KasBoek = new ObservableCollection<KasVerrichting>(_dataService.VoegKasVerrichtingToe(SelectedKasVerrichting));
+            SelectedKasVerrichting = new KasVerrichting();
         }
 
         public ICommand AddKasVerrichtingCommand { get; private set; }
         public ICommand EditKasVerrichtingCommand { get; private set; }
         public ICommand DeleteKasVerrichtingCommand { get; private set; }
-
+        public ICommand ClearKasVerichtingCommand { get; private set; }
 
         public ObservableCollection<KasVerrichting> KasBoek
         {

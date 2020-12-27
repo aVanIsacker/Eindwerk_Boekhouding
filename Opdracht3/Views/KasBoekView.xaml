@@ -39,8 +39,8 @@
             <DatePicker x:Name="FactuurDatum" Grid.Row="1"  Grid.Column="3" SelectedDate="{Binding SelectedKasVerrichting.FactuurDatum}" Margin="4,4,0,4" Width="130"  HorizontalAlignment="Left"  />
 
             <!--MAAND-->
-            <Label Grid.Row="2" Content="Maand:"  FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
-            <TextBox Grid.Row="2" Text="{Binding SelectedKasVerrichting.Maand}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <!--<Label Grid.Row="2" Content="Maand:"  FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox Grid.Row="2" Text="{Binding SelectedKasVerrichting.Maand}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
 
             <!--BEBDRIJF/KLANT-->
             <Label Grid.Row="3" Content="Bedrijf/klant:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
@@ -53,8 +53,8 @@
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
             <ComboBox x:Name="TypeCombo" Grid.Row="4" Text="{Binding SelectedKasVerrichting.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
-                <ComboBoxItem>Type?</ComboBoxItem>
                 <ComboBoxItem>Bedrijfskosten</ComboBoxItem>
+                <ComboBoxItem>Dienst</ComboBoxItem>
                 <ComboBoxItem>Inkoop</ComboBoxItem>
                 <ComboBoxItem>Verkoop</ComboBoxItem>
             </ComboBox>
@@ -90,6 +90,9 @@
 
             <!--BUTTONS; ADD, DELETE, EDIT -->
             <StackPanel  Orientation="Horizontal" Grid.Row="6" Grid.Column="7" HorizontalAlignment="Right" Margin="0,26,27,6"  Height="30" Grid.RowSpan="2">
+                <Button Background="Transparent" BorderThickness="0" Margin="1" MinWidth="30" Command="{Binding ClearKasVerichtingCommand}">
+                    <Image Source="/Opdracht3;component/Resources/toevoegen.png" Height="25" Width="30"/>
+                </Button>
                 <Button Background="Transparent" BorderThickness="0" Margin="1" MinWidth="30" Command="{Binding AddKasVerrichtingCommand}">
                     <Image Source="/Opdracht3;component/Resources/toevoegen.png" Height="25" Width="30"/>
                 </Button>
@@ -100,6 +103,7 @@
                     <Image Source="/Opdracht3;component/Resources/wijzig.png" Height="25" Width="30"/>
                 </Button>
             </StackPanel>
+
         </Grid>
     </GroupBox>
 </UserControl>

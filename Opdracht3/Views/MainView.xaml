@@ -263,7 +263,7 @@
 
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="0" />
+                                    <RowDefinition Height="20" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="0" />
                                     <RowDefinition Height="Auto" />
@@ -271,7 +271,7 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-
+                                <Button Grid.Row="0"  Command="{Binding OverzichtViewModel.RefreshDataSourceCommand}">Refresh</Button>
                                 <!--LIJST -->
                                 <GroupBox Header="Winst/Verlies" Grid.Row="1" Margin="10,10,0,10">
                                     <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"

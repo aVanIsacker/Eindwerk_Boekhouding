@@ -90,9 +90,6 @@
     <Compile Include="ViewModels\LeveranciersViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\OverzichtViewModel.cs">
-      <Link>ViewModels\OverzichtViewModel.cs</Link>
-    </Compile>
     <Compile Include="ViewModels\OverzichtViewModel.cs" />
     <Compile Include="ViewModels\VerkoopDagBoekViewModel.cs" />
     <Compile Include="Views\AankoopDagBoekView.xaml.cs">

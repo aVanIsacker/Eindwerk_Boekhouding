@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Opdracht3.ViewModels
 {
@@ -24,6 +25,18 @@ namespace Opdracht3.ViewModels
         public OverzichtViewModel(IBoekhoudingDataService dataService)
         {
             this.dataService = dataService;
+
+            RefreshDataSourceCommand = new RelayCommand(RefreshData);
+            TotaalOverzicht = new ObservableCollection<TotaalOverzicht>(dataService.GeefTotaalOverzicht());
+            OpenstaandeFacturen = new ObservableCollection<OpenstaandeFactuur>(dataService.GetOpenstaandeFacturen());
+        }
+
+        public ICommand RefreshDataSourceCommand { get; private set; }
+        private void RefreshData()
+        {
+            TotaalOverzicht.Clear();
+            OpenstaandeFacturen.Clear();
+
             TotaalOverzicht = new ObservableCollection<TotaalOverzicht>(dataService.GeefTotaalOverzicht());
             OpenstaandeFacturen = new ObservableCollection<OpenstaandeFactuur>(dataService.GetOpenstaandeFacturen());
         }
