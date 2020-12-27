@@ -75,9 +75,11 @@
     <Compile Include="Models\KasVerrichting.cs" />
     <Compile Include="Models\Klant.cs" />
     <Compile Include="Models\Leverancier.cs" />
+    <Compile Include="Models\OpenstaandeFactuur.cs" />
     <Compile Include="Models\TotaalOverzicht.cs" />
     <Compile Include="Models\VerkoopFactuur.cs" />
     <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
+    <Compile Include="Services\Constants.cs" />
     <Compile Include="Services\IBoekhoudingDataService.cs" />
     <Compile Include="Services\MockBoekhoudingDataService.cs" />
     <Compile Include="Utilities\ObservableObject.cs" />

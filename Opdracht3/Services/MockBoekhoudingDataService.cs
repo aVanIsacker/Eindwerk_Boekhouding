@@ -1,10 +1,10 @@
-﻿using Opdracht3.ViewModels;
+﻿using Opdracht3.Models;
+using Opdracht3.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 
 namespace Opdracht3.Services
 {
@@ -18,7 +18,6 @@ namespace Opdracht3.Services
         private IList<KasVerrichting> _kasBoek;
         #endregion
 
-       
 
         //constructor:
         public MockBoekhoudingDataService()
@@ -95,12 +94,8 @@ namespace Opdracht3.Services
         {
             _aankoopDagBoek = new List<AankoopFactuur>()
             {
-                new AankoopFactuur(){ UniekNr= "7427", Maand = "JUL", FactuurDatum= new DateTime(2020,7,10), Type = "Bedrijfskosten", Omschrijving="Kast", BedragExclBTW= 120.10, BTWTarief=21, Status = "Betaald", BetaalDatum=new DateTime(2020,8,31), Contact = _leveranciers[0]},
-                new AankoopFactuur(){ UniekNr= "6372", Maand = "JAN", FactuurDatum= new DateTime(2020,1,20), Type = "Inkoop", Omschrijving="Bureau", BedragExclBTW= 719.20, BTWTarief=6, Status = "Open", BetaalDatum = default, Contact = _leveranciers[1]},
-                new AankoopFactuur(){ UniekNr= "7427", Maand = "FEB", FactuurDatum= new DateTime(2020,2,7), Type = "Bedrijfskosten", Omschrijving="Bureaustoel", BedragExclBTW= 230.00, BTWTarief=21, Status = "Betaald", BetaalDatum=new DateTime(2020,2,12), Contact = _leveranciers[0]},
-                new AankoopFactuur(){ UniekNr= "4589", Maand = "AUG", FactuurDatum= new DateTime(2020,8,30), Type = "Inkoop", Omschrijving="Verlichting", BedragExclBTW= 154.99, BTWTarief=6, Status = "Open", BetaalDatum= default, Contact = _leveranciers[2]},
-                new AankoopFactuur(){ UniekNr= "3497", Maand = "OCT", FactuurDatum= new DateTime(2020,10,1), Type = "Inkoop", Omschrijving="Fauteuil", BedragExclBTW= 489.30, BTWTarief=6, Status = "Betaald", BetaalDatum=new DateTime(2020,11,1), Contact = _leveranciers[3]},
-                new AankoopFactuur(){ UniekNr= "8975", Maand = "SEP", FactuurDatum= new DateTime(2020,9,15), Type = "Bedrijfskosten", Omschrijving="Bureau poten", BedragExclBTW= 20.00, BTWTarief=21, Status = "Betaald", BetaalDatum=new DateTime(2020,9,27), Contact = _leveranciers[4]}
+                new AankoopFactuur(){ UniekNr= "7427", Maand = "DEC", FactuurDatum= new DateTime(2020,12,7), Type = "Bedrijfskosten", Omschrijving="Wasmachine Siemens", BedragExclBTW= 120.10, BTWTarief=21, Status = "Betaald", BetaalDatum=new DateTime(2020,12,8), Contact = _leveranciers[0]  },
+                new AankoopFactuur(){ UniekNr= "6372", Maand = "DEC", FactuurDatum= new DateTime(2020,12,1), Type = "Inkoop", Omschrijving="Koffiezet Senseo", BedragExclBTW= 60.22, BTWTarief=6, Status = "Open", BetaalDatum=new DateTime(2020,12,6), Contact = _leveranciers[1] , }
 
             };
         }
@@ -108,7 +103,7 @@ namespace Opdracht3.Services
         {
             return _aankoopDagBoek;
         }
-        
+
 
 
         //Leverancier Lijst
@@ -116,11 +111,9 @@ namespace Opdracht3.Services
         {
             _leveranciers = new List<Leverancier>()
             {
-                new Leverancier(){ ContactNr=1, NaamBedrijf="HR-Rail", BTWNr="00014578441", Straat="Frankrijkstraat 85", Postcode=1060,Gemeente="Brussel" },
-                new Leverancier(){ ContactNr=2, NaamBedrijf="Proximus", BTWNr="0008965321",Straat="Koning Albert II-laan 27.B",Postcode=1030,Gemeente="Brussel"},
-                new Leverancier(){ ContactNr=3, NaamBedrijf="KBC", BTWNr="00077638903",Straat="Ter Reigerie 1",Postcode=8800,Gemeente="Roeselare"},
-                new Leverancier(){ ContactNr=4, NaamBedrijf="Standaard Boekhandel", BTWNr="0008965321",Straat="Industriepark-Noord 28.A 2",Postcode=9100,Gemeente="Sint-Niklaas"},
-                new Leverancier(){ ContactNr=5, NaamBedrijf="VanMarcke", BTWNr="0008965321",Straat="LAR BlokZ 5",Postcode=8511,Gemeente="Kortrijk"}
+                new Leverancier(){ ContactNr=56, NaamBedrijf="Bedrijf A", BTWNr="00014578441", Straat="Bedrijfstraat 1", Postcode=9000,Gemeente="Gent" },
+                new Leverancier(){ ContactNr=38, NaamBedrijf="Bedrijf B", BTWNr="0008965321",Straat="Bedrijfstraat 2",Postcode=8500,Gemeente="Brugge"},
+                new Leverancier(){ ContactNr=86, NaamBedrijf="Bedrijf C", BTWNr="00077638903",Straat="Landgraafstraat 15",Postcode=8500,Gemeente="Brugge"}
 
             };
         }
@@ -313,8 +306,82 @@ namespace Opdracht3.Services
                 exists.BedrijfsKosten += aankoop.BedragExclBTW;
             }
 
+            //openstaande crediteuren (verkoopfacturen)
+
+            var openstaandeVerkoopFacturen = _verkoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).ToList();
+
+            foreach (var openstaande in openstaandeVerkoopFacturen)
+            {
+                _totaalOverzicht.Add(new TotaalOverzicht()
+                {
+                    OpenstaandeCrediteuren = openstaande.BedragInclBTW
+                });
+            }
+
+
+            //openstaande debiteuren (aankoopfacturen)
+            var openstaandeAankoopFacturen = _aankoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).ToList();
+
+            foreach (var openstaande in openstaandeVerkoopFacturen)
+            {
+                _totaalOverzicht.Add(new TotaalOverzicht()
+                {
+                    OpenstaandeDebiteuren = openstaande.BedragExclBTW
+                });
+            }
+
             return _totaalOverzicht;
+
+
+
+
         }
 
+        //openstaande inkomende facturen
+        public List<OpenstaandeFactuur> GetOpenstaandeFacturen()
+        {
+            var facturen = new List<OpenstaandeFactuur>();
+
+            var openstaandeVerkoopFacturenByMonth = _verkoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
+
+            foreach (var openstaande in openstaandeVerkoopFacturenByMonth)
+            {
+                var openStaandeFactuur = new OpenstaandeFactuur()
+                {
+                    Maand = openstaande.Key
+                };
+
+                foreach (var factuur in openstaande.Value)
+                {
+                    openStaandeFactuur.Inkomend += factuur.BedragExclBTW;
+                }
+
+                facturen.Add(openStaandeFactuur);
+            }
+
+            var openstaandeAankoopFacturen = _aankoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
+
+            foreach (var openstaande in openstaandeAankoopFacturen)
+            {
+                var openstaandeFactuur = facturen.Where(x => x.Maand.Equals(openstaande.Key)).FirstOrDefault();
+
+                if (openstaandeFactuur == null)
+                {
+                    openstaandeFactuur = new OpenstaandeFactuur()
+                    {
+                        Maand = openstaande.Key
+                    };
+
+                    facturen.Add(openstaandeFactuur);
+                }
+
+                foreach (var factuur in openstaande.Value)
+                {
+                    openstaandeFactuur.Uitgaand += factuur.BedragExclBTW;
+                }
+            }
+
+            return facturen.OrderByDescending(x => x.FullMaand).ToList();
+        }
     }
 }

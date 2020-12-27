@@ -186,7 +186,8 @@
                                 </GroupBox>
                                 <!--LIJST KASVERRICHTINGEN-->
                                 <GroupBox Header="Overzicht Kasverrichtingen" Grid.Row="2">
-                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="KasBoekViewModel.KasVerrichtingen"  CanUserSortColumns="True" Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" >
+                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="KasBoekViewModel.KasVerrichtingen"  CanUserSortColumns="True"
+                                              Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" >
 
                                     </DataGrid>
                                 </GroupBox>
@@ -262,20 +263,20 @@
 
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="0" />
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="60" />
+                                    <RowDefinition Height="0" />
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="60" />
+                                    <RowDefinition Height="0" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
                                 <!--LIJST -->
-                                <GroupBox Header="Overzicht 1" Grid.Row="1" Margin="10,10,0,10">
-                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
-                                          AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
-                                            AutoGenerateColumns="False" >
+                                <GroupBox Header="Winst/Verlies" Grid.Row="1" Margin="10,10,0,10">
+                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
+                                               Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+                                               AutoGenerateColumns="False" IsReadOnly="True">
 
 
                                         <DataGrid.Columns>
@@ -283,16 +284,16 @@
                                             <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
                                             <DataGridTextColumn Binding="{Binding Omzet}" Header="Omzet" />
 
-                                            <DataGridTextColumn Binding="{Binding BedrijfsKostsen}" Header="Kosten" />
+                                            <DataGridTextColumn Binding="{Binding BedrijfsKosten}" Header="Kosten" />
                                             <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" />
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
 
-                                <GroupBox Header="Overzicht 2" Grid.Row="3" Margin="10,10,0,10">
-                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
-                                          AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
-                                            AutoGenerateColumns="False" >
+                                <GroupBox Header="BTW" Grid.Row="3" Margin="10,10,0,10">
+                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
+                                               Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+                                               AutoGenerateColumns="False" IsReadOnly="True">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
                                             <DataGridTextColumn Binding="{Binding TeBetalenBTW }" Header="Te betalen BTW" />
@@ -302,14 +303,14 @@
                                     </DataGrid>
                                 </GroupBox>
 
-                                <GroupBox Header="Overzicht 3" Grid.Row="5" Margin="10,10,0,10">
-                                    <DataGrid ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True" Margin="0,0,-2,0"
-                                          AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
-                                            AutoGenerateColumns="False" >
+                                <GroupBox Header="Openstaande Facturen" Grid.Row="5" Margin="10,10,0,10">
+                                    <DataGrid ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
+                                              Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+                                              AutoGenerateColumns="False" IsReadOnly="True" >
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Binding="{Binding Maand }" Header="Maand" />
-                                            <DataGridTextColumn Binding="{Binding OpenstaandeDebiteuren}" Header="Debiteur" />
-                                            <DataGridTextColumn Binding="{Binding OpenstaandeCrediteuren}" Header="Crediteur" />
+                                            <DataGridTextColumn Binding="{Binding FullMaand }" Header="Maand" />
+                                            <DataGridTextColumn Binding="{Binding Inkomend}" Header="Debiteur" />
+                                            <DataGridTextColumn Binding="{Binding Uitgaand}" Header="Crediteur" />
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
