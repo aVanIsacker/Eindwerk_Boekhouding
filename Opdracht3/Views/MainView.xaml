@@ -316,7 +316,8 @@
                                             <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente" />
 
                                         </DataGrid.Columns>
-
+                                    </DataGrid>
+                                </GroupBox>
                                 <!--LIJST LEVERNCIERS-->
                                 <GroupBox Header="Lijst Leveranciers" Grid.Row="2">
                                     <DataGrid ItemsSource="{Binding LeveranciersViewModel.Leveranciers}" SelectedItem="LeveranciersViewModel.SelectedLeverancier"  CanUserSortColumns="True" Margin="0,0,-2,0"
