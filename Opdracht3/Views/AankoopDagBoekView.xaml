@@ -44,7 +44,7 @@
 
             <!--CREDITEUR-->
             <Label Grid.Row="3" Content="Crediteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <TextBox Grid.Row="3" Text="{Binding SelectedAankoopFactuur.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Text="{Binding SelectedAankoopFactuur.Contact}" Grid.Column="3" Margin="4.4,3.8,0,0" Width="130" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top"/>
 
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
@@ -73,20 +73,20 @@
 
 
             <!--TOTAAL BEDRAG BTW-->
-			<Label Grid.Row="1" Grid.Column="5" Content="Totaal:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
+            <Label Grid.Row="1" Grid.Column="5" Content="Totaal:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
             <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Text="{Binding SelectedAankoopFactuur.BedragInclBTW, Mode=OneWay}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
 
             <!--BETAALD JA/NEE? (STATUS)-->
             <Label Grid.Row="2" Grid.Column="5" Content="Status:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
             <ComboBox x:Name="StatusCombo" Grid.Row="2" Grid.Column="8" Text="{Binding SelectedAankoopFactuur.Status}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
-            <!--KLEUR VERANDERING VAN STATUS -->
+                <!--KLEUR VERANDERING VAN STATUS -->
                 <ComboBoxItem>Status?</ComboBoxItem>
                 <ComboBoxItem Background="#56bb84">
                     <TextBlock Background="#56bb84">Betaald</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Background="#ef94a8">
                     <TextBlock Background="#ef94a8">Open</TextBlock>
-                </ComboBoxItem> 
+                </ComboBoxItem>
             </ComboBox>
 
             <!--VERVALDATUM-->
@@ -107,7 +107,7 @@
                     <Image Source="/Opdracht3;component/Resources/wijzig.png" Height="25" Width="30"/>
                 </Button>
             </StackPanel>
-            
+
         </Grid>
     </GroupBox>
 </UserControl>

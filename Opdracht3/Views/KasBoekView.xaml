@@ -45,12 +45,9 @@
             <!--BEBDRIJF/KLANT-->
             <Label Grid.Row="2" Content="Bedrijf/klant:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="5" />
             <!--<TextBox Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
-            <utilities:FilteredListView Grid.Row="2" Grid.Column="7"  ItemsSource="{Binding Klanten}" SelectedItem="{Binding SelectedKasVerrichting.Contact}" FilterPredicate="{Binding KlantenFilter}" Margin="0,0,-150,0" Grid.RowSpan="4"/>
-
-            <!--<ComboBox x:Name="Soort" Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
-                <ComboBoxItem>Crediteur</ComboBoxItem>
-                <ComboBoxItem>Debiteur</ComboBoxItem>
-                </ComboBox> -->
+            <utilities:FilteredListView Grid.Row="2" Grid.Column="7"  ItemsSource="{Binding Klanten}"
+                                        SelectedItem="{Binding SelectedKasVerrichting.Contact}"
+                                        FilterPredicate="{Binding KlantenFilter}" Margin="0.4,0.2,0,10.4" Grid.RowSpan="4"/>
 
             <!--TYPE-->
             <Label Grid.Row="2" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
@@ -67,7 +64,8 @@
 
             <!--EX BTW 6%/21%-->
             <Label Grid.Row="4" Content="BTW %:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
-            <ComboBox x:Name="BTWTariefCombo" Grid.Row="4" Text="{Binding SelectedKasVerrichting.BTWTarief}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" Height="20">
+            <ComboBox x:Name="BTWTariefCombo" Grid.Row="4" Text="{Binding SelectedKasVerrichting.BTWTarief}" Grid.Column="3" Margin="4,4,0,4"
+                      Width="130" HorizontalAlignment="Left" Height="20">
                 <ComboBoxItem>6</ComboBoxItem>
                 <ComboBoxItem>21</ComboBoxItem>
             </ComboBox>

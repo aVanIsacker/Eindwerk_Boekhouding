@@ -8,6 +8,12 @@ namespace Opdracht3.ViewModels
     {
         
         public string NaamBedrijf { get; set; }
+
+        public override string ToString()
+        {
+            return NaamBedrijf;
+        }
+
         public override string GetName()
         {
             return $"{NaamBedrijf}";

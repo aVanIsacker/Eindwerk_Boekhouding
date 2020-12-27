@@ -31,6 +31,7 @@ namespace Opdracht3.Services
         IList<Leverancier> VerwijderLeverancier(Leverancier selectedLeverancier);
         List<OpenstaandeFactuur> GetOpenstaandeFacturen();
         void WijzigLeverancier(Leverancier selectedLeverancier);
+        List<Contact> GetContacts();
 
 
         //lijst verwijderen, toevoegen en wijzigen van Kasboek

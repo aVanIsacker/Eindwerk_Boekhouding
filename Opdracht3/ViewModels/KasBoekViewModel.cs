@@ -25,7 +25,7 @@ namespace Opdracht3.ViewModels
             AddKasVerrichtingCommand = new RelayCommand(VoegKasVerrichtingToe);
             EditKasVerrichtingCommand = new RelayCommand(WijzigKasVerrichting);
             DeleteKasVerrichtingCommand = new RelayCommand(VerwijderKasVerrichting);
-            Klanten = new ObservableCollection<Contact>(dataService.GeefAlleKlanten());
+            Klanten = new ObservableCollection<Contact>(dataService.GetContacts());
 
             SelectedKasVerrichting = new KasVerrichting();
         }
@@ -89,9 +89,13 @@ namespace Opdracht3.ViewModels
                     var customer = item as Contact;
                     if (customer == null)
                         return false;
-                    if(item is Klant)
+                    if(item is Klant klant)
                     {
-                        return ((Klant)item).ToString().Contains(text);
+                        return klant.ToString().Contains(text);
+                    }
+                    if(item is Leverancier leverancier)
+                    {
+                        return leverancier.NaamBedrijf.Contains(text);
                     }
                     return false;
                 };
