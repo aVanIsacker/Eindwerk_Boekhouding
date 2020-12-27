@@ -38,6 +38,34 @@ namespace Opdracht3.ViewModels
 
 
         }
+        private int _selectedTabIndex;
+
+        public int SelectedTabIndex
+        {
+            get { return _selectedTabIndex; }
+            set { 
+                _selectedTabIndex = value; 
+                UpdateView(value); 
+            }
+        }
+
+        private void UpdateView(int index)
+        {
+            switch(index)
+            {
+                case 0:
+                    VerkoopDagBoekViewModel.RefreshData();
+                    break;
+                case 2:
+                    KasBoekViewModel.RefreshData();
+                    break;
+                case 5:
+                    OverzichtViewModel.RefreshData();
+                    break;
+                default:
+                    break;
+            }
+        }
 
         public LeveranciersViewModel LeveranciersViewModel
         {
@@ -68,12 +96,6 @@ namespace Opdracht3.ViewModels
         {
             get { return _kasBoekViewModel; }
             set { OnPropertyChanged(ref _kasBoekViewModel, value); }
-        }
-
-        public OverzichtViewModel OverzichtVieModel
-        {
-            get { return _overzichtViewModel; }
-            set { OnPropertyChanged(ref _overzichtViewModel, value); }
         }
 
         public OverzichtViewModel OverzichtViewModel

@@ -35,9 +35,9 @@ namespace Opdracht3.Services
 
 
         //lijst verwijderen, toevoegen en wijzigen van Kasboek
-        IList<KasVerrichting> VoegKasVerrichtingToe(KasVerrichting kasVerrichting);
+        bool VoegKasVerrichtingToe(KasVerrichting kasVerrichting);
         IList<KasVerrichting> VerwijderKasVerrichting(KasVerrichting selectedKasVerrichting);
-        void WijzigKasBoek(KasVerrichting selectedKasVerrichting);
+        bool WijzigKasBoek(KasVerrichting selectedKasVerrichting);
 
         //Lijst verwijderen, toevoegen en wijzigen van Klant
         IList<Klant> VoegKlantToe(Klant klant);

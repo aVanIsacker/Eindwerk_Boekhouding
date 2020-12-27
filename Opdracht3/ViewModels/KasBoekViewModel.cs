@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Opdracht3.ViewModels
@@ -44,6 +45,14 @@ namespace Opdracht3.ViewModels
         private void WijzigKasVerrichting()
         {
             _dataService.WijzigKasBoek(SelectedKasVerrichting);
+            RefreshData();
+        }
+
+        internal void RefreshData()
+        {
+            SelectedKasVerrichting = new KasVerrichting();
+            Klanten = new ObservableCollection<Contact>(_dataService.GetContacts());
+            KasBoek = new ObservableCollection<KasVerrichting>(_dataService.GeefKasBoek());
         }
 
         private void VoegKasVerrichtingToe()
@@ -53,8 +62,17 @@ namespace Opdracht3.ViewModels
                 return;
             }
 
-            KasBoek = new ObservableCollection<KasVerrichting>(_dataService.VoegKasVerrichtingToe(SelectedKasVerrichting));
-            SelectedKasVerrichting = new KasVerrichting();
+            var isToegevoegd = _dataService.VoegKasVerrichtingToe(SelectedKasVerrichting);
+
+            if(isToegevoegd == false)
+            {
+                MessageBox.Show("Not added");
+            }
+            else
+            {
+                KasBoek = new ObservableCollection<KasVerrichting>(_dataService.GeefKasBoek());
+                SelectedKasVerrichting = new KasVerrichting();
+            }
         }
 
         public ICommand AddKasVerrichtingCommand { get; private set; }

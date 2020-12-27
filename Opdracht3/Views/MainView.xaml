@@ -34,7 +34,7 @@
 
 
 
-                <TabControl TabStripPlacement="Left" BorderBrush="{x:Null}" Margin="5" Padding="2"  SelectionChanged="TabControl_SelectionChanged" Grid.ColumnSpan="2">
+                <TabControl TabStripPlacement="Left" BorderBrush="{x:Null}" Margin="5" Padding="2" SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}" Grid.ColumnSpan="2">
                     <TabControl.Resources>
                         <Style TargetType="TabItem" >
                             <Setter Property="Template">
@@ -187,7 +187,7 @@
                                 </GroupBox>
                                 <!--LIJST KASVERRICHTINGEN-->
                                 <GroupBox Header="Overzicht Kasverrichtingen" Grid.Row="2">
-                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="KasBoekViewModel.KasVerrichtingen"  CanUserSortColumns="True"
+                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="{Binding KasBoekViewModel.SelectedKasVerrichting}"  CanUserSortColumns="True"
                                               Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding UniekNr}"></DataGridTextColumn>
@@ -270,7 +270,7 @@
 
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="0" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="0" />
                                     <RowDefinition Height="Auto" />
@@ -278,8 +278,7 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Button Grid.Row="0"  Command="{Binding OverzichtViewModel.RefreshDataSourceCommand}">Refresh</Button>
-                                <!--LIJST -->
+                               <!--LIJST -->
                                 <GroupBox Header="Winst/Verlies" Grid.Row="1" Margin="10,10,0,10">
                                     <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
                                                Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"

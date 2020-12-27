@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Opdracht3.Views"
+             xmlns:local="clr-namespace:Opdracht3.Views" xmlns:utilities="clr-namespace:Opdracht3.Utilities"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <GroupBox>
-     
+
 
         <Grid Margin="4,4,4,3">
             <Grid.ColumnDefinitions>
@@ -46,9 +46,11 @@
 
             <!--DEBITEUR-->
             <Label Grid.Row="3" Content="Debiteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <TextBox Grid.Row="3" Text="{Binding VerkoopDagBoekViewModel.SelectedVerkoopFactuur.Contact }" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <!--<TextBox Grid.Row="3" Text="{Binding VerkoopDagBoekViewModel.SelectedVerkoopFactuur.Contact }" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
             <!--Hoe bind ik op zowel klant als selected verkoopfactuur, hiervoor converter nodig?-->
-
+            <utilities:FilteredListView Grid.Row="2" Grid.Column="3"  ItemsSource="{Binding Klanten}"
+                                        SelectedItem="{Binding SelectedKasVerrichting.Contact}"
+                                        FilterPredicate="{Binding KlantenFilter}" Margin="0.4,30.2,0,9.6" Grid.RowSpan="2"/>
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
             <ComboBox x:Name="TypeCombo" Grid.Row="4" Text="{Binding SelectedVerkoopFactuur.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">

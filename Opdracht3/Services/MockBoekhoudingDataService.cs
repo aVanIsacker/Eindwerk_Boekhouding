@@ -177,19 +177,31 @@ namespace Opdracht3.Services
 
 
         //verwijder, wijzig en toevoegen van kasboek
-        public void WijzigKasBoek(KasVerrichting selectedKasVerrichting)
+        public bool WijzigKasBoek(KasVerrichting selectedKasVerrichting)
         {
-            int index = _kasBoek.IndexOf(selectedKasVerrichting);
-            if (index >= 0)
+            if(selectedKasVerrichting.Contact == null)
             {
-                _kasBoek[index] = selectedKasVerrichting;
+                return false;
             }
+
+            var oldKasboek = _kasBoek.Where(x => x.UniekNr.Equals(selectedKasVerrichting.UniekNr)).FirstOrDefault();
+            if (oldKasboek == null)
+            {
+                return false;
+            }
+            oldKasboek = selectedKasVerrichting;
+            return true;
         }
-        public IList<KasVerrichting> VoegKasVerrichtingToe(KasVerrichting kasVerrichting)
+        public bool VoegKasVerrichtingToe(KasVerrichting kasVerrichting)
         {
+            if(_kasBoek.Any(x => x.UniekNr.Equals(kasVerrichting.UniekNr)))
+            {
+                return false;
+            }
+
             _kasBoek.Add(kasVerrichting);
             Constants.KasverichtingNummer++;
-            return _kasBoek;
+            return true;
         }
 
         public IList<KasVerrichting> VerwijderKasVerrichting(KasVerrichting selectedKasVerrichting)

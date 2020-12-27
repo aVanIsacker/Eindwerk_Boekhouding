@@ -32,7 +32,7 @@ namespace Opdracht3.ViewModels
         }
 
         public ICommand RefreshDataSourceCommand { get; private set; }
-        private void RefreshData()
+        public void RefreshData()
         {
             TotaalOverzicht.Clear();
             OpenstaandeFacturen.Clear();
