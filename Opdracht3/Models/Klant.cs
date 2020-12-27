@@ -12,5 +12,10 @@ namespace Opdracht3.ViewModels
         {
             return $"{Voornaam} {Familienaam}";
         }
+
+        public override string GetName()
+        {
+            return $"{Voornaam} {Familienaam}" ;
+        }
     }
 }

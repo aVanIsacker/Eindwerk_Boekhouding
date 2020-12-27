@@ -15,6 +15,8 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<KasVerrichting> _kasBoek;
         private KasVerrichting _selectedKasVerrichting;
+
+        private ObservableCollection<Contact> _klanten;
         public KasBoekViewModel(IBoekhoudingDataService dataService)
         {
             _dataService = dataService;
@@ -23,6 +25,8 @@ namespace Opdracht3.ViewModels
             AddKasVerrichtingCommand = new RelayCommand(VoegKasVerrichtingToe);
             EditKasVerrichtingCommand = new RelayCommand(WijzigKasVerrichting);
             DeleteKasVerrichtingCommand = new RelayCommand(VerwijderKasVerrichting);
+            Klanten = new ObservableCollection<Contact>(dataService.GeefAlleKlanten());
+
             SelectedKasVerrichting = new KasVerrichting();
         }
 
@@ -44,6 +48,11 @@ namespace Opdracht3.ViewModels
 
         private void VoegKasVerrichtingToe()
         {
+            if(SelectedKasVerrichting.Contact == null)
+            {
+                return;
+            }
+
             KasBoek = new ObservableCollection<KasVerrichting>(_dataService.VoegKasVerrichtingToe(SelectedKasVerrichting));
             SelectedKasVerrichting = new KasVerrichting();
         }
@@ -52,6 +61,12 @@ namespace Opdracht3.ViewModels
         public ICommand EditKasVerrichtingCommand { get; private set; }
         public ICommand DeleteKasVerrichtingCommand { get; private set; }
         public ICommand ClearKasVerichtingCommand { get; private set; }
+
+        public ObservableCollection<Contact> Klanten
+        {
+            get { return _klanten; }
+            set { OnPropertyChanged(ref _klanten, value); }
+        }
 
         public ObservableCollection<KasVerrichting> KasBoek
         {
@@ -62,6 +77,25 @@ namespace Opdracht3.ViewModels
         {
             get { return _selectedKasVerrichting; }
             set { OnPropertyChanged(ref _selectedKasVerrichting, value); }
+        }
+
+
+        public Func<object, string, bool> KlantenFilter
+        {
+            get
+            {
+                return (item, text) =>
+                {
+                    var customer = item as Contact;
+                    if (customer == null)
+                        return false;
+                    if(item is Klant)
+                    {
+                        return ((Klant)item).ToString().Contains(text);
+                    }
+                    return false;
+                };
+            }
         }
     }
 }

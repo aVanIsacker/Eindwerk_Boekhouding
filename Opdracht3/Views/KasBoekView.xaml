@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Opdracht3.Views"
+             xmlns:local="clr-namespace:Opdracht3.Views" xmlns:utilities="clr-namespace:Opdracht3.Utilities"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <GroupBox>
@@ -43,16 +43,18 @@
             <TextBox Grid.Row="2" Text="{Binding SelectedKasVerrichting.Maand}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
 
             <!--BEBDRIJF/KLANT-->
-            <Label Grid.Row="3" Content="Bedrijf/klant:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <TextBox Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <Label Grid.Row="2" Content="Bedrijf/klant:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="5" />
+            <!--<TextBox Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
+            <utilities:FilteredListView Grid.Row="2" Grid.Column="7"  ItemsSource="{Binding Klanten}" SelectedItem="{Binding SelectedKasVerrichting.Contact}" FilterPredicate="{Binding KlantenFilter}" Margin="0,0,-150,0" Grid.RowSpan="4"/>
+
             <!--<ComboBox x:Name="Soort" Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
                 <ComboBoxItem>Crediteur</ComboBoxItem>
                 <ComboBoxItem>Debiteur</ComboBoxItem>
-            </ComboBox>-->
+                </ComboBox> -->
 
             <!--TYPE-->
-            <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <ComboBox x:Name="TypeCombo" Grid.Row="4" Text="{Binding SelectedKasVerrichting.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+            <Label Grid.Row="2" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
+            <ComboBox x:Name="TypeCombo" Grid.Row="2" Text="{Binding SelectedKasVerrichting.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
                 <ComboBoxItem>Bedrijfskosten</ComboBoxItem>
                 <ComboBoxItem>Dienst</ComboBoxItem>
                 <ComboBoxItem>Inkoop</ComboBoxItem>
@@ -60,12 +62,12 @@
             </ComboBox>
 
             <!--OMSCHRIJVING-->
-            <Label Grid.Row="5" Content="Omschrijving:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
-            <TextBox Grid.Row="5" Text="{Binding SelectedKasVerrichting.Omschrijving}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" />
+            <Label Grid.Row="3" Content="Omschrijving:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
+            <TextBox Grid.Row="3" Text="{Binding SelectedKasVerrichting.Omschrijving}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" />
 
             <!--EX BTW 6%/21%-->
-            <Label Grid.Row="6" Content="BTW %:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
-            <ComboBox x:Name="BTWTariefCombo" Grid.Row="6" Text="{Binding SelectedKasVerrichting.BTWTarief}" Grid.Column="3" Margin="4,-25,0,4" Width="130" HorizontalAlignment="Left" Height="20">
+            <Label Grid.Row="4" Content="BTW %:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1"/>
+            <ComboBox x:Name="BTWTariefCombo" Grid.Row="4" Text="{Binding SelectedKasVerrichting.BTWTarief}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" Height="20">
                 <ComboBoxItem>6</ComboBoxItem>
                 <ComboBoxItem>21</ComboBoxItem>
             </ComboBox>
@@ -81,8 +83,8 @@
             <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Text="{Binding SelectedKasVerrichting.BedragInclBTW, Mode=OneWay}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
 
             <!--BETAALWIJZE-->
-            <Label Grid.Row="2" Grid.Column="5" Content="Betaalwijze:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
-            <ComboBox x:Name="StatusCombo" Grid.Row="2" Grid.Column="8" Text="{Binding SelectedKasVerrichting.Status}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+            <Label Grid.Row="5" Grid.Column="1" Content="Betaalwijze:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="StatusCombo" Grid.Row="5" Grid.Column="3" Text="{Binding SelectedKasVerrichting.Status}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
                 <ComboBoxItem>Cash</ComboBoxItem>
                 <ComboBoxItem>Bancontact</ComboBoxItem>
             </ComboBox>

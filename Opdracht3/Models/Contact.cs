@@ -11,5 +11,10 @@ namespace Opdracht3.ViewModels
         public int Postcode { get; set; }
         public string BTWNr { get; set; }
         public int ContactNr { get; set; }
+
+        public virtual string GetName()
+        {
+            return BTWNr;
+        }
     }
 }

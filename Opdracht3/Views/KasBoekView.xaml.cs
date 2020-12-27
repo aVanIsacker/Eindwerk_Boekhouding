@@ -24,5 +24,6 @@ namespace Opdracht3.Views
         {
             InitializeComponent();
         }
+
     }
 }

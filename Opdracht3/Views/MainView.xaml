@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Opdracht3" 
         xmlns:views="clr-namespace:Opdracht3.Views" 
         xmlns:viewmodels="clr-namespace:Opdracht3.ViewModels" 
+        xmlns:utilities="clr-namespace:Opdracht3.Utilities"
         xmlns:helpers="clr-namespace:Opdracht3.Helpers"
         
         mc:Ignorable="d" FontFamily="Lucida Sans Unicode"
@@ -187,8 +188,14 @@
                                 <!--LIJST KASVERRICHTINGEN-->
                                 <GroupBox Header="Overzicht Kasverrichtingen" Grid.Row="2">
                                     <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="KasBoekViewModel.KasVerrichtingen"  CanUserSortColumns="True"
-                                              Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" >
-
+                                              Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding UniekNr}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BetaalDatum}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BTWTarief}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BedragInclBTW}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding Omschrijving}"></DataGridTextColumn>
+                                        </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
                                 <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,0,10" Width="178" HorizontalAlignment="Right">
