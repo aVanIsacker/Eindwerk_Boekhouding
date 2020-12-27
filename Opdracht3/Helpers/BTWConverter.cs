@@ -22,7 +22,14 @@ namespace Opdracht3.Helpers
 
             if (values[0] != null)     //hier BedragExclBTW inkrijgen ipv value
             {
-                //int index = (int)values[1];
+
+                //int index;
+
+                //if (int.TryParse(values[1]), out index))
+                //{
+                //    index = (int)values[1];
+                //}
+                //if (index == 0) return "";
 
                 //if (index == 1) //tarief 6%
                 //{
