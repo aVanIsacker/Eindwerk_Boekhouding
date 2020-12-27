@@ -335,10 +335,10 @@ namespace Opdracht3.Services
                 exists.BedrijfsKosten += aankoop.BedragExclBTW;
             }
 
-            return _totaalOverzicht;
+            return _totaalOverzicht.OrderBy(x => x.Maand).ToList();
         }
 
-        //openstaande inkomende facturen
+        //openstaande inkomende en uitgaande facturen
         public List<OpenstaandeFactuur> GetOpenstaandeFacturen()
         {
             var facturen = new List<OpenstaandeFactuur>();
