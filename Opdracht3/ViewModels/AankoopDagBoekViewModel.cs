@@ -27,7 +27,6 @@ namespace Opdracht3.ViewModels
             AddAankoopCommand = new RelayCommand(VoegAankoop);
             EditAankoopCommand = new RelayCommand(WijzigAankoop);
             DeleteAankoopCommand = new RelayCommand(VerwijderAankoop);
-            SelectedAankoopFactuur = new AankoopFactuur();           
 
         }
 
@@ -44,15 +43,14 @@ namespace Opdracht3.ViewModels
 
         private void VoegAankoop()
         {
-            //AankoopFactuur aankoopDagBoek = new AankoopFactuur() { UniekNr = "NA", BetaalDatum = new DateTime(2020, 12, 8), BedragExclBTW = 0, BTWTarief = 21, FactuurDatum = new DateTime(2020, 12, 7), Omschrijving = "NA"};
-            AankoopFacturen = new ObservableCollection<AankoopFactuur>(_dataService.VoegAankoopFactuurToe(SelectedAankoopFactuur));
-            //SelectedAankoopFactuur = _aankoopFactuur[_aankoopFactuur.Count - 1];
-            SelectedAankoopFactuur = new AankoopFactuur();
+            AankoopFactuur aankoopDagBoek = new AankoopFactuur() { UniekNr = "NA", BetaalDatum = new DateTime(2020, 12, 8), BedragExclBTW = 0, BTWTarief = 21, FactuurDatum = new DateTime(2020, 12, 7), Omschrijving = "NA" };
+            AankoopFacturen = new ObservableCollection<AankoopFactuur>(_dataService.VoegAankoopFactuurToe(aankoopDagBoek));
+            SelectedAankoopFactuur = _aankoopFactuur[_aankoopFactuur.Count - 1];
         }
 
         public ICommand AddAankoopCommand { get; private set; }
         public ICommand EditAankoopCommand { get; private set; }
-        public ICommand DeleteAankoopCommand { get; private set;}
+        public ICommand DeleteAankoopCommand { get; private set; }
 
         public ObservableCollection<AankoopFactuur> AankoopFacturen
         {

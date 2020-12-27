@@ -46,11 +46,11 @@
 
             <!--DEBITEUR-->
             <Label Grid.Row="3" Content="Debiteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <!--<TextBox Grid.Row="3" Text="{Binding VerkoopDagBoekViewModel.SelectedVerkoopFactuur.Contact }" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
-            <!--Hoe bind ik op zowel klant als selected verkoopfactuur, hiervoor converter nodig?-->
-            <utilities:FilteredListView Grid.Row="2" Grid.Column="3"  ItemsSource="{Binding Klanten}"
+            <TextBox Grid.Row="3" Text="{Binding SelectedVerkoopFactuur.Contact }" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+           
+            <!--<utilities:FilteredListView Grid.Row="2" Grid.Column="3"  ItemsSource="{Binding Klanten}"
                                         SelectedItem="{Binding SelectedKasVerrichting.Contact}"
-                                        FilterPredicate="{Binding KlantenFilter}" Margin="0.4,30.2,0,9.6" Grid.RowSpan="2"/>
+                                        FilterPredicate="{Binding KlantenFilter}" Margin="0.4,30.2,0,9.6" Grid.RowSpan="2"/>-->
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
             <ComboBox x:Name="TypeCombo" Grid.Row="4" Text="{Binding SelectedVerkoopFactuur.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">

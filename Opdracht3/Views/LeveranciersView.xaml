@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Opdracht3.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <GroupBox >
         <Grid Margin="4,4,-2,4">
             <Grid.ColumnDefinitions>
@@ -24,6 +24,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+
             <!--CONTACTNR-->
             <Label Grid.Row="0" Content="Contactnummer:" HorizontalAlignment="Left"/>
             <TextBox Grid.Row="0" Text="{Binding SelectedLeverancier.ContactNr}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left" />
@@ -35,10 +36,12 @@
             <!--ADRESBEDRIJF-->
             <Label Grid.Row="2" Content="Straat:" HorizontalAlignment="Left"/>
             <TextBox Grid.Row="2" Text="{Binding SelectedLeverancier.Straat}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
-            
+
+            <!--GEMEENTE-->
             <Label Grid.Row="3" Content="Gemeente:" HorizontalAlignment="Left"/>
             <TextBox Grid.Row="3" Text="{Binding SelectedLeverancier.Gemeente}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
-            
+
+            <!--POSTCODE-->
             <Label Grid.Row="4" Content="Postcode:" HorizontalAlignment="Left"/>
             <TextBox Grid.Row="4" Text="{Binding SelectedLeverancier.Postcode}" Grid.Column="2" Margin="5" Width="350" HorizontalAlignment="Left"/>
 
@@ -58,7 +61,7 @@
                     <Image Source="/Opdracht3;component/Resources/wijzig.png" Height="25" Width="30"/>
                 </Button>
             </StackPanel>
-            
+
 
         </Grid>
     </GroupBox>
