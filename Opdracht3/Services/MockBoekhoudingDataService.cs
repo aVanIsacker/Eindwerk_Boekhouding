@@ -60,12 +60,15 @@ namespace Opdracht3.Services
         //Lijst Kasboek
         private void InitKasBoek()
         {
-            _kasBoek = new List<KasVerrichting>(){
-                new KasVerrichting() {  UniekNr = "14001", FactuurDatum = new DateTime(2020,1,13), Type="Bedrijfskosten", Omschrijving="Benzine",Contact=_klanten[0], BedragExclBTW=60.0,  BTWTarief=21},
-                new KasVerrichting() {  UniekNr = "14002", Maand = "MEI", FactuurDatum = new DateTime(2020,5,14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, BetaalDatum= new DateTime(2020,6,3),  Contact = _klanten[0]},
-                new KasVerrichting() {  UniekNr = "14003", Maand = "JUL", FactuurDatum = new DateTime(2020,7,10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, BetaalDatum = new DateTime(2020,8,6), Contact = _klanten[2]},
-                new KasVerrichting() {  UniekNr = "14004",  Maand = "JUL", FactuurDatum= new DateTime(2020,12,7), Type = "Bedrijfskosten", Omschrijving="Wasmachine Siemens", BedragExclBTW= 120.10, BTWTarief=21, BetaalDatum=new DateTime(2020,12,8), Contact = _leveranciers[0]},
-            };
+            _kasBoek = new List<KasVerrichting>();
+            VoegKasVerrichtingToe(new KasVerrichting() {FactuurDatum = new DateTime(2020, 1, 13), Type = "Bedrijfskosten", Omschrijving = "Benzine", Contact = _klanten[0], BedragExclBTW = 60.0, BTWTarief = 21 });
+            VoegKasVerrichtingToe(new KasVerrichting() { Maand = "MEI", FactuurDatum = new DateTime(2020, 5, 14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, BetaalDatum = new DateTime(2020, 6, 3), Contact = _klanten[0] }
+              );
+            VoegKasVerrichtingToe(new KasVerrichting() { Maand = "JUL", FactuurDatum = new DateTime(2020, 7, 10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, BetaalDatum = new DateTime(2020, 8, 6), Contact = _klanten[2] }
+                );
+            VoegKasVerrichtingToe(new KasVerrichting() {  Maand = "JUL", FactuurDatum = new DateTime(2020, 12, 7), Type = "Bedrijfskosten", Omschrijving = "Wasmachine Siemens", BedragExclBTW = 120.10, BTWTarief = 21, BetaalDatum = new DateTime(2020, 12, 8), Contact = _leveranciers[0] }
+           );
+
         }
         public IList<KasVerrichting> GeefKasBoek()
         {
@@ -179,6 +182,7 @@ namespace Opdracht3.Services
         public IList<KasVerrichting> VoegKasVerrichtingToe(KasVerrichting kasVerrichting)
         {
             _kasBoek.Add(kasVerrichting);
+            Constants.KasverichtingNummer++;
             return _kasBoek;
         }
 

@@ -11,5 +11,7 @@ namespace Opdracht3.Services
         public const string Open = "Open";
         public const string Onbetaald = "Onbetaald";
         public const string Betaald = "Betaald";
+
+        public static int KasverichtingNummer = 14000;
     }
 }
