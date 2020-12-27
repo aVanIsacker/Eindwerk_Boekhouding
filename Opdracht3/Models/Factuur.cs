@@ -1,6 +1,7 @@
 ﻿using Opdracht3.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Opdracht3.ViewModels
@@ -23,8 +24,43 @@ namespace Opdracht3.ViewModels
             }
         }
         public string Maand { get; set; }
-        public double BedragExclBTW { get; set; }
-        public int BTWTarief { get; set; }
+
+        public string MaandVanFactuurDatum
+        {
+            get
+            {
+                return CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(FactuurDatum.Month);
+            }
+        }
+
+        private double _bedragExclBtw;
+        public double BedragExclBTW
+        {
+            get
+            {
+                return _bedragExclBtw;
+            }
+            set
+            {
+                OnPropertyChanged(ref _bedragExclBtw, value);
+                OnPropertyChanged(nameof(BedragInclBTW));
+            }
+        }
+
+        private int _btwTarief;
+        public int BTWTarief
+        {
+            get
+            {
+                return _btwTarief;
+            }
+            set
+            {
+                OnPropertyChanged(ref _btwTarief, value);
+                OnPropertyChanged(nameof(BedragInclBTW));
+            }
+        }
+
         public string Status { get; set; }
         public double BedragInclBTW { get { return BedragExclBTW + BTWBedrag; } }
         public string Omschrijving { get; set; }
