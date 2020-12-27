@@ -17,9 +17,6 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<Klant> _klanten;
         private Klant _selectedKlant;
-        //private int _id;
-
-        //public int Id { get { return _id; } set { OnPropertyChanged(ref _id, value); } }
 
         public KlantenViewModel(IBoekhoudingDataService dataService)
         {
@@ -45,7 +42,7 @@ namespace Opdracht3.ViewModels
 
         private void VoegKlantToe()
         {
-            Klant klant = new Klant() { ContactNr = 0, Familienaam = "NA", Straat = "NA", Postcode = 0, Gemeente = "NA" };
+            Klant klant = new Klant() { ContactNr = 0, Voornaam = "NA", Familienaam = "NA", Straat = "NA", Postcode = 0, Gemeente = "NA", BTWNr = "NA" };
             Klanten = new ObservableCollection<Klant>(_dataService.VoegKlantToe(klant));
             SelectedKlant = _klanten[_klanten.Count - 1];
         }

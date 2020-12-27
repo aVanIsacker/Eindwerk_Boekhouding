@@ -24,7 +24,6 @@ namespace Opdracht3.ViewModels
             _loginViewModel =new LoginViewModel();
             //ActivateItem(_loginVM);
 
-
             _dataService = new MockBoekhoudingDataService();
 
             KlantenViewModel = new KlantenViewModel(_dataService);
@@ -34,9 +33,6 @@ namespace Opdracht3.ViewModels
             KasBoekViewModel = new KasBoekViewModel(_dataService);
             OverzichtViewModel = new OverzichtViewModel(_dataService);
          
-
-
-
         }
         private int _selectedTabIndex;
 
@@ -53,9 +49,9 @@ namespace Opdracht3.ViewModels
         {
             switch(index)
             {
-                case 0:
-                    VerkoopDagBoekViewModel.RefreshData();
-                    break;
+                //case 0:
+                //    VerkoopDagBoekViewModel.RefreshData();
+                //    break;
                 case 2:
                     KasBoekViewModel.RefreshData();
                     break;

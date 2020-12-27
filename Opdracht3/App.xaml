@@ -10,5 +10,6 @@
         <helpers:MaandConverter x:Key="MaandConvertor"/>
         <helpers:BTWConverter x:Key="BTWConverter"/>
         <helpers:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+        <helpers:KleurConverter x:Key="KleurConverter"/>
     </Application.Resources>
 </Application>
