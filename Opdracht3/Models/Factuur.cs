@@ -65,7 +65,7 @@ namespace Opdracht3.ViewModels
         public DateTime BetaalDatum { get; set; }
        
 
-        public double BTWBedrag { get { return BedragExclBTW * BTWTarief / 100.0; }  }
+        public double BTWBedrag { get { return Utils.RoundUp(BedragExclBTW * BTWTarief / 100.0,2); }  }
 
         public DateTime VervalDatum { get; }
         //public DateTime VervalDatum { get { return _factuurDatum.AddMonths(1); } }
