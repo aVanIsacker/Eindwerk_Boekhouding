@@ -304,7 +304,7 @@
                                 </GroupBox>
 
                                 <GroupBox Header="Openstaande Facturen" Grid.Row="5" Margin="10,10,0,10">
-                                    <DataGrid ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
+                                    <DataGrid ItemsSource="{Binding OverzichtViewModel.OpenstaandeFacturen}" SelectedItem="OverzichtViewModel.SelectedFactuur"  CanUserSortColumns="True"
                                               Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
                                               AutoGenerateColumns="False" IsReadOnly="True" >
                                         <DataGrid.Columns>

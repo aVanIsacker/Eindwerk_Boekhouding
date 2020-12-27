@@ -1,4 +1,5 @@
-﻿using Opdracht3.ViewModels;
+﻿using Opdracht3.Models;
+using Opdracht3.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace Opdracht3.Services
         //Lijst verwijderen, toevoegen en wijzigen van Leverancier
         IList<Leverancier> VoegLeverancierToe(Leverancier leverancier);
         IList<Leverancier> VerwijderLeverancier(Leverancier selectedLeverancier);
+        List<OpenstaandeFactuur> GetOpenstaandeFacturen();
         void WijzigLeverancier(Leverancier selectedLeverancier);
 
 
