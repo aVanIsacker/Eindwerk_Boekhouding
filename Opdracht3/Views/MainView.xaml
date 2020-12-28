@@ -257,11 +257,16 @@
                                     <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="{Binding KasBoekViewModel.SelectedKasVerrichting}"  CanUserSortColumns="True"
                                               Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding UniekNr}"></DataGridTextColumn>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BetaalDatum}"></DataGridTextColumn>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BTWTarief}"></DataGridTextColumn>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding BedragInclBTW}"></DataGridTextColumn>
-                                            <DataGridTextColumn Header="Uniek Nummer" Binding="{Binding Omschrijving}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Nummer" Binding="{Binding UniekNr}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Betaaldatum" Binding="{Binding BetaalDatum}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Bedrijf/Klant" Binding="{Binding Contact}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Type" Binding="{Binding Type}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Omschrijving" Binding="{Binding Omschrijving}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Bedrag Excl BTW" Binding="{Binding BedragExclBTW}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="BTW Tarief" Binding="{Binding BTWTarief}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="BTW Bedrag" Binding="{Binding BTWBedrag}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Bedrag Incl BTW" Binding="{Binding BedragInclBTW}"></DataGridTextColumn>
+                                            
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
@@ -311,7 +316,8 @@
                                             <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente" />
 
                                         </DataGrid.Columns>
-
+                                    </DataGrid>
+                                </GroupBox>
                                 <!--LIJST LEVERNCIERS-->
                                 <GroupBox Header="Lijst Leveranciers" Grid.Row="2">
                                     <DataGrid ItemsSource="{Binding LeveranciersViewModel.Leveranciers}" SelectedItem="LeveranciersViewModel.SelectedLeverancier"  CanUserSortColumns="True" Margin="0,0,-2,0"
@@ -358,15 +364,37 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                
+
                                 <!--INFO KLANTEN-->
                                 <GroupBox Header="Details" MinHeight="240" Grid.Row="0">
                                     <views:KlantenView DataContext="{Binding KlantenViewModel}" />
                                 </GroupBox>
                                 <!--LIJST KLANTEN-->
                                 <GroupBox Header="Lijst Klanten" Grid.Row="1" Margin="10,10,0,10">
-                                    <DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"  CanUserSortColumns="True" Margin="0,0,-2,0">
+                                    <!--<DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"  CanUserSortColumns="True" Margin="0,0,-2,0">
+                                    </DataGrid>-->
+
+                                    <DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"    CanUserSortColumns="True" Margin="0,0,-2,0"
+											  AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+												AutoGenerateColumns="False" IsReadOnly="True" >
+
+
+                                        <DataGrid.Columns >
+                                            <DataGridTextColumn Binding="{Binding ContactNr}" Header="Nummer" />
+
+                                            <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam" />
+                                            <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam" />
+
+                                            <DataGridTextColumn Binding="{Binding Straat}" Header="Straat" />
+                                            <DataGridTextColumn Binding="{Binding Postcode}" Header="Postcode" />
+
+                                            <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente" />
+                                            <DataGridTextColumn Binding="{Binding BTWNr}" Header="BTWnummer" />
+
+                                        </DataGrid.Columns>
+
                                     </DataGrid>
+
                                 </GroupBox>
                                 <!--EXPANDER KLANTEN-->
                                 <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">
@@ -398,7 +426,7 @@
                                 <GroupBox Header="Winst/Verlies" Grid.Row="1" Margin="10,10,0,10">
                                     <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
                                                Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
-                                               AutoGenerateColumns="False" IsReadOnly="True">
+                                               AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged_1">
 
 
                                         <DataGrid.Columns>

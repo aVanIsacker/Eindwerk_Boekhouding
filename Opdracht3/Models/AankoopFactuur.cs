@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Opdracht3.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,9 @@ namespace Opdracht3.ViewModels
     {
         public string Type { get; set; }
 
-
+        public AankoopFactuur()
+        {
+            UniekNr = Constants.VerkoopFactuurNummer;
+        }
     }
 }

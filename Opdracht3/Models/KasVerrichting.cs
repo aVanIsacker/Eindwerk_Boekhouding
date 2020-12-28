@@ -9,7 +9,7 @@ namespace Opdracht3.ViewModels
     {
         public KasVerrichting()
         {
-            UniekNr = Constants.KasverichtingNummer.ToString();
+            UniekNr = Constants.KasverichtingNummer;
         }
         public string Betaalwijze { get; set; }
         public string Type { get; set; }

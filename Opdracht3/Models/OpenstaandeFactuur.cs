@@ -15,7 +15,7 @@ namespace Opdracht3.Models
         {
             get
             {
-                return CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(Maand);
+                return CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(Maand).ToUpper();
             }
         }
         //public string Maand { get; set; }

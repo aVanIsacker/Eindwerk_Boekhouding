@@ -48,6 +48,9 @@ namespace Opdracht3.ViewModels
             RefreshData();
         }
 
+        /// <summary>
+        /// Vernieuwt interne data voor deze view
+        /// </summary>
         internal void RefreshData()
         {
             SelectedKasVerrichting = new KasVerrichting();
