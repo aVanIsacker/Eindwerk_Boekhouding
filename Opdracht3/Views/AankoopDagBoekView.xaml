@@ -95,6 +95,10 @@
             <TextBox  IsReadOnly="True" Grid.Row="3" Grid.Column="8" Text="{Binding ElementName=FactuurDatum, Path=SelectedDate, Mode=TwoWay,Converter={StaticResource DateTimeToFutureExpireDateStringConverter}}" 
                                          Margin="4,4,0,4" Width="130" HorizontalAlignment="Left" />
 
+			<!--BETAALDATUM-->
+			<Label Grid.Row="4" Grid.Column="5" Visibility="{Binding ElementName=StatusCombo, Path=SelectedIndex,Converter={StaticResource IntToVisibilityConverter}}" Content="Betaaldatum:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
+			<DatePicker x:Name="BetaalDatum" Grid.Row="4"  Grid.Column="8" Visibility="{Binding ElementName=StatusCombo, Path=SelectedIndex,Converter={StaticResource IntToVisibilityConverter}}" SelectedDate="{Binding SelectedAankoopFactuur.BetaalDatum}" Margin="4,4,0,4" Width="130"  HorizontalAlignment="Left"  />
+
             <!--BUTTONS; ADD, DELETE, EDIT -->
             <StackPanel  Orientation="Horizontal" Grid.Row="6" Grid.Column="7" HorizontalAlignment="Right" Margin="0,26,27,6"  Height="30" Grid.RowSpan="2">
                 <Button Background="Transparent" BorderThickness="0" Margin="1" MinWidth="30" Command="{Binding AddAankoopCommand}">
