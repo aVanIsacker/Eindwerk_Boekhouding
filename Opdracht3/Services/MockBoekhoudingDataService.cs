@@ -77,10 +77,10 @@ namespace Opdracht3.Services
         {
             _verkoopDagBoek = new List<VerkoopFactuur>()
             {
-                new VerkoopFactuur(){UniekNr="25002", Maand = "JUL", FactuurDatum = new DateTime(2020,7,25), Type = "Product", Omschrijving = "Tafel", BedragExclBTW = 260.0, BTWTarief = 21, Status = "Open", BetaalDatum = default, Contact = _klanten[1]},
-                new VerkoopFactuur(){UniekNr="25003", Maand = "JUN", FactuurDatum = new DateTime(2020,6,2), Type = "Dienst", Omschrijving = "Herstelling werkblad", BedragExclBTW = 340.0, BTWTarief = 6, Status = "Open", Contact = _klanten[3]},
-                new VerkoopFactuur(){UniekNr="25004", Maand = "MEI", FactuurDatum = new DateTime(2020,5,14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, Status = "Betaald", BetaalDatum= new DateTime(2020,6,3),  Contact = _klanten[0]},
-                new VerkoopFactuur(){UniekNr="25005", Maand = "JUL", FactuurDatum = new DateTime(2020,7,10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, Status = "Betaald", BetaalDatum = new DateTime(2020,8,6), Contact = _klanten[2]},
+                new VerkoopFactuur(){UniekNr=25002, Maand = "JUL", FactuurDatum = new DateTime(2020,7,25), Type = "Product", Omschrijving = "Tafel", BedragExclBTW = 260.0, BTWTarief = 21, Status = "Open", BetaalDatum = default, Contact = _klanten[1]},
+                new VerkoopFactuur(){UniekNr=25003, Maand = "JUN", FactuurDatum = new DateTime(2020,6,2), Type = "Dienst", Omschrijving = "Herstelling werkblad", BedragExclBTW = 340.0, BTWTarief = 6, Status = "Open", Contact = _klanten[3]},
+                new VerkoopFactuur(){UniekNr=25004, Maand = "MEI", FactuurDatum = new DateTime(2020,5,14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, Status = "Betaald", BetaalDatum= new DateTime(2020,6,3),  Contact = _klanten[0]},
+                new VerkoopFactuur(){UniekNr=25005, Maand = "JUL", FactuurDatum = new DateTime(2020,7,10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, Status = "Betaald", BetaalDatum = new DateTime(2020,8,6), Contact = _klanten[2]},
             };
         }
         public IList<VerkoopFactuur> GeefVerkoopDagBoek()
@@ -94,12 +94,12 @@ namespace Opdracht3.Services
         {
             _aankoopDagBoek = new List<AankoopFactuur>()
             {
-                new AankoopFactuur(){ UniekNr= "35000", Maand = "JUL", FactuurDatum= new DateTime(2020,7,10), Type = "Bedrijfskosten", Omschrijving="Kast", BedragExclBTW= 120.10, BTWTarief=21,  Status = "Betaald", BetaalDatum=new DateTime(2020,8,31), Contact = _leveranciers[0]},
-                new AankoopFactuur(){ UniekNr= "35001", Maand = "JAN", FactuurDatum= new DateTime(2020,1,20), Type = "Inkoop", Omschrijving="Bureau", BedragExclBTW= 719.20, BTWTarief=6, Status = "Open", BetaalDatum = default, Contact = _leveranciers[1]},
-                new AankoopFactuur(){ UniekNr= "35000", Maand = "FEB", FactuurDatum= new DateTime(2020,2,7), Type = "Bedrijfskosten", Omschrijving="Bureaustoel", BedragExclBTW= 230.00, BTWTarief=21,  Status = "Betaald", BetaalDatum=new DateTime(2020,2,12), Contact = _leveranciers[0]},
-                new AankoopFactuur(){ UniekNr= "35002", Maand = "AUG", FactuurDatum= new DateTime(2020,8,30), Type = "Inkoop", Omschrijving="Verlichting", BedragExclBTW= 154.99, BTWTarief=6,  Status = "Open", BetaalDatum= default, Contact = _leveranciers[2]},
-                new AankoopFactuur(){ UniekNr= "35003", Maand = "OCT", FactuurDatum= new DateTime(2020,10,1), Type = "Inkoop", Omschrijving="Fauteuil", BedragExclBTW= 489.30, BTWTarief=6,  Status = "Betaald", BetaalDatum=new DateTime(2020,11,1), Contact = _leveranciers[3]},
-                new AankoopFactuur(){ UniekNr= "35004", Maand = "SEP", FactuurDatum= new DateTime(2020,9,15), Type = "Bedrijfskosten", Omschrijving="Bureau poten", BedragExclBTW= 20.00,  BTWTarief=21, Status = "Betaald", BetaalDatum=new DateTime(2020,9,27), Contact = _leveranciers[4]}
+                new AankoopFactuur(){ UniekNr= 35000, Maand = "JUL", FactuurDatum= new DateTime(2020,7,10), Type = "Bedrijfskosten", Omschrijving="Kast", BedragExclBTW= 120.10, BTWTarief=21,  Status = "Betaald", BetaalDatum=new DateTime(2020,8,31), Contact = _leveranciers[0]},
+                new AankoopFactuur(){ UniekNr= 35001, Maand = "JAN", FactuurDatum= new DateTime(2020,1,20), Type = "Inkoop", Omschrijving="Bureau", BedragExclBTW= 719.20, BTWTarief=6, Status = "Open", BetaalDatum = default, Contact = _leveranciers[1]},
+                new AankoopFactuur(){ UniekNr= 35000, Maand = "FEB", FactuurDatum= new DateTime(2020,2,7), Type = "Bedrijfskosten", Omschrijving="Bureaustoel", BedragExclBTW= 230.00, BTWTarief=21,  Status = "Betaald", BetaalDatum=new DateTime(2020,2,12), Contact = _leveranciers[0]},
+                new AankoopFactuur(){ UniekNr= 35002, Maand = "AUG", FactuurDatum= new DateTime(2020,8,30), Type = "Inkoop", Omschrijving="Verlichting", BedragExclBTW= 154.99, BTWTarief=6,  Status = "Open", BetaalDatum= default, Contact = _leveranciers[2]},
+                new AankoopFactuur(){ UniekNr= 35003, Maand = "OCT", FactuurDatum= new DateTime(2020,10,1), Type = "Inkoop", Omschrijving="Fauteuil", BedragExclBTW= 489.30, BTWTarief=6,  Status = "Betaald", BetaalDatum=new DateTime(2020,11,1), Contact = _leveranciers[3]},
+                new AankoopFactuur(){ UniekNr= 35004, Maand = "SEP", FactuurDatum= new DateTime(2020,9,15), Type = "Bedrijfskosten", Omschrijving="Bureau poten", BedragExclBTW= 20.00,  BTWTarief=21, Status = "Betaald", BetaalDatum=new DateTime(2020,9,27), Contact = _leveranciers[4]}
 
             };
         }
@@ -156,6 +156,10 @@ namespace Opdracht3.Services
         }
         public IList<AankoopFactuur> VoegAankoopFactuurToe(AankoopFactuur factuur)
         {
+            //autonummering
+            int UniekNr = (_aankoopDagBoek.Count > 0) ? _aankoopDagBoek.Max(b => b.UniekNr) + 1 : 1;
+            factuur.UniekNr = UniekNr;
+
             _aankoopDagBoek.Add(factuur);
             return _aankoopDagBoek;
         }
@@ -178,6 +182,10 @@ namespace Opdracht3.Services
         }
         public IList<VerkoopFactuur> VoegVerkoopFactuurToe(VerkoopFactuur factuur)
         {
+            //autonummering
+            int UniekNr = (_verkoopDagBoek.Count > 0) ? _verkoopDagBoek.Max(b => b.UniekNr) + 1 : 1;
+            factuur.UniekNr = UniekNr;
+
             _verkoopDagBoek.Add(factuur);
             return _verkoopDagBoek;
         }

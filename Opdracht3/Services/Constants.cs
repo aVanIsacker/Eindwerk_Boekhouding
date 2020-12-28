@@ -13,5 +13,7 @@ namespace Opdracht3.Services
         public const string Betaald = "Betaald";
 
         public static int KasverichtingNummer = 14000;
+        public static int VerkoopFactuurNummer = 25000;
+        public static int AankoopFactuurNummer = 35000;
     }
 }

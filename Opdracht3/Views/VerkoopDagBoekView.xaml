@@ -79,14 +79,14 @@
 
             <!--TOTAAL BEDRAG BTW-->
             <Label Grid.Row="1" Grid.Column="5" Content="Totaal:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left"/>
-            <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Text="{Binding SelectedKasVerrichting.BedragInclBTW, Mode=OneWay}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <!--<TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Text="{Binding SelectedKasVerrichting.BedragInclBTW, Mode=OneWay}"  Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
 
-            <!--<TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
+            <TextBox IsReadOnly="True" Grid.Row="1" Grid.Column="8" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
                 <MultiBinding Converter="{StaticResource BTWConverter}">
                     <Binding ElementName="Bedrag" Path="Text"/>
                     <Binding ElementName="BTWTariefCombo" Path="Text"/>
                 </MultiBinding>
-            </TextBox>-->
+            </TextBox>
 
 
             <!--BETAALD JA/NEE? (STATUS)-->

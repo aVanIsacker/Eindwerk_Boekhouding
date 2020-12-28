@@ -364,15 +364,37 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                
+
                                 <!--INFO KLANTEN-->
                                 <GroupBox Header="Details" MinHeight="240" Grid.Row="0">
                                     <views:KlantenView DataContext="{Binding KlantenViewModel}" />
                                 </GroupBox>
                                 <!--LIJST KLANTEN-->
                                 <GroupBox Header="Lijst Klanten" Grid.Row="1" Margin="10,10,0,10">
-                                    <DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"  CanUserSortColumns="True" Margin="0,0,-2,0">
+                                    <!--<DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"  CanUserSortColumns="True" Margin="0,0,-2,0">
+                                    </DataGrid>-->
+
+                                    <DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"    CanUserSortColumns="True" Margin="0,0,-2,0"
+											  AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
+												AutoGenerateColumns="False" IsReadOnly="True" >
+
+
+                                        <DataGrid.Columns >
+                                            <DataGridTextColumn Binding="{Binding ContactNr}" Header="Nummer" />
+
+                                            <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam" />
+                                            <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam" />
+
+                                            <DataGridTextColumn Binding="{Binding Straat}" Header="Straat" />
+                                            <DataGridTextColumn Binding="{Binding Postcode}" Header="Postcode" />
+
+                                            <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente" />
+                                            <DataGridTextColumn Binding="{Binding BTWNr}" Header="BTWnummer" />
+
+                                        </DataGrid.Columns>
+
                                     </DataGrid>
+
                                 </GroupBox>
                                 <!--EXPANDER KLANTEN-->
                                 <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">

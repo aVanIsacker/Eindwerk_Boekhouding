@@ -12,7 +12,7 @@ namespace Opdracht3.ViewModels
         {
             FactuurDatum = DateTime.Now;
         }
-        public string UniekNr { get; set; }
+        public int UniekNr { get; set; }
 
         private DateTime _factuurDatum;
         public DateTime FactuurDatum
