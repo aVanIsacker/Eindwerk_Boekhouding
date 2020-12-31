@@ -80,6 +80,7 @@
     <Compile Include="Helpers\IntToVisibilityConverter.cs" />
     <Compile Include="Helpers\KleurConverter.cs" />
     <Compile Include="Helpers\MaandConverter.cs" />
+    <Compile Include="Helpers\PropertyValueStringConverter.cs" />
     <Compile Include="Helpers\StatusConvertor.cs" />
     <Compile Include="Models\AankoopFactuur.cs" />
     <Compile Include="Models\Contact.cs" />

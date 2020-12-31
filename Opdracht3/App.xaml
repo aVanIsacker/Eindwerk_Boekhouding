@@ -11,6 +11,6 @@
         <helpers:BTWConverter x:Key="BTWConverter"/>
         <helpers:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
         <helpers:KleurConverter x:Key="KleurConverter" />
-		<helpers:PropertyValueStringConverter x:Key="PropertyValueStringConverter"/>
+        <helpers:PropertyValueStringConverter x:Key="PropertyValueStringConverter"/>
     </Application.Resources>
 </Application>
