@@ -18,7 +18,7 @@ namespace Opdracht3.Models
                 return CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(Maand).ToUpper();
             }
         }
-        //public string Maand { get; set; }
+        
         public double Inkomend { get; set; } //openstaande debiteuren
         public double Uitgaand { get; set; } //openstaande crediteuren
     }
