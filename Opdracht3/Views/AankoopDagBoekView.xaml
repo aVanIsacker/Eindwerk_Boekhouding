@@ -44,7 +44,7 @@
 
             <!--CREDITEUR-->
             <Label Grid.Row="3" Content="Crediteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <TextBox Grid.Row="3" Text="{Binding SelectedAankoopFactuur.Contact}" Grid.Column="3" Margin="4.4,3.8,0,0" Width="130" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top"/>
+            <TextBox Grid.Row="3" Text="{Binding SelectedAankoopFactuur.Contact, Converter={StaticResource PropertyValueStringConverter}}" Grid.Column="3" Margin="4.4,3.8,0,0" Width="130" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top"/>
 
             <!--TYPE-->
             <Label Grid.Row="4" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />

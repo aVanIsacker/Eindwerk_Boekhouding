@@ -46,7 +46,7 @@
 
             <!--DEBITEUR-->
             <Label Grid.Row="3" Content="Debiteur:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
-            <TextBox Grid.Row="3" Text="{Binding SelectedVerkoopFactuur.Contact }" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="3" Text="{Binding SelectedVerkoopFactuur.Contact, Converter={StaticResource PropertyValueStringConverter}}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
            
             <!--<utilities:FilteredListView Grid.Row="2" Grid.Column="3"  ItemsSource="{Binding Klanten}"
                                         SelectedItem="{Binding SelectedKasVerrichting.Contact}"
