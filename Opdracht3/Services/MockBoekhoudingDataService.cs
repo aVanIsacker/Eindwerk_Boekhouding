@@ -81,6 +81,13 @@ namespace Opdracht3.Services
                 new VerkoopFactuur(){UniekNr=25003, Maand = "JUN", FactuurDatum = new DateTime(2020,6,2), Type = "Dienst", Omschrijving = "Herstelling werkblad", BedragExclBTW = 340.0, BTWTarief = 6, Status = "Open", Contact = _klanten[3]},
                 new VerkoopFactuur(){UniekNr=25004, Maand = "MEI", FactuurDatum = new DateTime(2020,5,14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, Status = "Betaald", BetaalDatum= new DateTime(2020,6,3),  Contact = _klanten[0]},
                 new VerkoopFactuur(){UniekNr=25005, Maand = "JUL", FactuurDatum = new DateTime(2020,7,10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, Status = "Betaald", BetaalDatum = new DateTime(2020,8,6), Contact = _klanten[2]},
+                new VerkoopFactuur(){UniekNr=25006, Maand = "JUL", FactuurDatum = new DateTime(2020,7,25), Type = "Product", Omschrijving = "Tafel", BedragExclBTW = 260.0, BTWTarief = 21, Status = "Open", BetaalDatum = default, Contact = _klanten[4]},
+                new VerkoopFactuur(){UniekNr=25007, Maand = "JUN", FactuurDatum = new DateTime(2020,6,2), Type = "Dienst", Omschrijving = "Herstelling werkblad", BedragExclBTW = 340.0, BTWTarief = 6, Status = "Open", Contact = _klanten[0]},
+                new VerkoopFactuur(){UniekNr=25008, Maand = "AUG", FactuurDatum = new DateTime(2020,8,11), Type = "Product", Omschrijving = "Bureau", BedragExclBTW = 350.0, BTWTarief = 21, Status = "Betaald", BetaalDatum= new DateTime(2020,8,21),  Contact = _klanten[2]},
+                new VerkoopFactuur(){UniekNr=25009, Maand = "JUL", FactuurDatum = new DateTime(2020,7,8), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, Status = "Betaald", BetaalDatum = new DateTime(2020,7,27), Contact = _klanten[2]},
+
+
+
             };
         }
         public IList<VerkoopFactuur> GeefVerkoopDagBoek()

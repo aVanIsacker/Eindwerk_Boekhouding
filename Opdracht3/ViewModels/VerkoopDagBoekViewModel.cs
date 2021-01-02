@@ -15,6 +15,7 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<VerkoopFactuur> _verkoopFactuur;
         private VerkoopFactuur _selectedVerkoopFactuur;
+        private ObservableCollection<Klant> _klanten;
 
         public VerkoopDagBoekViewModel(IBoekhoudingDataService dataService)
         {
@@ -25,7 +26,7 @@ namespace Opdracht3.ViewModels
             EditVerkoopCommand = new RelayCommand(WijzigVerkoop);
             DeleteVerkoopCommand = new RelayCommand(VerwijderVerkoop);
             SelectedVerkoopFactuur = new VerkoopFactuur();
-
+            Klanten = new ObservableCollection<Klant>(_dataService.GeefAlleKlanten());
         }
         
         private void VerwijderVerkoop()
@@ -49,7 +50,11 @@ namespace Opdracht3.ViewModels
         public ICommand AddVerkoopCommand { get; private set; }
         public ICommand EditVerkoopCommand { get; private set; }
         public ICommand DeleteVerkoopCommand { get; private set; }
-
+        public ObservableCollection<Klant> Klanten
+        {
+            get { return _klanten; }
+            set { OnPropertyChanged(ref _klanten, value); }
+        }
         public ObservableCollection<VerkoopFactuur> VerkoopFacturen
         {
             get { return _verkoopFactuur; }
