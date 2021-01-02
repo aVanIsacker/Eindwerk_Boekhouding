@@ -27,7 +27,15 @@ namespace Opdracht3.ViewModels
 
             }
         }
-        public string Maand { get; set; }
+        public string Maand
+        {
+            get
+            {
+                return _factuurDatum.ToString("MMM");
+            }
+            set
+            { }
+        }
 
         private double _bedragExclBtw;
         public double BedragExclBTW
