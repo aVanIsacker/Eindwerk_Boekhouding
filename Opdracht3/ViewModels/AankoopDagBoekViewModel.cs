@@ -16,6 +16,7 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<AankoopFactuur> _aankoopFactuur;
         private AankoopFactuur _selectedAankoopFactuur;
+        private ObservableCollection<Leverancier> _leveranciers;
         //private int _id;
 
         //public int Id { get { return _id; } set { OnPropertyChanged(ref _id, value);  } }
@@ -27,6 +28,7 @@ namespace Opdracht3.ViewModels
             AddAankoopCommand = new RelayCommand(VoegAankoop);
             EditAankoopCommand = new RelayCommand(WijzigAankoop);
             DeleteAankoopCommand = new RelayCommand(VerwijderAankoop);
+            Leveranciers = new ObservableCollection<Leverancier>(_dataService.GeefAlleLeveranciers());
 
         }
 
@@ -61,6 +63,12 @@ namespace Opdracht3.ViewModels
         {
             get { return _selectedAankoopFactuur; }
             set { OnPropertyChanged(ref _selectedAankoopFactuur, value); }
+        }
+
+        public ObservableCollection<Leverancier> Leveranciers
+        {
+            get { return _leveranciers; }
+            set { OnPropertyChanged(ref _leveranciers, value); }
         }
     }
 }
