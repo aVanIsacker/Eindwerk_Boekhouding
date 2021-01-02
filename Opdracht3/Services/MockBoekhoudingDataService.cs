@@ -285,17 +285,20 @@ namespace Opdracht3.Services
             //totaal te betalen BTW per maand 
             foreach (var verkoop in _verkoopDagBoek)
             {
-                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.Maand)).FirstOrDefault();
-
-                if (exists == null)
+                if (verkoop.Maand != null)
                 {
-                    exists = new TotaalOverzicht()
+                    var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.Maand)).FirstOrDefault();
+
+                    if (exists == null)
                     {
-                        Maand = verkoop.Maand
-                    };
-                    _totaalOverzicht.Add(exists);
+                        exists = new TotaalOverzicht()
+                        {
+                            Maand = verkoop.Maand
+                        };
+                        _totaalOverzicht.Add(exists);
+                    }
+                    exists.TeBetalenBTW += verkoop.BTWBedrag;
                 }
-                exists.TeBetalenBTW += verkoop.BTWBedrag;
             }
 
             //totaal te ontvangen BTW per maand
@@ -317,19 +320,22 @@ namespace Opdracht3.Services
             //omzet berekenen
             foreach (var verkoop in _verkoopDagBoek)
             {
-                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.Maand)).FirstOrDefault(); // && x.Jaar.Equals(verkoop.FactuurDatum.Year.ToString())
-
-                if (exists == null)
+                if (verkoop.Maand != null)
                 {
-                    exists = new TotaalOverzicht()
-                    {
-                        Jaar = verkoop.FactuurDatum.Year.ToString(),
-                        Maand = verkoop.Maand,
-                    };
-                    _totaalOverzicht.Add(exists);
-                }
+                    var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.Maand)).FirstOrDefault(); // && x.Jaar.Equals(verkoop.FactuurDatum.Year.ToString())
 
-                exists.Omzet += verkoop.BedragExclBTW;
+                    if (exists == null)
+                    {
+                        exists = new TotaalOverzicht()
+                        {
+                            Jaar = verkoop.FactuurDatum.Year.ToString(),
+                            Maand = verkoop.Maand,
+                        };
+                        _totaalOverzicht.Add(exists);
+                    }
+
+                    exists.Omzet += verkoop.BedragExclBTW;
+                }
             }
 
             //Bedrijfskosten berekenen
@@ -358,45 +364,48 @@ namespace Opdracht3.Services
         {
             var facturen = new List<OpenstaandeFactuur>();
 
-            var openstaandeVerkoopFacturenByMonth = _verkoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
+           
+            
+                var openstaandeVerkoopFacturenByMonth = _verkoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
 
-            foreach (var openstaande in openstaandeVerkoopFacturenByMonth)
-            {
-                var openStaandeFactuur = new OpenstaandeFactuur()
+                foreach (var openstaande in openstaandeVerkoopFacturenByMonth)
                 {
-                    Maand = openstaande.Key
-                };
-
-                foreach (var factuur in openstaande.Value)
-                {
-                    openStaandeFactuur.Inkomend += factuur.BedragExclBTW;
-                }
-
-                facturen.Add(openStaandeFactuur);
-            }
-
-            var openstaandeAankoopFacturen = _aankoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
-
-            foreach (var openstaande in openstaandeAankoopFacturen)
-            {
-                var openstaandeFactuur = facturen.Where(x => x.Maand.Equals(openstaande.Key)).FirstOrDefault();
-
-                if (openstaandeFactuur == null)
-                {
-                    openstaandeFactuur = new OpenstaandeFactuur()
+                    var openStaandeFactuur = new OpenstaandeFactuur()
                     {
                         Maand = openstaande.Key
                     };
 
-                    facturen.Add(openstaandeFactuur);
+                    foreach (var factuur in openstaande.Value)
+                    {
+                        openStaandeFactuur.Inkomend += factuur.BedragExclBTW;
+                    }
+
+                    facturen.Add(openStaandeFactuur);
                 }
 
-                foreach (var factuur in openstaande.Value)
+
+                var openstaandeAankoopFacturen = _aankoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
+
+                foreach (var openstaande in openstaandeAankoopFacturen)
                 {
-                    openstaandeFactuur.Uitgaand += factuur.BedragExclBTW;
-                }
-            }
+                    var openstaandeFactuur = facturen.Where(x => x.Maand.Equals(openstaande.Key)).FirstOrDefault();
 
+                    if (openstaandeFactuur == null)
+                    {
+                        openstaandeFactuur = new OpenstaandeFactuur()
+                        {
+                            Maand = openstaande.Key
+                        };
+
+                        facturen.Add(openstaandeFactuur);
+                    }
+
+                    foreach (var factuur in openstaande.Value)
+                    {
+                        openstaandeFactuur.Uitgaand += factuur.BedragExclBTW;
+                    }
+                }
+            
             return facturen.OrderBy(x => x.Maand).ToList();
         }
     }
