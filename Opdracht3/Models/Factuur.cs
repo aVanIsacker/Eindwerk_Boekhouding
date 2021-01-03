@@ -25,7 +25,6 @@ namespace Opdracht3.ViewModels
             set
             {
                 OnPropertyChanged(ref _factuurDatum, value);
-
             }
         }
         public string Maand
@@ -34,9 +33,7 @@ namespace Opdracht3.ViewModels
             {
                 return _factuurDatum.ToString("MMM");
             }
-            set
-            { }
-
+            set { }
         }
 
         private double _bedragExclBtw;
@@ -79,7 +76,7 @@ namespace Opdracht3.ViewModels
         public double BTWBedrag { get { return Utils.RoundUp(BedragExclBTW * BTWTarief / 100.0, 2); } }
 
         public DateTime VervalDatum { get; }
-        //public DateTime VervalDatum { get { return _factuurDatum.AddMonths(1); } }
+        
         private Contact _contact;
         public Contact Contact
         {

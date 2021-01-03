@@ -86,9 +86,6 @@ namespace Opdracht3.Services
                 new VerkoopFactuur(){UniekNr=25008, Maand = "AUG", FactuurDatum = new DateTime(2020,8,11), Type = "Product", Omschrijving = "Bureau", BedragExclBTW = 350.0, BTWTarief = 21, Status = "Betaald", BetaalDatum= new DateTime(2020,8,21),  Contact = _klanten[2]},
                 new VerkoopFactuur(){UniekNr=25009, Maand = "JUL", FactuurDatum = new DateTime(2020,7,8), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, Status = "Betaald", BetaalDatum = new DateTime(2020,7,27), Contact = _klanten[2]},
                 new VerkoopFactuur(){UniekNr=25010, Maand = "JAN", FactuurDatum = new DateTime(2021,1,1), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 100, BTWTarief = 21, Status = Constants.Open,  Contact = _klanten[2]},
-
-
-
             };
         }
         public IList<VerkoopFactuur> GeefVerkoopDagBoek()

@@ -58,6 +58,7 @@ namespace Opdracht3.ViewModels
         public ICommand AddVerkoopCommand { get; private set; }
         public ICommand EditVerkoopCommand { get; private set; }
         public ICommand DeleteVerkoopCommand { get; private set; }
+
         public ObservableCollection<Klant> Klanten
         {
             get { return _klanten; }
@@ -74,27 +75,5 @@ namespace Opdracht3.ViewModels
             set { OnPropertyChanged(ref _selectedVerkoopFactuur, value); }
         }
 
-
-        //public Func<object, string, bool> KlantenFilter
-        //{
-        //    get
-        //    {
-        //        return (item, text) =>
-        //        {
-        //            var customer = item as Contact;
-        //            if (customer == null)
-        //                return false;
-        //            if (item is Klant klant)
-        //            {
-        //                return klant.ToString().Contains(text);
-        //            }
-        //            if (item is Leverancier leverancier)
-        //            {
-        //                return leverancier.NaamBedrijf.Contains(text);
-        //            }
-        //            return false;
-        //        };
-        //    }
-        //}
     }
 }

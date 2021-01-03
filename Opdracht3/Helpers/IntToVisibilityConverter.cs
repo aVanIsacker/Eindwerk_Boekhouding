@@ -11,8 +11,6 @@ namespace Opdracht3.Helpers
 {
     public class IntToVisibilityConverter : IValueConverter
     {
-       
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int index = (int)value;
@@ -22,7 +20,6 @@ namespace Opdracht3.Helpers
             return index == 2 || index ==0 ? Visibility.Hidden : Visibility.Visible;
             
         }
-
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
