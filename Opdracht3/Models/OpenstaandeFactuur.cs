@@ -9,6 +9,7 @@ namespace Opdracht3.Models
 {
     public class OpenstaandeFactuur
     {
+        public int Jaar { get; set; }
         public int Maand { get; set; }
 
         public string FullMaand

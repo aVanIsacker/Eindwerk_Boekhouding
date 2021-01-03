@@ -15,6 +15,7 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<VerkoopFactuur> _verkoopFactuur;
         private VerkoopFactuur _selectedVerkoopFactuur;
+        private ObservableCollection<Klant> _klanten;
 
         public VerkoopDagBoekViewModel(IBoekhoudingDataService dataService)
         {
@@ -25,7 +26,7 @@ namespace Opdracht3.ViewModels
             EditVerkoopCommand = new RelayCommand(WijzigVerkoop);
             DeleteVerkoopCommand = new RelayCommand(VerwijderVerkoop);
             SelectedVerkoopFactuur = new VerkoopFactuur();
-
+            Klanten = new ObservableCollection<Klant>(_dataService.GeefAlleKlanten());
         }
         
         private void VerwijderVerkoop()
@@ -37,6 +38,7 @@ namespace Opdracht3.ViewModels
         private void WijzigVerkoop()
         {
             _dataService.WijzigVerkoopFactuur(SelectedVerkoopFactuur);
+            RefreshData();
         }
 
         private void VoegVerkoopToe()
@@ -46,10 +48,22 @@ namespace Opdracht3.ViewModels
             SelectedVerkoopFactuur = _verkoopFactuur[_verkoopFactuur.Count - 1];
         }
 
+        internal void RefreshData()
+        {
+            SelectedVerkoopFactuur = new VerkoopFactuur();
+            Klanten = new ObservableCollection<Klant>(_dataService.GeefAlleKlanten());
+            VerkoopFacturen = new ObservableCollection<VerkoopFactuur>(_dataService.GeefVerkoopDagBoek());
+        }
+
         public ICommand AddVerkoopCommand { get; private set; }
         public ICommand EditVerkoopCommand { get; private set; }
         public ICommand DeleteVerkoopCommand { get; private set; }
 
+        public ObservableCollection<Klant> Klanten
+        {
+            get { return _klanten; }
+            set { OnPropertyChanged(ref _klanten, value); }
+        }
         public ObservableCollection<VerkoopFactuur> VerkoopFacturen
         {
             get { return _verkoopFactuur; }
@@ -61,27 +75,5 @@ namespace Opdracht3.ViewModels
             set { OnPropertyChanged(ref _selectedVerkoopFactuur, value); }
         }
 
-
-        //public Func<object, string, bool> KlantenFilter
-        //{
-        //    get
-        //    {
-        //        return (item, text) =>
-        //        {
-        //            var customer = item as Contact;
-        //            if (customer == null)
-        //                return false;
-        //            if (item is Klant klant)
-        //            {
-        //                return klant.ToString().Contains(text);
-        //            }
-        //            if (item is Leverancier leverancier)
-        //            {
-        //                return leverancier.NaamBedrijf.Contains(text);
-        //            }
-        //            return false;
-        //        };
-        //    }
-        //}
     }
 }

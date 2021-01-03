@@ -16,6 +16,7 @@ namespace Opdracht3.ViewModels
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<AankoopFactuur> _aankoopFactuur;
         private AankoopFactuur _selectedAankoopFactuur;
+        private ObservableCollection<Leverancier> _leveranciers;
         //private int _id;
 
         //public int Id { get { return _id; } set { OnPropertyChanged(ref _id, value);  } }
@@ -27,6 +28,7 @@ namespace Opdracht3.ViewModels
             AddAankoopCommand = new RelayCommand(VoegAankoop);
             EditAankoopCommand = new RelayCommand(WijzigAankoop);
             DeleteAankoopCommand = new RelayCommand(VerwijderAankoop);
+            Leveranciers = new ObservableCollection<Leverancier>(_dataService.GeefAlleLeveranciers());
 
         }
 
@@ -39,13 +41,21 @@ namespace Opdracht3.ViewModels
         private void WijzigAankoop()
         {
             _dataService.WijzigAankoopFactuur(SelectedAankoopFactuur);
+            RefreshData();
         }
 
         private void VoegAankoop()
         {
-            AankoopFactuur aankoopDagBoek = new AankoopFactuur() { UniekNr = 0, BetaalDatum = new DateTime(2020, 12, 8), BedragExclBTW = 0, BTWTarief = 21, FactuurDatum = new DateTime(2020, 12, 7), Omschrijving = "NA" };
+            AankoopFactuur aankoopDagBoek = new AankoopFactuur() { UniekNr = 0, BetaalDatum = DateTime.Now, BedragExclBTW = 0, BTWTarief = 21, FactuurDatum = DateTime.Now, Omschrijving = "NA" };
             AankoopFacturen = new ObservableCollection<AankoopFactuur>(_dataService.VoegAankoopFactuurToe(aankoopDagBoek));
             SelectedAankoopFactuur = _aankoopFactuur[_aankoopFactuur.Count - 1];
+        }
+
+        internal void RefreshData()
+        {
+            SelectedAankoopFactuur = new AankoopFactuur();
+            Leveranciers = new ObservableCollection<Leverancier>(_dataService.GeefAlleLeveranciers());
+            AankoopFacturen = new ObservableCollection<AankoopFactuur>(_dataService.GeefAankoopDagBoek());
         }
 
         public ICommand AddAankoopCommand { get; private set; }
@@ -61,6 +71,12 @@ namespace Opdracht3.ViewModels
         {
             get { return _selectedAankoopFactuur; }
             set { OnPropertyChanged(ref _selectedAankoopFactuur, value); }
+        }
+
+        public ObservableCollection<Leverancier> Leveranciers
+        {
+            get { return _leveranciers; }
+            set { OnPropertyChanged(ref _leveranciers, value); }
         }
     }
 }

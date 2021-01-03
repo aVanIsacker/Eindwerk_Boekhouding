@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Opdracht3.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace Opdracht3.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+
             if (value != null)
                 return value.ToString();
 
@@ -19,7 +21,18 @@ namespace Opdracht3.Helpers
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            if (value != null)
+
+                //    //return value;
+                //    //return value.ToString();
+                return (value.ToString()).ToList();
+
+
+
             throw new NotImplementedException();
         }
+
     }
-}
+
+}        
+

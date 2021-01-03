@@ -12,8 +12,6 @@ namespace Opdracht3.ViewModels
 {
     public class KlantenViewModel : ObservableObject
     {
-
-
         private IBoekhoudingDataService _dataService;
         private ObservableCollection<Klant> _klanten;
         private Klant _selectedKlant;
@@ -25,8 +23,7 @@ namespace Opdracht3.ViewModels
 
             AddKlantCommand = new RelayCommand(VoegKlantToe);
             EditKlantCommand = new RelayCommand(WijzigKlant);
-            DeleteKlantCommand = new RelayCommand(VerwijderKlant);
-          
+            DeleteKlantCommand = new RelayCommand(VerwijderKlant);         
         }
 
         private void VerwijderKlant()
@@ -45,6 +42,12 @@ namespace Opdracht3.ViewModels
             Klant klant = new Klant() { ContactNr = 0, Voornaam = "NA", Familienaam = "NA", Straat = "NA", Postcode = 0, Gemeente = "NA", BTWNr = "NA" };
             Klanten = new ObservableCollection<Klant>(_dataService.VoegKlantToe(klant));
             SelectedKlant = _klanten[_klanten.Count - 1];
+        }
+
+        internal void RefreshData()
+        {
+            Klanten.Clear();
+            Klanten = new ObservableCollection<Klant>(_dataService.GeefAlleKlanten());
         }
 
         public ICommand AddKlantCommand { get; private set; }

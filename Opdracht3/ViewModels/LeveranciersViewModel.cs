@@ -54,7 +54,14 @@ namespace Opdracht3.ViewModels
             SelectedLeverancier = _leveranciers[_leveranciers.Count - 1];
         }
 
+        internal void RefreshData()
+        {
+            Leveranciers.Clear();
+            Leveranciers = new ObservableCollection<Leverancier>(_dataService.GeefAlleLeveranciers());
+        }
+
         public ICommand AddLeverancierCommand { get; private set; }
+
         public ICommand EditLeverancierCommand { get; private set; }
         public ICommand DeleteLeverancierCommand { get; private set; }
         

@@ -88,7 +88,6 @@
                                           AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f" IsReadOnly="True"
                                             AutoGenerateColumns="False" >
 
-
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Binding="{Binding UniekNr}" Header="Nummer" />
 
@@ -98,23 +97,17 @@
                                                         <TextBlock Text="{Binding FactuurDatum,StringFormat='dd/MM/yyyy'}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
-
                                             </DataGridTemplateColumn>
-
-                                            <!--<DataGridTextColumn Binding="{Binding FactuurDatum, StringFormat={}{0:MMM}}" Header="Maand" />-->
+                                          
                                             <DataGridTextColumn Binding="{Binding FactuurDatum, Converter={StaticResource MaandConvertor} }" Header="Maand" />
-
                                             <DataGridTextColumn Binding="{Binding Contact}" Header="Debiteur" />
-
                                             <DataGridTextColumn Binding="{Binding Type}" Header="Type" />
                                             <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving" />
-
-
                                             <DataGridTextColumn Binding="{Binding BedragExclBTW}" Header="Bedrag Ex BTW" />
                                             <DataGridTextColumn Binding="{Binding BTWTarief}" Header="BTW Tarief" />
-
                                             <DataGridTextColumn Binding="{Binding BTWBedrag}" Header="BTW bedrag" />
                                             <DataGridTextColumn Binding="{Binding BedragInclBTW}" Header="Bedrag Incl BTW" />
+                                            
                                             <DataGridTextColumn x:Name="StatusColumn" Binding="{Binding Status}" Header="Status" >
                                                 <DataGridTextColumn.ElementStyle>
                                                     <Style TargetType="{x:Type TextBlock}">
@@ -129,18 +122,15 @@
                                                         <TextBlock Text="{Binding FactuurDatum, Converter={StaticResource DateTimeToFutureExpireDateStringConverter}}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
-
                                             </DataGridTemplateColumn>
 
                                             <DataGridTemplateColumn Header="BetaalDatum">
                                                 <DataGridTemplateColumn.CellTemplate>
                                                     <DataTemplate>
-                                                        <TextBlock Text="{Binding BetaalDatum,StringFormat='dd/MM/yyyy'}" Visibility="{Binding ElementName=StatusColumn, Path=DataGridTextColumn,Converter={StaticResource IntToVisibilityConverter}}"  />
+                                                        <TextBlock Text="{Binding BetaalDatum,StringFormat='dd/MM/yyyy'}"/>
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
-
                                             </DataGridTemplateColumn>
-
                                         </DataGrid.Columns>
 
                                     </DataGrid>
@@ -173,7 +163,6 @@
                                           AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
                                             AutoGenerateColumns="False" IsReadOnly="True" >
 
-
                                         <DataGrid.Columns >
                                             <DataGridTextColumn Binding="{Binding UniekNr}" Header="Nummer" />
 
@@ -183,20 +172,14 @@
                                                         <TextBlock Text="{Binding FactuurDatum,StringFormat='dd/MM/yyyy'}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
-
                                             </DataGridTemplateColumn>
 
                                             <DataGridTextColumn Binding="{Binding FactuurDatum, Converter={StaticResource MaandConvertor} }" Header="Maand" />
-
                                             <DataGridTextColumn Binding="{Binding Contact}" Header="Crediteur" />
-
                                             <DataGridTextColumn Binding="{Binding Type}" Header="Type" />
                                             <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving" />
-
-
                                             <DataGridTextColumn Binding="{Binding BedragExclBTW}" Header="Bedrag Ex BTW" />
                                             <DataGridTextColumn Binding="{Binding BTWTarief}" Header="BTW Tarief" />
-
                                             <DataGridTextColumn Binding="{Binding BTWBedrag}" Header="BTW bedrag" />
                                             <DataGridTextColumn Binding="{Binding BedragInclBTW}" Header="Bedrag Incl BTW" />
 
@@ -214,7 +197,6 @@
                                                         <TextBlock Text="{Binding FactuurDatum, Converter={StaticResource DateTimeToFutureExpireDateStringConverter}}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
-
                                             </DataGridTemplateColumn>
 
                                             <DataGridTemplateColumn Header="BetaalDatum">
@@ -223,9 +205,7 @@
                                                         <TextBlock Text="{Binding BetaalDatum,StringFormat='dd/MM/yyyy'}" />
                                                     </DataTemplate>
                                                 </DataGridTemplateColumn.CellTemplate>
-
                                             </DataGridTemplateColumn>
-
                                         </DataGrid.Columns>
 
                                     </DataGrid>
@@ -238,7 +218,7 @@
                             </Grid>
                         </TabItem.Content>
                     </TabItem>
-                    
+
                     <!--KASBOEK-->
                     <TabItem Name="Kasboek"  Header="Kasboek" BorderBrush="{x:Null}" Margin="0,6,0,-6" >
                         <TabItem.Content>
@@ -254,8 +234,10 @@
                                 </GroupBox>
                                 <!--LIJST KASVERRICHTINGEN-->
                                 <GroupBox Header="Overzicht Kasverrichtingen" Grid.Row="2">
-                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="{Binding KasBoekViewModel.SelectedKasVerrichting}"  CanUserSortColumns="True"
-                                              Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
+                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="{Binding KasBoekViewModel.SelectedKasVerrichting}"
+                                              CanUserSortColumns="True" Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True"
+                                              AutoGenerateColumns="False" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7"
+                                              BorderBrush="#7e8f9f">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Nummer" Binding="{Binding UniekNr}"></DataGridTextColumn>
                                             <DataGridTextColumn Header="Betaaldatum" Binding="{Binding BetaalDatum}"></DataGridTextColumn>
@@ -266,7 +248,6 @@
                                             <DataGridTextColumn Header="BTW Tarief" Binding="{Binding BTWTarief}"></DataGridTextColumn>
                                             <DataGridTextColumn Header="BTW Bedrag" Binding="{Binding BTWBedrag}"></DataGridTextColumn>
                                             <DataGridTextColumn Header="Bedrag Incl BTW" Binding="{Binding BedragInclBTW}"></DataGridTextColumn>
-                                            
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
@@ -300,21 +281,13 @@
 											  AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
 												AutoGenerateColumns="False" IsReadOnly="True" >
 
-
                                         <DataGrid.Columns >
                                             <DataGridTextColumn Binding="{Binding ContactNr}" Header="Nummer" />
-
-
                                             <DataGridTextColumn Binding="{Binding NaamBedrijf}" Header="Bedrijf" />
-
                                             <DataGridTextColumn Binding="{Binding BTWNr}" Header="BTWnummer" />
-
                                             <DataGridTextColumn Binding="{Binding Straat}" Header="Straat" />
                                             <DataGridTextColumn Binding="{Binding Postcode}" Header="Postcode" />
-
-
                                             <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente" />
-
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
@@ -324,24 +297,17 @@
                                           AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
                                             AutoGenerateColumns="False" IsReadOnly="True" >
 
-
                                         <DataGrid.Columns >
                                             <DataGridTextColumn Binding="{Binding ContactNr}" Header="Nummer" />
-
-
                                             <DataGridTextColumn Binding="{Binding NaamBedrijf}" Header="Bedrijf" />
-
                                             <DataGridTextColumn Binding="{Binding BTWNr}" Header="BTWnummer" />
-
                                             <DataGridTextColumn Binding="{Binding Straat}" Header="Straat" />
                                             <DataGridTextColumn Binding="{Binding Postcode}" Header="Postcode" />
-
-
                                             <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente" />
-
                                         </DataGrid.Columns>
 
                                     </DataGrid>
+                                
                                 </GroupBox>
                                 <!--EXPANDER LEVERANCIER-->
                                 <StackPanel Grid.RowSpan="2" Grid.Column="0" Margin="10,15,-20,10" Width="178" HorizontalAlignment="Right">
@@ -371,26 +337,19 @@
                                 </GroupBox>
                                 <!--LIJST KLANTEN-->
                                 <GroupBox Header="Lijst Klanten" Grid.Row="1" Margin="10,10,0,10">
-                                    <!--<DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"  CanUserSortColumns="True" Margin="0,0,-2,0">
-                                    </DataGrid>-->
 
                                     <DataGrid ItemsSource="{Binding KlantenViewModel.Klanten}" SelectedItem="KlantenViewModel.SelectedKlant"    CanUserSortColumns="True" Margin="0,0,-2,0"
 											  AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
 												AutoGenerateColumns="False" IsReadOnly="True" >
 
-
                                         <DataGrid.Columns >
                                             <DataGridTextColumn Binding="{Binding ContactNr}" Header="Nummer" />
-
                                             <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam" />
                                             <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam" />
-
                                             <DataGridTextColumn Binding="{Binding Straat}" Header="Straat" />
                                             <DataGridTextColumn Binding="{Binding Postcode}" Header="Postcode" />
-
                                             <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente" />
                                             <DataGridTextColumn Binding="{Binding BTWNr}" Header="BTWnummer" />
-
                                         </DataGrid.Columns>
 
                                     </DataGrid>
@@ -406,15 +365,13 @@
                         </TabItem.Content>
                     </TabItem>
 
-
-
                     <!--OVERZICHT TAB-->
                     <TabItem Name="Overzicht"  Header="Overzicht" BorderBrush="{x:Null}" Margin="0,12,0,-12">
                         <TabItem.Content>
 
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="0" />
+                                    <RowDefinition Height="20" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="0" />
                                     <RowDefinition Height="Auto" />
@@ -422,18 +379,21 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                               <!--LIJST -->
+                                <!--LIJST -->
+                                <ComboBox 
+                                          Name="Jaar" ItemsSource="{Binding OverzichtViewModel.Jaren}" 
+                                          SelectedItem="{Binding OverzichtViewModel.SelectedJaar}"
+                                          Grid.Row="0"
+                                          Width="130" 
+                                          />
                                 <GroupBox Header="Winst/Verlies" Grid.Row="1" Margin="10,10,0,10">
-                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
+                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.WinstVerlies}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
                                                Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
-                                               AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged_1">
-
+                                               AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged_1" >
 
                                         <DataGrid.Columns>
-
-                                            <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
+                                            <DataGridTextColumn Binding="{Binding Maand, Converter={StaticResource MaandIntToVolledigeNaamConverter}}" Header="Maand" />
                                             <DataGridTextColumn Binding="{Binding Omzet}" Header="Omzet" />
-
                                             <DataGridTextColumn Binding="{Binding BedrijfsKosten}" Header="Kosten" />
                                             <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" />
                                         </DataGrid.Columns>
@@ -445,7 +405,7 @@
                                                Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
                                                AutoGenerateColumns="False" IsReadOnly="True">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
+                                            <DataGridTextColumn Binding="{Binding Maand, Converter={StaticResource MaandIntToVolledigeNaamConverter}}" Header="Maand" />
                                             <DataGridTextColumn Binding="{Binding TeBetalenBTW }" Header="Te betalen BTW" />
                                             <DataGridTextColumn Binding="{Binding TeOntvangenBTW}" Header="Te ontvangen BTW" />
                                             <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" />
@@ -464,7 +424,6 @@
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
-
 
                             </Grid>
 

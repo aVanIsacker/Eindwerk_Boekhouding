@@ -62,9 +62,9 @@ namespace Opdracht3.Services
         {
             _kasBoek = new List<KasVerrichting>();
             VoegKasVerrichtingToe(new KasVerrichting() { FactuurDatum = new DateTime(2020, 1, 13), Type = "Bedrijfskosten", Omschrijving = "Benzine", Contact = _klanten[0], BedragExclBTW = 60.0, BTWTarief = 21 });
-            VoegKasVerrichtingToe(new KasVerrichting() { Maand = "MEI", FactuurDatum = new DateTime(2020, 5, 14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, BetaalDatum = new DateTime(2020, 6, 3), Contact = _klanten[0] });
-            VoegKasVerrichtingToe(new KasVerrichting() { Maand = "JUL", FactuurDatum = new DateTime(2020, 7, 10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, BetaalDatum = new DateTime(2020, 8, 6), Contact = _klanten[2] });
-            VoegKasVerrichtingToe(new KasVerrichting() { Maand = "DEC", FactuurDatum = new DateTime(2020, 12, 7), Type = "Bedrijfskosten", Omschrijving = "Wasmachine Siemens", BedragExclBTW = 120.10, BTWTarief = 21, BetaalDatum = new DateTime(2020, 12, 8), Contact = _leveranciers[0] });
+            VoegKasVerrichtingToe(new KasVerrichting() { FactuurDatum = new DateTime(2020, 5, 14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, BetaalDatum = new DateTime(2020, 6, 3), Contact = _klanten[0] });
+            VoegKasVerrichtingToe(new KasVerrichting() { FactuurDatum = new DateTime(2020, 7, 10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, BetaalDatum = new DateTime(2020, 8, 6), Contact = _klanten[2] });
+            VoegKasVerrichtingToe(new KasVerrichting() { FactuurDatum = new DateTime(2020, 12, 7), Type = "Bedrijfskosten", Omschrijving = "Wasmachine Siemens", BedragExclBTW = 120.10, BTWTarief = 21, BetaalDatum = new DateTime(2020, 12, 8), Contact = _leveranciers[0] });
 
         }
         public IList<KasVerrichting> GeefKasBoek()
@@ -81,6 +81,11 @@ namespace Opdracht3.Services
                 new VerkoopFactuur(){UniekNr=25003, Maand = "JUN", FactuurDatum = new DateTime(2020,6,2), Type = "Dienst", Omschrijving = "Herstelling werkblad", BedragExclBTW = 340.0, BTWTarief = 6, Status = "Open", Contact = _klanten[3]},
                 new VerkoopFactuur(){UniekNr=25004, Maand = "MEI", FactuurDatum = new DateTime(2020,5,14), Type = "Dienst", Omschrijving = "Herstoffering", BedragExclBTW = 450.0, BTWTarief = 6, Status = "Betaald", BetaalDatum= new DateTime(2020,6,3),  Contact = _klanten[0]},
                 new VerkoopFactuur(){UniekNr=25005, Maand = "JUL", FactuurDatum = new DateTime(2020,7,10), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, Status = "Betaald", BetaalDatum = new DateTime(2020,8,6), Contact = _klanten[2]},
+                new VerkoopFactuur(){UniekNr=25006, Maand = "JUL", FactuurDatum = new DateTime(2020,7,25), Type = "Product", Omschrijving = "Tafel", BedragExclBTW = 260.0, BTWTarief = 21, Status = "Open", BetaalDatum = default, Contact = _klanten[4]},
+                new VerkoopFactuur(){UniekNr=25007, Maand = "JUN", FactuurDatum = new DateTime(2020,6,2), Type = "Dienst", Omschrijving = "Herstelling werkblad", BedragExclBTW = 340.0, BTWTarief = 6, Status = "Open", Contact = _klanten[0]},
+                new VerkoopFactuur(){UniekNr=25008, Maand = "AUG", FactuurDatum = new DateTime(2020,8,11), Type = "Product", Omschrijving = "Bureau", BedragExclBTW = 350.0, BTWTarief = 21, Status = "Betaald", BetaalDatum= new DateTime(2020,8,21),  Contact = _klanten[2]},
+                new VerkoopFactuur(){UniekNr=25009, Maand = "JUL", FactuurDatum = new DateTime(2020,7,8), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 687.0, BTWTarief = 21, Status = "Betaald", BetaalDatum = new DateTime(2020,7,27), Contact = _klanten[2]},
+                new VerkoopFactuur(){UniekNr=25010, Maand = "JAN", FactuurDatum = new DateTime(2021,1,1), Type = "Product", Omschrijving = "Zetel", BedragExclBTW = 100, BTWTarief = 21, Status = Constants.Open,  Contact = _klanten[2]},
             };
         }
         public IList<VerkoopFactuur> GeefVerkoopDagBoek()
@@ -194,7 +199,7 @@ namespace Opdracht3.Services
         //verwijder, wijzig en toevoegen van kasboek
         public bool WijzigKasBoek(KasVerrichting selectedKasVerrichting)
         {
-            if(selectedKasVerrichting.Contact == null)
+            if (selectedKasVerrichting.Contact == null)
             {
                 return false;
             }
@@ -209,7 +214,7 @@ namespace Opdracht3.Services
         }
         public bool VoegKasVerrichtingToe(KasVerrichting kasVerrichting)
         {
-            if(_kasBoek.Any(x => x.UniekNr.Equals(kasVerrichting.UniekNr)))
+            if (_kasBoek.Any(x => x.UniekNr.Equals(kasVerrichting.UniekNr)))
             {
                 return false;
             }
@@ -271,44 +276,47 @@ namespace Opdracht3.Services
 
         //totaaloverzicht
         private List<TotaalOverzicht> _totaalOverzicht;
-        public IList<TotaalOverzicht> GeefTotaalOverzicht()
+        public IList<TotaalOverzicht> GeefTotaalOverzicht(int selectedJaar)
         {
             _totaalOverzicht = new List<TotaalOverzicht>();
 
+            var verkopen = _verkoopDagBoek.Where(x => x.FactuurDatum.Year.Equals(selectedJaar)).ToList();
+            var aankopen = _aankoopDagBoek.Where(x => x.FactuurDatum.Year.Equals(selectedJaar)).ToList();
             //totaal te betalen BTW per maand 
-            foreach (var verkoop in _verkoopDagBoek)
+            foreach (var verkoop in verkopen)
             {
-                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.Maand)).FirstOrDefault();
-
+                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.FactuurDatum.Month)).FirstOrDefault();
                 if (exists == null)
                 {
                     exists = new TotaalOverzicht()
                     {
-                        Maand = verkoop.Maand
+                        Maand = verkoop.FactuurDatum.Month
                     };
                     _totaalOverzicht.Add(exists);
                 }
                 exists.TeBetalenBTW += verkoop.BTWBedrag;
+                exists.Omzet += verkoop.BedragExclBTW;
             }
 
             //totaal te ontvangen BTW per maand
-            foreach (var aankoop in _aankoopDagBoek)
+            foreach (var aankoop in aankopen)
             {
-                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(aankoop.Maand)).FirstOrDefault();
+                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(aankoop.FactuurDatum.Month)).FirstOrDefault();
 
                 if (exists == null)
                 {
                     exists = new TotaalOverzicht()
                     {
-                        Maand = aankoop.Maand
+                        Maand = aankoop.FactuurDatum.Month
                     };
                     _totaalOverzicht.Add(exists);
                 }
                 exists.TeOntvangenBTW += aankoop.BTWBedrag;
+                exists.BedrijfsKosten += aankoop.BedragExclBTW;
             }
-
+            /*
             //omzet berekenen
-            foreach (var verkoop in _verkoopDagBoek)
+            foreach (var verkoop in verkopen)
             {
                 var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.Maand)).FirstOrDefault(); // && x.Jaar.Equals(verkoop.FactuurDatum.Year.ToString())
 
@@ -323,10 +331,11 @@ namespace Opdracht3.Services
                 }
 
                 exists.Omzet += verkoop.BedragExclBTW;
+
             }
 
             //Bedrijfskosten berekenen
-            foreach (var aankoop in _aankoopDagBoek)
+            foreach (var aankoop in aankopen)
             {
                 var exists = _totaalOverzicht.Where(x => x.Maand.Equals(aankoop.Maand)).FirstOrDefault(); // && x.Jaar.Equals(aankoop.FactuurDatum.Year.ToString())
 
@@ -342,16 +351,16 @@ namespace Opdracht3.Services
 
                 exists.BedrijfsKosten += aankoop.BedragExclBTW;
             }
-
+            */
             return _totaalOverzicht.OrderBy(x => x.Maand).ToList();
         }
 
         //openstaande inkomende en uitgaande facturen
-        public List<OpenstaandeFactuur> GetOpenstaandeFacturen()
+        public List<OpenstaandeFactuur> GetOpenstaandeFacturen(int selectedJaar)
         {
             var facturen = new List<OpenstaandeFactuur>();
 
-            var openstaandeVerkoopFacturenByMonth = _verkoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
+            var openstaandeVerkoopFacturenByMonth = _verkoopDagBoek.Where(x => x.FactuurDatum.Year.Equals(selectedJaar)).Where(x => x.Status != null && x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
 
             foreach (var openstaande in openstaandeVerkoopFacturenByMonth)
             {
@@ -368,7 +377,8 @@ namespace Opdracht3.Services
                 facturen.Add(openStaandeFactuur);
             }
 
-            var openstaandeAankoopFacturen = _aankoopDagBoek.Where(x => x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
+
+            var openstaandeAankoopFacturen = _aankoopDagBoek.Where(x => x.FactuurDatum.Year.Equals(selectedJaar)).Where(x => x.Status != null && x.Status.Equals(Constants.Open)).GroupBy(x => x.FactuurDatum.Month).ToDictionary(x => x.Key, g => g.ToList());
 
             foreach (var openstaande in openstaandeAankoopFacturen)
             {
@@ -391,6 +401,16 @@ namespace Opdracht3.Services
             }
 
             return facturen.OrderBy(x => x.Maand).ToList();
+        }
+
+        public List<int> GetActiveYears()
+        {
+            var bestaandeJaren = new List<int>();
+
+            bestaandeJaren.AddRange(_aankoopDagBoek.Where(x => x.FactuurDatum != null).Select(x => x.FactuurDatum.Year).Distinct());
+            bestaandeJaren.AddRange(_verkoopDagBoek.Where(x => x.FactuurDatum != null).Select(x => x.FactuurDatum.Year).Distinct());
+
+            return bestaandeJaren.Distinct().ToList();
         }
     }
 }

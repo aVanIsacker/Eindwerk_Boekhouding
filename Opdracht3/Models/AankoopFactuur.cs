@@ -9,6 +9,15 @@ namespace Opdracht3.ViewModels
     {
         public string Type { get; set; }
 
+        public Leverancier Leverancier
+        {
+            get { return Contact as Leverancier; }
+            set
+            {
+                Contact = value;
+            }
+        }
+
         public AankoopFactuur()
         {
             UniekNr = Constants.AankoopFactuurNummer;

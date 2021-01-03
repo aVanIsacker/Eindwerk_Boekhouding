@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Reactive, Version=5.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reactive.5.0.0\lib\net472\System.Reactive.dll</HintPath>
     </Reference>
@@ -80,6 +81,8 @@
     <Compile Include="Helpers\IntToVisibilityConverter.cs" />
     <Compile Include="Helpers\KleurConverter.cs" />
     <Compile Include="Helpers\MaandConverter.cs" />
+    <Compile Include="Helpers\MaandIntToVolledigeNaamConverter.cs" />
+    <Compile Include="Helpers\PropertyValueStringConverter.cs" />
     <Compile Include="Helpers\StatusConvertor.cs" />
     <Compile Include="Models\AankoopFactuur.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -221,6 +224,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\NewDoc.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\EmptyDoc.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
