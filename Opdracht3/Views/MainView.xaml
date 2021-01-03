@@ -254,8 +254,10 @@
                                 </GroupBox>
                                 <!--LIJST KASVERRICHTINGEN-->
                                 <GroupBox Header="Overzicht Kasverrichtingen" Grid.Row="2">
-                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="{Binding KasBoekViewModel.SelectedKasVerrichting}"  CanUserSortColumns="True"
-                                              Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
+                                    <DataGrid ItemsSource="{Binding KasBoekViewModel.KasBoek}" SelectedItem="{Binding KasBoekViewModel.SelectedKasVerrichting}"
+                                              CanUserSortColumns="True" Margin="0,0,-2,0" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True"
+                                              AutoGenerateColumns="False" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7"
+                                              BorderBrush="#7e8f9f">
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Header="Nummer" Binding="{Binding UniekNr}"></DataGridTextColumn>
                                             <DataGridTextColumn Header="Betaaldatum" Binding="{Binding BetaalDatum}"></DataGridTextColumn>
