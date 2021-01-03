@@ -18,13 +18,6 @@
 
     <ScrollViewer>
         <DockPanel>
-            <!--MENU LOGIN -->
-            <Menu DockPanel.Dock="Top" Background="#7e8f9f">
-
-                <MenuItem Header="_Account" FontWeight="Bold" FontSize="15" FontFamily="Leelawadee UI Semilight">
-                    <views:LoginView DataContext="{Binding LoginViewModel}" Width="565" Height="400"/>
-                </MenuItem>
-            </Menu>
             <Grid DataContext="{StaticResource MainViewModel}" Background="#dde3e7" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="9*"/>
