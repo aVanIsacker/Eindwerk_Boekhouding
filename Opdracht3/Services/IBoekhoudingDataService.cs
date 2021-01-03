@@ -17,8 +17,8 @@ namespace Opdracht3.Services
         IList<Klant> GeefAlleKlanten();
         IList<Leverancier> GeefAlleLeveranciers();
 
-        IList<TotaalOverzicht> GeefTotaalOverzicht();
-
+        IList<TotaalOverzicht> GeefTotaalOverzicht(int selectedJaar);
+        List<OpenstaandeFactuur> GetOpenstaandeFacturen(int selectedJaar);
 
         //Lijst verwijderen, toevoegen en wijzigen van Aankoopfactuur
         IList<AankoopFactuur> VoegAankoopFactuurToe(AankoopFactuur factuur);
@@ -29,7 +29,7 @@ namespace Opdracht3.Services
         //Lijst verwijderen, toevoegen en wijzigen van Leverancier
         IList<Leverancier> VoegLeverancierToe(Leverancier leverancier);
         IList<Leverancier> VerwijderLeverancier(Leverancier selectedLeverancier);
-        List<OpenstaandeFactuur> GetOpenstaandeFacturen();
+        
         void WijzigLeverancier(Leverancier selectedLeverancier);
         List<Contact> GetContacts();
 
@@ -42,6 +42,7 @@ namespace Opdracht3.Services
         //Lijst verwijderen, toevoegen en wijzigen van Klant
         IList<Klant> VoegKlantToe(Klant klant);
         IList<Klant> VerwijderKlant(Klant selectedKlant);
+        List<int> GetActiveYears();
         void WijzigKlant(Klant selectedKlant);
 
         //Lijst verwijderen, toevoegen en wijzigen van VerkoopFactuur

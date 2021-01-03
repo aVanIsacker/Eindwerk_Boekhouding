@@ -56,6 +56,7 @@ namespace Opdracht3.ViewModels
 
         internal void RefreshData()
         {
+            Leveranciers.Clear();
             Leveranciers = new ObservableCollection<Leverancier>(_dataService.GeefAlleLeveranciers());
         }
 

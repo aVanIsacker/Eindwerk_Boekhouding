@@ -11,6 +11,7 @@ namespace Opdracht3.ViewModels
         public Factuur()
         {
             FactuurDatum = DateTime.Now;
+            BetaalDatum = DateTime.Now;
         }
         public int UniekNr { get; set; }
 
@@ -35,7 +36,7 @@ namespace Opdracht3.ViewModels
             }
             set
             { }
-     
+
         }
 
         private double _bedragExclBtw;

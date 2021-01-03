@@ -8,6 +8,7 @@
         <helpers:DateTimeToFutureExpireDateStringConverter x:Key="DateTimeToFutureExpireDateStringConverter"/>
         <helpers:StatusConvertor x:Key="StatusConvertor"/>
         <helpers:MaandConverter x:Key="MaandConvertor"/>
+        <helpers:MaandIntToVolledigeNaamConverter x:Key="MaandIntToVolledigeNaamConverter"/>
         <helpers:BTWConverter x:Key="BTWConverter"/>
         <helpers:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
         <helpers:KleurConverter x:Key="KleurConverter" />

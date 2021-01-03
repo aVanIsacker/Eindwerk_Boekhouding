@@ -49,6 +49,7 @@ namespace Opdracht3.ViewModels
 
         internal void RefreshData()
         {
+            Klanten.Clear();
             Klanten = new ObservableCollection<Klant>(_dataService.GeefAlleKlanten());
         }
 

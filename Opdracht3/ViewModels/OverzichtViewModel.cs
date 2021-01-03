@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Opdracht3.ViewModels
@@ -15,31 +16,52 @@ namespace Opdracht3.ViewModels
     {
         //public IBoekhoudingDataService _dataservice;
         private ObservableCollection<TotaalOverzicht> _totaalOverzicht;
+        private ObservableCollection<TotaalOverzicht> _winstVerlies;
+        private ObservableCollection<int> _jaren; 
         private TotaalOverzicht _selectedTotaalOverzicht;
 
         private ObservableCollection<OpenstaandeFactuur> _openstaandeFacturen;
 
         private IBoekhoudingDataService dataService;
         private OpenstaandeFactuur _selectedFactuur;
+        private int _selectedJaar;
 
         public OverzichtViewModel(IBoekhoudingDataService dataService)
         {
             this.dataService = dataService;
 
             RefreshDataSourceCommand = new RelayCommand(RefreshData);
-            TotaalOverzicht = new ObservableCollection<TotaalOverzicht>(dataService.GeefTotaalOverzicht());
-            OpenstaandeFacturen = new ObservableCollection<OpenstaandeFactuur>(dataService.GetOpenstaandeFacturen());
+            Jaren = new ObservableCollection<int>(dataService.GetActiveYears());
+            SelectedJaar = Jaren.First();
         }
 
         public ICommand RefreshDataSourceCommand { get; private set; }
 
         public void RefreshData()
         {
-            TotaalOverzicht.Clear();
-            OpenstaandeFacturen.Clear();
+            Jaren = new ObservableCollection<int>(dataService.GetActiveYears());
+            VernieuwViewData();
 
-            TotaalOverzicht = new ObservableCollection<TotaalOverzicht>(dataService.GeefTotaalOverzicht());
-            OpenstaandeFacturen = new ObservableCollection<OpenstaandeFactuur>(dataService.GetOpenstaandeFacturen());
+        }
+
+        public void VernieuwViewData()
+        {
+            var overzicht = dataService.GeefTotaalOverzicht(SelectedJaar);
+            WinstVerlies = new ObservableCollection<TotaalOverzicht>(overzicht);
+            TotaalOverzicht = new ObservableCollection<TotaalOverzicht>(overzicht);
+            OpenstaandeFacturen = new ObservableCollection<OpenstaandeFactuur>(dataService.GetOpenstaandeFacturen(SelectedJaar));
+        }
+
+        public ObservableCollection<int> Jaren
+        {
+            get { return _jaren; }
+            set { OnPropertyChanged(ref _jaren, value); }
+        }
+
+        public ObservableCollection<TotaalOverzicht> WinstVerlies
+        {
+            get { return _winstVerlies; }
+            set { OnPropertyChanged(ref _winstVerlies, value); }
         }
 
         public ObservableCollection<TotaalOverzicht> TotaalOverzicht
@@ -58,6 +80,15 @@ namespace Opdracht3.ViewModels
         {
             get { return _selectedFactuur; }
             set { OnPropertyChanged(ref _selectedFactuur, value); }
+        }
+        public int SelectedJaar
+        {
+            get { return _selectedJaar; }
+            set
+            {
+                OnPropertyChanged(ref _selectedJaar, value);
+                VernieuwViewData(); 
+            }
         }
 
         public TotaalOverzicht SelectedTotaaloverzicht

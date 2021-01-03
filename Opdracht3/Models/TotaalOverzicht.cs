@@ -10,7 +10,7 @@ namespace Opdracht3.ViewModels
         public List<VerkoopFactuur> VerkoopDagBoek;
         public List<KasVerrichting> KasBoek;
 
-        public object Maand { get; internal set; }
+        public int Maand { get; internal set; }
 
         //public double TeBetalenBTW6 { get; }
         //public double TeBetalenBTW21 { get; }

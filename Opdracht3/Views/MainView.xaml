@@ -238,7 +238,7 @@
                             </Grid>
                         </TabItem.Content>
                     </TabItem>
-                    
+
                     <!--KASBOEK-->
                     <TabItem Name="Kasboek"  Header="Kasboek" BorderBrush="{x:Null}" Margin="0,6,0,-6" >
                         <TabItem.Content>
@@ -266,7 +266,7 @@
                                             <DataGridTextColumn Header="BTW Tarief" Binding="{Binding BTWTarief}"></DataGridTextColumn>
                                             <DataGridTextColumn Header="BTW Bedrag" Binding="{Binding BTWBedrag}"></DataGridTextColumn>
                                             <DataGridTextColumn Header="Bedrag Incl BTW" Binding="{Binding BedragInclBTW}"></DataGridTextColumn>
-                                            
+
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </GroupBox>
@@ -414,7 +414,7 @@
 
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="0" />
+                                    <RowDefinition Height="20" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="0" />
                                     <RowDefinition Height="Auto" />
@@ -422,16 +422,22 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                               <!--LIJST -->
+                                <!--LIJST -->
+                                <ComboBox 
+                                          Name="Jaar" ItemsSource="{Binding OverzichtViewModel.Jaren}" 
+                                          SelectedItem="{Binding OverzichtViewModel.SelectedJaar}"
+                                          Grid.Row="0"
+                                          Width="130" 
+                                          />
                                 <GroupBox Header="Winst/Verlies" Grid.Row="1" Margin="10,10,0,10">
-                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.TotaalOverzicht}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
+                                    <DataGrid  ItemsSource="{Binding OverzichtViewModel.WinstVerlies}" SelectedItem="OverzichtViewModel.TotaalOverzicht"  CanUserSortColumns="True"
                                                Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
-                                               AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged_1">
+                                               AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged_1" >
 
 
                                         <DataGrid.Columns>
 
-                                            <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
+                                            <DataGridTextColumn Binding="{Binding Maand, Converter={StaticResource MaandIntToVolledigeNaamConverter}}" Header="Maand" />
                                             <DataGridTextColumn Binding="{Binding Omzet}" Header="Omzet" />
 
                                             <DataGridTextColumn Binding="{Binding BedrijfsKosten}" Header="Kosten" />
@@ -445,7 +451,7 @@
                                                Margin="0,0,-2,0" AlternatingRowBackground="#dde3e7" Foreground="Black" Background="#dde3e7" BorderBrush="#7e8f9f"
                                                AutoGenerateColumns="False" IsReadOnly="True">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Binding="{Binding Maand}" Header="Maand" />
+                                            <DataGridTextColumn Binding="{Binding Maand, Converter={StaticResource MaandIntToVolledigeNaamConverter}}" Header="Maand" />
                                             <DataGridTextColumn Binding="{Binding TeBetalenBTW }" Header="Te betalen BTW" />
                                             <DataGridTextColumn Binding="{Binding TeOntvangenBTW}" Header="Te ontvangen BTW" />
                                             <DataGridTextColumn Binding="{Binding Totaal}" Header="Totaal" />
