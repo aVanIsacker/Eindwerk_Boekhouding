@@ -41,6 +41,7 @@ namespace Opdracht3.ViewModels
         private void WijzigAankoop()
         {
             _dataService.WijzigAankoopFactuur(SelectedAankoopFactuur);
+            RefreshData();
         }
 
         private void VoegAankoop()
