@@ -11,7 +11,7 @@ namespace Opdracht3.ViewModels
 
         public AankoopFactuur()
         {
-            UniekNr = Constants.VerkoopFactuurNummer;
+            UniekNr = Constants.AankoopFactuurNummer;
         }
     }
 }
