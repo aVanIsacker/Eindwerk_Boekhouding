@@ -50,6 +50,13 @@ namespace Opdracht3.ViewModels
             SelectedAankoopFactuur = _aankoopFactuur[_aankoopFactuur.Count - 1];
         }
 
+        internal void RefreshData()
+        {
+            SelectedAankoopFactuur = new AankoopFactuur();
+            Leveranciers = new ObservableCollection<Leverancier>(_dataService.GeefAlleLeveranciers());
+            AankoopFacturen = new ObservableCollection<AankoopFactuur>(_dataService.GeefAankoopDagBoek());
+        }
+
         public ICommand AddAankoopCommand { get; private set; }
         public ICommand EditAankoopCommand { get; private set; }
         public ICommand DeleteAankoopCommand { get; private set; }

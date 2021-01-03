@@ -49,11 +49,20 @@ namespace Opdracht3.ViewModels
         {
             switch(index)
             {
-                //case 0:
-                //    VerkoopDagBoekViewModel.RefreshData();
-                //    break;
+                case 0:
+                    VerkoopDagBoekViewModel.RefreshData();
+                    break;
+                case 1:
+                    AankoopDagBoekViewModel.RefreshData();
+                    break;
                 case 2:
                     KasBoekViewModel.RefreshData();
+                    break;
+                case 3:
+                    LeveranciersViewModel.RefreshData();
+                    break;
+                case 4:
+                    KlantenViewModel.RefreshData();
                     break;
                 case 5:
                     OverzichtViewModel.RefreshData();

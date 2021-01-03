@@ -47,6 +47,13 @@ namespace Opdracht3.ViewModels
             SelectedVerkoopFactuur = _verkoopFactuur[_verkoopFactuur.Count - 1];
         }
 
+        internal void RefreshData()
+        {
+            SelectedVerkoopFactuur = new VerkoopFactuur();
+            Klanten = new ObservableCollection<Klant>(_dataService.GeefAlleKlanten());
+            VerkoopFacturen = new ObservableCollection<VerkoopFactuur>(_dataService.GeefVerkoopDagBoek());
+        }
+
         public ICommand AddVerkoopCommand { get; private set; }
         public ICommand EditVerkoopCommand { get; private set; }
         public ICommand DeleteVerkoopCommand { get; private set; }

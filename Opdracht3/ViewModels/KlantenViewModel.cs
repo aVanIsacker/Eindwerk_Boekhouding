@@ -47,6 +47,11 @@ namespace Opdracht3.ViewModels
             SelectedKlant = _klanten[_klanten.Count - 1];
         }
 
+        internal void RefreshData()
+        {
+            Klanten = new ObservableCollection<Klant>(_dataService.GeefAlleKlanten());
+        }
+
         public ICommand AddKlantCommand { get; private set; }
         public ICommand EditKlantCommand { get; private set; }
         public ICommand DeleteKlantCommand { get; private set; }

@@ -45,10 +45,11 @@
             <!--BEBDRIJF/KLANT-->
             <Label Grid.Row="2" Content="Bedrijf/klant:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="5" />
             <!--<TextBox Grid.Row="3" Text="{Binding SelectedKasVerrichting.Contact}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>-->
-            <utilities:FilteredListView Grid.Row="2" Grid.Column="7"  ItemsSource="{Binding Klanten}"
+            <!--<utilities:FilteredListView Grid.Row="2" Grid.Column="7"  ItemsSource="{Binding Klanten}"
                                         SelectedItem="{Binding SelectedKasVerrichting.Contact}"
-                                        FilterPredicate="{Binding KlantenFilter}" Margin="0.4,0.2,0,10.4" Grid.RowSpan="4"/>
-
+                                        FilterPredicate="{Binding KlantenFilter}" Margin="0.4,0.2,0,10.4" Grid.RowSpan="4"/>-->
+            <ComboBox Grid.Row="2" Grid.Column="7" ItemsSource="{Binding Klanten}" SelectedItem="{Binding SelectedKasVerrichting.Contact}"
+                      Margin="4,4,0,4" Width="130" HorizontalAlignment="Left"/>
             <!--TYPE-->
             <Label Grid.Row="2" Content="Type:" FontFamily="Lucida Sans Unicode" HorizontalAlignment="Left" Grid.Column="1" />
             <ComboBox x:Name="TypeCombo" Grid.Row="2" Text="{Binding SelectedKasVerrichting.Type}" Grid.Column="3" Margin="4,4,0,4" Width="130" HorizontalAlignment="Left">
