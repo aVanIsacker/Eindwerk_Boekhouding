@@ -41,11 +41,12 @@ namespace Opdracht3.ViewModels
         private void WijzigAankoop()
         {
             _dataService.WijzigAankoopFactuur(SelectedAankoopFactuur);
+            RefreshData();
         }
 
         private void VoegAankoop()
         {
-            AankoopFactuur aankoopDagBoek = new AankoopFactuur() { UniekNr = 0, BetaalDatum = new DateTime(2020, 12, 8), BedragExclBTW = 0, BTWTarief = 21, FactuurDatum = new DateTime(2020, 12, 7), Omschrijving = "NA" };
+            AankoopFactuur aankoopDagBoek = new AankoopFactuur() { UniekNr = 0, BetaalDatum = DateTime.Now, BedragExclBTW = 0, BTWTarief = 21, FactuurDatum = DateTime.Now, Omschrijving = "NA" };
             AankoopFacturen = new ObservableCollection<AankoopFactuur>(_dataService.VoegAankoopFactuurToe(aankoopDagBoek));
             SelectedAankoopFactuur = _aankoopFactuur[_aankoopFactuur.Count - 1];
         }
