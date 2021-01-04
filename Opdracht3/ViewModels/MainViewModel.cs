@@ -17,13 +17,10 @@ namespace Opdracht3.ViewModels
         private VerkoopDagBoekViewModel _verkoopDagBoekViewModel;
         private KasBoekViewModel _kasBoekViewModel;
         private OverzichtViewModel _overzichtViewModel;
-        private LoginViewModel _loginViewModel;
 
         public MainViewModel()
         {
-            _loginViewModel =new LoginViewModel();
-            //ActivateItem(_loginVM);
-
+            
             _dataService = new MockBoekhoudingDataService();
 
             KlantenViewModel = new KlantenViewModel(_dataService);

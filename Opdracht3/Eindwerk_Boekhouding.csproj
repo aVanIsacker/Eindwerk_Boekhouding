@@ -104,7 +104,6 @@
     <Compile Include="ViewModels\KasBoekViewModel.cs" />
     <Compile Include="ViewModels\KlantenViewModel.cs" />
     <Compile Include="ViewModels\LeveranciersViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OverzichtViewModel.cs" />
     <Compile Include="ViewModels\VerkoopDagBoekViewModel.cs" />
@@ -132,9 +131,6 @@
     </Compile>
     <Compile Include="Views\LeveranciersView.xaml.cs">
       <DependentUpon>LeveranciersView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LoginView.xaml.cs">
-      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OverzichtView.xaml.cs">
       <DependentUpon>OverzichtView.xaml</DependentUpon>
@@ -178,10 +174,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LeveranciersView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
