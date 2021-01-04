@@ -280,9 +280,10 @@ namespace Opdracht3.Services
         {
             _totaalOverzicht = new List<TotaalOverzicht>();
 
+            //totaal te betalen BTW + omzet per maand
             var verkopen = _verkoopDagBoek.Where(x => x.FactuurDatum.Year.Equals(selectedJaar)).ToList();
             var aankopen = _aankoopDagBoek.Where(x => x.FactuurDatum.Year.Equals(selectedJaar)).ToList();
-            //totaal te betalen BTW per maand 
+             
             foreach (var verkoop in verkopen)
             {
                 var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.FactuurDatum.Month)).FirstOrDefault();
@@ -298,7 +299,7 @@ namespace Opdracht3.Services
                 exists.Omzet += verkoop.BedragExclBTW;
             }
 
-            //totaal te ontvangen BTW per maand
+            //totaal te ontvangen BTW + bedrijfskosten per maand
             foreach (var aankoop in aankopen)
             {
                 var exists = _totaalOverzicht.Where(x => x.Maand.Equals(aankoop.FactuurDatum.Month)).FirstOrDefault();
@@ -314,44 +315,7 @@ namespace Opdracht3.Services
                 exists.TeOntvangenBTW += aankoop.BTWBedrag;
                 exists.BedrijfsKosten += aankoop.BedragExclBTW;
             }
-            /*
-            //omzet berekenen
-            foreach (var verkoop in verkopen)
-            {
-                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(verkoop.Maand)).FirstOrDefault(); // && x.Jaar.Equals(verkoop.FactuurDatum.Year.ToString())
-
-                if (exists == null)
-                {
-                    exists = new TotaalOverzicht()
-                    {
-                        Jaar = verkoop.FactuurDatum.Year.ToString(),
-                        Maand = verkoop.Maand,
-                    };
-                    _totaalOverzicht.Add(exists);
-                }
-
-                exists.Omzet += verkoop.BedragExclBTW;
-
-            }
-
-            //Bedrijfskosten berekenen
-            foreach (var aankoop in aankopen)
-            {
-                var exists = _totaalOverzicht.Where(x => x.Maand.Equals(aankoop.Maand)).FirstOrDefault(); // && x.Jaar.Equals(aankoop.FactuurDatum.Year.ToString())
-
-                if (exists == null)
-                {
-                    exists = new TotaalOverzicht()
-                    {
-                        Jaar = aankoop.FactuurDatum.Year.ToString(),
-                        Maand = aankoop.Maand,
-                    };
-                    _totaalOverzicht.Add(exists);
-                }
-
-                exists.BedrijfsKosten += aankoop.BedragExclBTW;
-            }
-            */
+            
             return _totaalOverzicht.OrderBy(x => x.Maand).ToList();
         }
 
